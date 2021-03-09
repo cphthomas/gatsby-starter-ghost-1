@@ -1,18 +1,14 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { Layout } from '../components/common'
+import React from "react";
+import { Link } from "gatsby";
+import { Layout } from "../components/common";
+import Stripe from "stripe";
 
-const NotFoundPage = () => (
-    <Layout>
-        <div className="container">
-            <article className="content" style={{ textAlign: `center` }}>
-                <h1 className="content-title">Error 404</h1>
-                <section className="content-body">
-                    This is login Page
-                </section>
-            </article>
-        </div>
-    </Layout>
-)
+const stripe = new Stripe("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
 
-export default NotFoundPage
+(async () => {
+    const customer = await stripe.customers.create({
+        email: "customer@example.com",
+    });
+
+    console.log(customer.id);
+})();
