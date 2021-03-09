@@ -1,14 +1,24 @@
 import React from "react";
-import { Link } from "gatsby";
-import { Layout } from "../components/common";
+import { graphql } from "gatsby";
 import Stripe from "stripe";
 
-const stripe = new Stripe("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
+function BlogPostTemplate(props) {
+    //const post = props.data.markdownRemark
+    function login() {
+        const stripe = new Stripe("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
+        console.log(stripe);
+        stripe.customers
+            .create({
+                email: "customer@example.com",
+            })
+            .then((customer) => console.log(customer.id))
+            .catch((error) => console.error(error));
+    }
+    return (
+        <div>
+            <p onClick={login}>login</p>
+        </div>
+    );
+}
 
-(async () => {
-    const customer = await stripe.customers.create({
-        email: "customer@example.com",
-    });
-
-    console.log(customer.id);
-})();
+export default BlogPostTemplate;
