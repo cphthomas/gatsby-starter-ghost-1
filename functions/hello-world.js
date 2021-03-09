@@ -1,8 +1,10 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
 
-exports.handler = async function () {
+exports.handler = async function (event) {
+    const { email } = JSON.parse(event.body);
+    console.log(email);
     const customer = await stripe.customers.create({
-        email: "customer@example.com",
+        email: email,
     });
 
     console.log(customer.id);
