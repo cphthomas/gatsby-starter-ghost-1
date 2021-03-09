@@ -16,8 +16,13 @@ function BlogPostTemplate(props) {
         //     .catch((error) => console.error("err"));
         //console.log(customer);
         fetch("/.netlify/functions/hello-world")
-            .then((res) => res.text())
-            .then((text) => console.log(text));
+            .then((response) => response.text())
+            .then((responseJson) => {
+                console.log(responseJson);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
     return (
         <div>
