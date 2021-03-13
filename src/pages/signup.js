@@ -6,7 +6,7 @@ import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../styles/login.css';
 
-export default function Login() {
+export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -33,7 +33,7 @@ export default function Login() {
         <Layout>
             <div>
                 <form>
-                    <h3 className="page-title">Sign In</h3>
+                    <h3 className="page-title">Sign Up</h3>
 
                     <div className="form-group">
                         <label>Email address</label>
@@ -41,6 +41,15 @@ export default function Login() {
                             type="email"
                             className="form-control"
                             placeholder="Enter email"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Full name</label>
+                        <input
+                            type="name"
+                            className="form-control"
+                            placeholder="Enter full name"
                         />
                     </div>
 
@@ -54,10 +63,10 @@ export default function Login() {
                     </div>
 
                     <button type="submit" className="btn btn-primary btn-block btn-color">
-                        Log In
+                        Sign Up
                     </button>
                     <p className="forgot-password text-right">
-                        Not a member ? <a href="/signup">Sign up</a>
+                        Already a member ? <a href="/login">Sign In</a>
                     </p>
                 </form>
             </div>

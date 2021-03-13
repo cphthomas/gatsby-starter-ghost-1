@@ -1,0 +1,27 @@
+.site-main {
+    /* background-color: aliceblue !important; */
+    padding-left: 35%;
+    padding-right: 35%;
+}
+
+form {
+    font-size: 15px !important;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.btn-color {
+    background: #15171a;
+}
+
+.forgot-password {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+input {
+    font-size: 15px !important;
+}
