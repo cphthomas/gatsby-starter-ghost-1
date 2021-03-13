@@ -31,7 +31,7 @@ export default function SignUp() {
 
     return (
         <Layout>
-            <div>
+            <div className="form-div">
                 <form>
                     <h3 className="page-title">Sign Up</h3>
 

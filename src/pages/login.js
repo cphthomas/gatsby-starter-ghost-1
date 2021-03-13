@@ -31,7 +31,7 @@ export default function Login() {
 
     return (
         <Layout>
-            <div>
+            <div className="form-div">
                 <form>
                     <h3 className="page-title">Sign In</h3>
 
