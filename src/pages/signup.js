@@ -4,11 +4,12 @@ import Button from "react-bootstrap/Button";
 // import "./Login.css";
 import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../styles/login.css';
+import "../styles/login.css";
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -16,23 +17,24 @@ export default function SignUp() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        fetch("/.netlify/functions/hello-world", {
-            method: "POST",
-            body: JSON.stringify({ email }),
-        })
-            .then((response) => response.text())
-            .then((responseJson) => {
-                console.log(responseJson);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        // fetch("/.netlify/functions/hello-world", {
+        //     method: "POST",
+        //     body: JSON.stringify({ email }),
+        // })
+        //     .then((response) => response.text())
+        //     .then((responseJson) => {
+        //         console.log(responseJson);
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
+        //alert("submit");
     }
 
     return (
         <Layout>
             <div className="form-div">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h3 className="page-title">Sign Up</h3>
 
                     <div className="form-group">
@@ -41,6 +43,8 @@ export default function SignUp() {
                             type="email"
                             className="form-control"
                             placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -50,6 +54,8 @@ export default function SignUp() {
                             type="name"
                             className="form-control"
                             placeholder="Enter full name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                     </div>
 
@@ -59,10 +65,16 @@ export default function SignUp() {
                             type="password"
                             className="form-control"
                             placeholder="Enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-block btn-color">
+                    <button
+                        type="submit"
+                        className="btn btn-primary btn-block btn-color"
+                        disabled={!validateForm()}
+                    >
                         Sign Up
                     </button>
                     <p className="forgot-password text-right">

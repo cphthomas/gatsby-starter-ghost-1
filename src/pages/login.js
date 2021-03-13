@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 // import "./Login.css";
 import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../styles/login.css';
+import "../styles/login.css";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -16,23 +16,23 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        fetch("/.netlify/functions/hello-world", {
-            method: "POST",
-            body: JSON.stringify({ email }),
-        })
-            .then((response) => response.text())
-            .then((responseJson) => {
-                console.log(responseJson);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        // fetch("/.netlify/functions/hello-world", {
+        //     method: "POST",
+        //     body: JSON.stringify({ email }),
+        // })
+        //     .then((response) => response.text())
+        //     .then((responseJson) => {
+        //         console.log(responseJson);
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
     }
 
     return (
         <Layout>
             <div className="form-div">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h3 className="page-title">Sign In</h3>
 
                     <div className="form-group">
@@ -41,6 +41,8 @@ export default function Login() {
                             type="email"
                             className="form-control"
                             placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -50,10 +52,16 @@ export default function Login() {
                             type="password"
                             className="form-control"
                             placeholder="Enter password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-block btn-color">
+                    <button
+                        type="submit"
+                        disabled={!validateForm()}
+                        className="btn btn-primary btn-block btn-color"
+                    >
                         Log In
                     </button>
                     <p className="forgot-password text-right">
