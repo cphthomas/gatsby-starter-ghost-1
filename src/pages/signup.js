@@ -15,20 +15,37 @@ export default function SignUp() {
         return email.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
+        let customerId;
         event.preventDefault();
-        // fetch("/.netlify/functions/hello-world", {
-        //     method: "POST",
-        //     body: JSON.stringify({ email }),
-        // })
-        //     .then((response) => response.text())
-        //     .then((responseJson) => {
-        //         console.log(responseJson);
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
-        //alert("submit");
+        await fetch("/.netlify/functions/sign-up", {
+            method: "POST",
+            body: JSON.stringify({ email }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson.customerId);
+                customerId = responseJson.customerId;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        if (customerId) {
+            //alert("Go to checkout");
+            await fetch("/.netlify/functions/create-stripe-checkout", {
+                method: "POST",
+                body: JSON.stringify({ customerId }),
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    window.location.href = responseJson;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
     }
 
     return (
