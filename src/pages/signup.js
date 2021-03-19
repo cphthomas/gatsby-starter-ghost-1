@@ -10,6 +10,8 @@ export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
+    const [message, setMessage] = useState("");
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -20,19 +22,25 @@ export default function SignUp() {
         event.preventDefault();
         await fetch("/.netlify/functions/sign-up", {
             method: "POST",
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ email, password, name }),
         })
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson.customerId);
-                customerId = responseJson.customerId;
+                if (responseJson.error == "1") {
+                    //alert(responseJson.message);
+                    setMessage(responseJson.message);
+                } else {
+                    customerId = responseJson.customerId;
+                    //alert(responseJson.message);
+                    setMessage(responseJson.message);
+                }
+                setShowMessage(true);
             })
             .catch((error) => {
                 console.error(error);
             });
 
         if (customerId) {
-            //alert("Go to checkout");
             await fetch("/.netlify/functions/create-stripe-checkout", {
                 method: "POST",
                 body: JSON.stringify({ customerId }),
@@ -94,6 +102,7 @@ export default function SignUp() {
                     >
                         Sign Up
                     </button>
+                    {showMessage ? <p className="message">{message}</p> : null}
                     <p className="forgot-password text-right">
                         Already a member ? <a href="/login">Sign In</a>
                     </p>

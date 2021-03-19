@@ -2,7 +2,7 @@ const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
 
 exports.handler = async function (event) {
     const { customerId } = JSON.parse(event.body);
-    console.log(customerId);
+    //console.log(customerId);
 
     // const result = await faunaFetch({
     //   query: `
@@ -21,10 +21,10 @@ exports.handler = async function (event) {
 
     const link = await stripe.billingPortal.sessions.create({
         customer: customerId,
-        return_url: "http://localhost:8888",
+        return_url: "https://inspiring-kepler-554993.netlify.app/",
     });
 
-    console.log(link);
+    //console.log(link);
 
     return {
         statusCode: 200,

@@ -28,3 +28,9 @@ input {
 .btn-color:disabled {
     background: #15171a;
 }
+
+.message {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+}
