@@ -5,7 +5,7 @@ var mysql = require("mysql");
 exports.handler = async function ({ body, headers }, context) {
     try {
         // make sure this event was sent legitimately.
-        const stripeEvent = stripe.webhooks.constructEvent(
+        const stripeEvent = await stripe.webhooks.constructEvent(
             body,
             headers["stripe-signature"],
             "whsec_TtO91dQXunKYoofz8go1AZfQpKIxnweg"
@@ -14,7 +14,7 @@ exports.handler = async function ({ body, headers }, context) {
         // bail if this is not a subscription update event
         if (stripeEvent.type !== "customer.subscription.updated") return;
 
-        const subscription = stripeEvent.data.object;
+        const subscription = await stripeEvent.data.object;
 
         // const result = await faunaFetch({
         //     query: `
@@ -48,17 +48,26 @@ exports.handler = async function ({ body, headers }, context) {
             database: "yj4gfzv5wypf9871",
         });
 
-        await connection.connect();
+        try {
+            await connection.connect();
 
-        await connection.query(
-            "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
-            ["2", subscription.customer],
-            function (error, results, fields) {
-                if (error) throw error;
-            }
-        );
+            // await connection.query(
+            //     "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
+            //     ["2", subscription.customer],
+            //     function (error, results, fields) {
+            //         if (error) throw error;
+            //     }
+            // );
 
-        await connection.end();
+            await updateUser(connection, subscription.customer);
+
+            await connection.end();
+        } catch (error) {
+            return {
+                statusCode: 400,
+                body: `Webhook Error: ${error.message}`,
+            };
+        }
 
         // send a call to the Netlify Identity admin API to update the user role
         //const { identity } = context.clientContext;
@@ -77,7 +86,7 @@ exports.handler = async function ({ body, headers }, context) {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ received: true }),
+            body: JSON.stringify({ received: subscription.customer }),
         };
     } catch (err) {
         return {
@@ -86,3 +95,19 @@ exports.handler = async function ({ body, headers }, context) {
         };
     }
 };
+
+async function updateUser(connection, stripeId) {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            {
+                sql:
+                    "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
+                values: ["2", stripeId],
+            },
+            function (error, results, fields) {
+                if (error) reject(err);
+                resolve(results);
+            }
+        );
+    });
+}

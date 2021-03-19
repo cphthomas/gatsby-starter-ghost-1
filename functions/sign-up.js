@@ -21,6 +21,13 @@ exports.handler = async function (event) {
                 message: "User exist alredy with same email id",
             }),
         };
+        // await connection.query(
+        //     "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
+        //     ["2", "cus_J94f2jQBK6f4gn"],
+        //     function (error, results, fields) {
+        //         if (error) throw error;
+        //     }
+        // );
     }
 
     const customer = await stripe.customers.create({
@@ -56,7 +63,8 @@ exports.handler = async function (event) {
         body: JSON.stringify({
             error: "0",
             customerId: customer.id,
-            message: "User created successfully redirecting to stripe checkout...",
+            message:
+                "User created successfully redirecting to stripe checkout...",
         }),
     };
 };
