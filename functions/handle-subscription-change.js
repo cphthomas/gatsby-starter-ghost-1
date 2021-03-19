@@ -1,5 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const fetch = require("node-fetch");
+var mysql = require("mysql");
 
 exports.handler = async function ({ body, headers }, context) {
     try {
