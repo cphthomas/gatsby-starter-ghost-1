@@ -51,7 +51,7 @@ exports.handler = async function ({ body, headers }, context) {
         await connection.connect();
 
         await connection.query(
-            "UPDATE users SET plan_id = ? WHERE stripe_id = ?",
+            "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
             ["2", subscription.customer],
             function (error, results, fields) {
                 if (error) throw error;
