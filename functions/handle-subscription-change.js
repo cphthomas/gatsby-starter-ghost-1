@@ -59,7 +59,7 @@ exports.handler = async function ({ body, headers }, context) {
             //     }
             // );
 
-            await updateUser(connection, subscription.customer);
+            await updateUser(connection, subscription.customer, plan);
 
             await connection.end();
         } catch (error) {
@@ -96,13 +96,13 @@ exports.handler = async function ({ body, headers }, context) {
     }
 };
 
-async function updateUser(connection, stripeId) {
+async function updateUser(connection, stripeId, plan) {
     return new Promise((resolve, reject) => {
         connection.query(
             {
                 sql:
                     "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
-                values: ["2", stripeId],
+                values: [plan, stripeId],
             },
             function (error, results, fields) {
                 if (error) reject(err);
