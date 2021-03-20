@@ -41,7 +41,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         if (cookies.get("loggedInUser")) {
             setUserLoggedIn(true);
         }
-    });
+    }, []);
 
     return (
         <>

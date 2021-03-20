@@ -12,6 +12,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState("");
+    const [messageColor, setMessageColor] = useState("");
 
     useEffect(() => {
         const cookies = new Cookies();
@@ -19,7 +20,7 @@ export default function Login() {
         if (cookies.get("loggedInUser")) {
             window.location.href = "/";
         }
-    });
+    }, []);
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -37,20 +38,27 @@ export default function Login() {
             .then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.error == "1") {
-                    //alert(responseJson.message);
+                    setMessageColor("red");
                     setMessage(responseJson.message);
                 } else if (responseJson.planId == "0") {
                     customerId = responseJson.customerId;
                     planId = responseJson.planId;
-                    //alert(responseJson.message);
+                    setMessageColor("green");
                     setMessage(
                         "Logged in successfully, you don't have any plan redirecting to stripe checkout.."
                     );
-                    cookies.set("loggedInUser", email, { path: "/", maxAge: 31536000 });
+                    cookies.set("loggedInUser", email, {
+                        path: "/",
+                        maxAge: 31536000,
+                    });
                 } else {
                     planId = responseJson.planId;
+                    setMessageColor("green");
                     setMessage("Logged in successfully");
-                    cookies.set("loggedInUser", email, { path: "/", maxAge: 31536000 });
+                    cookies.set("loggedInUser", email, {
+                        path: "/",
+                        maxAge: 31536000,
+                    });
                     window.location.href = "/";
                 }
                 setShowMessage(true);
@@ -110,7 +118,11 @@ export default function Login() {
                     >
                         Log In
                     </button>
-                    {showMessage ? <p className="message">{message}</p> : null}
+                    {showMessage ? (
+                        <p className="message" style={{ color: messageColor }}>
+                            {message}
+                        </p>
+                    ) : null}
                     <p className="forgot-password text-right">
                         Not a member ? <a href="/signup">Sign up</a>
                     </p>

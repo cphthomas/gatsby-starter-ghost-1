@@ -13,6 +13,7 @@ export default function SignUp() {
     const [name, setName] = useState("");
     const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState("");
+    const [messageColor, setMessageColor] = useState("");
 
     useEffect(() => {
         const cookies = new Cookies();
@@ -20,7 +21,7 @@ export default function SignUp() {
         if (cookies.get("loggedInUser")) {
             window.location.href = "/";
         }
-    });
+    }, []);
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -28,6 +29,7 @@ export default function SignUp() {
 
     async function handleSubmit(event) {
         let customerId;
+        const cookies = new Cookies();
         event.preventDefault();
         await fetch("/.netlify/functions/sign-up", {
             method: "POST",
@@ -36,13 +38,16 @@ export default function SignUp() {
             .then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.error == "1") {
-                    //alert(responseJson.message);
+                    setMessageColor("red");
                     setMessage(responseJson.message);
                 } else {
                     customerId = responseJson.customerId;
-                    //alert(responseJson.message);
+                    setMessageColor("green");
                     setMessage(responseJson.message);
-                    cookies.set("loggedInUser", email, { path: "/", maxAge: 31536000 });
+                    cookies.set("loggedInUser", email, {
+                        path: "/",
+                        maxAge: 31536000,
+                    });
                 }
                 setShowMessage(true);
             })
@@ -73,17 +78,6 @@ export default function SignUp() {
                     <h3 className="page-title">Sign Up</h3>
 
                     <div className="form-group">
-                        <label>Email address</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Enter email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-
-                    <div className="form-group">
                         <label>Full name</label>
                         <input
                             type="name"
@@ -91,6 +85,17 @@ export default function SignUp() {
                             placeholder="Enter full name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Email address</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -112,7 +117,11 @@ export default function SignUp() {
                     >
                         Sign Up
                     </button>
-                    {showMessage ? <p className="message">{message}</p> : null}
+                    {showMessage ? (
+                        <p className="message" style={{ color: messageColor }}>
+                            {message}
+                        </p>
+                    ) : null}
                     <p className="forgot-password text-right">
                         Already a member ? <a href="/login">Sign In</a>
                     </p>
