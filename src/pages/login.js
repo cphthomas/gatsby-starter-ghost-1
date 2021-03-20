@@ -27,10 +27,17 @@ export default function Login() {
     }
 
     async function handleSubmit(event) {
+        event.preventDefault();
+        setShowMessage(false);
+        if (password.length < 6) {
+            setMessageColor("red");
+            setMessage("Password length shouldn't be less than six.");
+            setShowMessage(true);
+            return;
+        }
         let customerId;
         let planId;
         const cookies = new Cookies();
-        event.preventDefault();
         await fetch("/.netlify/functions/user-log-in", {
             method: "POST",
             body: JSON.stringify({ email, password, password }),
@@ -108,6 +115,7 @@ export default function Login() {
                             placeholder="Enter password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            maxLength="12"
                         />
                     </div>
 
