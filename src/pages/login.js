@@ -14,19 +14,42 @@ export default function Login() {
         return email.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
+        let customerId;
+        let planId;
         event.preventDefault();
-        // fetch("/.netlify/functions/hello-world", {
-        //     method: "POST",
-        //     body: JSON.stringify({ email }),
-        // })
-        //     .then((response) => response.text())
-        //     .then((responseJson) => {
-        //         console.log(responseJson);
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
+        await fetch("/.netlify/functions/user-log-in", {
+            method: "POST",
+            body: JSON.stringify({ email, password, password }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.error == "1") {
+                    alert(responseJson.message);
+                } else {
+                    customerId = responseJson.customerId;
+                    planId = responseJson.planId;
+                    alert(responseJson.message);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        if (planId == "0") {
+            await fetch("/.netlify/functions/create-stripe-checkout", {
+                method: "POST",
+                body: JSON.stringify({ customerId }),
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    window.location.href = responseJson;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
     }
 
     return (
