@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 // import "./Login.css";
 import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/login.css";
+import Cookies from "universal-cookie";
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -12,6 +13,14 @@ export default function SignUp() {
     const [name, setName] = useState("");
     const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const cookies = new Cookies();
+        console.log(cookies.get("loggedInUser"));
+        if (cookies.get("loggedInUser")) {
+            window.location.href = "/";
+        }
+    });
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -33,6 +42,7 @@ export default function SignUp() {
                     customerId = responseJson.customerId;
                     //alert(responseJson.message);
                     setMessage(responseJson.message);
+                    cookies.set("loggedInUser", email, { path: "/", maxAge: 31536000 });
                 }
                 setShowMessage(true);
             })

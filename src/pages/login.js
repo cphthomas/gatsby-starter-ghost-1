@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 // import "./Login.css";
 import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/login.css";
+import Cookies from "universal-cookie";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const cookies = new Cookies();
+        console.log(cookies.get("loggedInUser"));
+        if (cookies.get("loggedInUser")) {
+            window.location.href = "/";
+        }
+    });
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -17,6 +28,7 @@ export default function Login() {
     async function handleSubmit(event) {
         let customerId;
         let planId;
+        const cookies = new Cookies();
         event.preventDefault();
         await fetch("/.netlify/functions/user-log-in", {
             method: "POST",
@@ -25,12 +37,23 @@ export default function Login() {
             .then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.error == "1") {
-                    alert(responseJson.message);
-                } else {
+                    //alert(responseJson.message);
+                    setMessage(responseJson.message);
+                } else if (responseJson.planId == "0") {
                     customerId = responseJson.customerId;
                     planId = responseJson.planId;
-                    alert(responseJson.message);
+                    //alert(responseJson.message);
+                    setMessage(
+                        "Logged in successfully, you don't have any plan redirecting to stripe checkout.."
+                    );
+                    cookies.set("loggedInUser", email, { path: "/", maxAge: 31536000 });
+                } else {
+                    planId = responseJson.planId;
+                    setMessage("Logged in successfully");
+                    cookies.set("loggedInUser", email, { path: "/", maxAge: 31536000 });
+                    window.location.href = "/";
                 }
+                setShowMessage(true);
             })
             .catch((error) => {
                 console.error(error);
@@ -87,6 +110,7 @@ export default function Login() {
                     >
                         Log In
                     </button>
+                    {showMessage ? <p className="message">{message}</p> : null}
                     <p className="forgot-password text-right">
                         Not a member ? <a href="/signup">Sign up</a>
                     </p>
