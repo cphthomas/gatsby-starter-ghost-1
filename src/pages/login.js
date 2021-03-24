@@ -6,6 +6,7 @@ import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/login.css";
 import Cookies from "universal-cookie";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -77,12 +78,19 @@ export default function Login() {
         if (planId == "0") {
             await fetch("/.netlify/functions/create-stripe-checkout", {
                 method: "POST",
-                body: JSON.stringify({ customerId }),
+                body: JSON.stringify({ customerId, email }),
             })
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    console.log(responseJson);
-                    window.location.href = responseJson;
+                .then(async (response) => response.json())
+                .then(async (responseJson) => {
+                    console.log(responseJson.id);
+                    //window.location.href = responseJson;
+                    const stripePromise = await loadStripe(
+                        "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
+                    );
+                    const stripe = await stripePromise;
+                    await stripe.redirectToCheckout({
+                        sessionId: responseJson.id,
+                    });
                 })
                 .catch((error) => {
                     console.error(error);
