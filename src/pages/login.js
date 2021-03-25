@@ -42,7 +42,7 @@ export default function Login() {
         const cookies = new Cookies();
         await fetch("/.netlify/functions/user-log-in", {
             method: "POST",
-            body: JSON.stringify({ email, password, password }),
+            body: JSON.stringify({ email, password }),
         })
             .then((response) => response.json())
             .then((responseJson) => {

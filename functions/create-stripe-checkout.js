@@ -12,13 +12,13 @@ exports.handler = async function (event) {
     }
 
     const session = await stripe.checkout.sessions.create({
-        //customer: customerId,
+        customer: customerId,
         success_url: "https://inspiring-kepler-554993.netlify.app",
         cancel_url: "https://inspiring-kepler-554993.netlify.app/login",
         payment_method_types: ["card"],
         line_items: [{ price: price, quantity: 1 }],
         mode: "subscription",
-        customer_email: email,
+        //customer_email: email,
     });
 
     console.log(session);
