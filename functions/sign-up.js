@@ -4,6 +4,8 @@ var mysql = require("mysql");
 exports.handler = async function (event) {
     const { email, name, password } = JSON.parse(event.body);
 
+    console.log("email = " + email);
+
     var connection = await mysql.createConnection({
         host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
         user: "ub4b7vh6mgd73b2b",

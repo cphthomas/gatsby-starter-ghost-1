@@ -6,10 +6,13 @@ import { Layout } from "../components/common";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/login.css";
 import Cookies from "universal-cookie";
+import ReactTooltip from "react-tooltip";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [planType, setPlanType] = useState("");
     const [name, setName] = useState("");
     const [showMessage, setShowMessage] = useState(false);
     const [message, setMessage] = useState("");
@@ -24,7 +27,7 @@ export default function SignUp() {
     }, []);
 
     function validateForm() {
-        return email.length > 0 && password.length > 0;
+        return email.length > 0 && password.length > 0 && planType.length > 0;
     }
 
     async function handleSubmit(event) {
@@ -65,12 +68,19 @@ export default function SignUp() {
         if (customerId) {
             await fetch("/.netlify/functions/create-stripe-checkout", {
                 method: "POST",
-                body: JSON.stringify({ customerId }),
+                body: JSON.stringify({ customerId, email, planType }),
             })
-                .then((response) => response.json())
-                .then((responseJson) => {
+                .then(async (response) => response.json())
+                .then(async (responseJson) => {
                     console.log(responseJson);
-                    window.location.href = responseJson;
+                    //window.location.href = responseJson;
+                    const stripePromise = await loadStripe(
+                        "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
+                    );
+                    const stripe = await stripePromise;
+                    await stripe.redirectToCheckout({
+                        sessionId: responseJson.id,
+                    });
                 })
                 .catch((error) => {
                     console.error(error);
@@ -118,6 +128,41 @@ export default function SignUp() {
                         />
                     </div>
 
+                    <div className="form-group">
+                        <label>Choose your subscription</label>
+                        <div>
+                            <label
+                                data-tip="Access to pro content with, 49.00kr DKK / Month"
+                                className="margin-right-20"
+                            >
+                                <input
+                                    type="radio"
+                                    name="size"
+                                    id="pro"
+                                    value="pro"
+                                    onChange={(e) =>
+                                        setPlanType(e.target.value)
+                                    }
+                                    required
+                                />{" "}
+                                Pro
+                            </label>
+                            <label data-tip="Full Access with, 69.00kr DKK / Month">
+                                <input
+                                    type="radio"
+                                    name="size"
+                                    id="premium"
+                                    value="premium"
+                                    required
+                                    onChange={(e) =>
+                                        setPlanType(e.target.value)
+                                    }
+                                />{" "}
+                                Premium
+                            </label>
+                        </div>
+                    </div>
+
                     <button
                         type="submit"
                         className="btn btn-primary btn-block btn-color"
@@ -133,6 +178,7 @@ export default function SignUp() {
                     <p className="forgot-password text-right">
                         Already a member ? <a href="/login">Sign In</a>
                     </p>
+                    <ReactTooltip />
                 </form>
             </div>
         </Layout>

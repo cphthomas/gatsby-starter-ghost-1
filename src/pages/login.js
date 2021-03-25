@@ -38,6 +38,7 @@ export default function Login() {
         }
         let customerId;
         let planId;
+        let planType = "pro";
         const cookies = new Cookies();
         await fetch("/.netlify/functions/user-log-in", {
             method: "POST",
@@ -78,7 +79,7 @@ export default function Login() {
         if (planId == "0") {
             await fetch("/.netlify/functions/create-stripe-checkout", {
                 method: "POST",
-                body: JSON.stringify({ customerId, email }),
+                body: JSON.stringify({ customerId, email, planType }),
             })
                 .then(async (response) => response.json())
                 .then(async (responseJson) => {
