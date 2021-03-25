@@ -49,18 +49,20 @@ export default function Login() {
                 if (responseJson.error == "1") {
                     setMessageColor("red");
                     setMessage(responseJson.message);
-                } else if (responseJson.planId == "0") {
-                    customerId = responseJson.customerId;
-                    planId = responseJson.planId;
-                    setMessageColor("green");
-                    setMessage(
-                        "Logged in successfully, you don't have any plan redirecting to stripe checkout.."
-                    );
-                    cookies.set("loggedInUser", email, {
-                        path: "/",
-                        maxAge: 31536000,
-                    });
-                } else {
+                }
+                // else if (responseJson.planId == "0") {
+                //     customerId = responseJson.customerId;
+                //     planId = responseJson.planId;
+                //     setMessageColor("green");
+                //     setMessage(
+                //         "Logged in successfully, you don't have any plan redirecting to stripe checkout.."
+                //     );
+                //     cookies.set("loggedInUser", email, {
+                //         path: "/",
+                //         maxAge: 31536000,
+                //     });
+                //}
+                else {
                     planId = responseJson.planId;
                     setMessageColor("green");
                     setMessage("Logged in successfully");
@@ -76,27 +78,27 @@ export default function Login() {
                 console.error(error);
             });
 
-        if (planId == "0") {
-            await fetch("/.netlify/functions/create-stripe-checkout", {
-                method: "POST",
-                body: JSON.stringify({ customerId, email, planType }),
-            })
-                .then(async (response) => response.json())
-                .then(async (responseJson) => {
-                    console.log(responseJson.id);
-                    //window.location.href = responseJson;
-                    const stripePromise = await loadStripe(
-                        "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
-                    );
-                    const stripe = await stripePromise;
-                    await stripe.redirectToCheckout({
-                        sessionId: responseJson.id,
-                    });
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        }
+        // if (planId == "0") {
+        //     await fetch("/.netlify/functions/create-stripe-checkout", {
+        //         method: "POST",
+        //         body: JSON.stringify({ customerId, email, planType }),
+        //     })
+        //         .then(async (response) => response.json())
+        //         .then(async (responseJson) => {
+        //             console.log(responseJson.id);
+        //             //window.location.href = responseJson;
+        //             const stripePromise = await loadStripe(
+        //                 "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
+        //             );
+        //             const stripe = await stripePromise;
+        //             await stripe.redirectToCheckout({
+        //                 sessionId: responseJson.id,
+        //             });
+        //         })
+        //         .catch((error) => {
+        //             console.error(error);
+        //         });
+        // }
     }
 
     return (
