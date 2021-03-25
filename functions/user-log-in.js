@@ -1,6 +1,6 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
-var mysql = require("mysql");
 
+var mysql = require("mysql");
 exports.handler = async function (event) {
     const { email, password } = JSON.parse(event.body);
 
