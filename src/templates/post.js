@@ -109,54 +109,72 @@ const Post = ({ data, location }) => {
             </Helmet>
 
             <Layout>
-                {apiResponse && userPlanId != "0" ? (
-                    <div className="container">
-                        <article className="content">
-                            {post.feature_image ? (
-                                <figure className="post-feature-image">
-                                    <img
-                                        src={post.feature_image}
-                                        alt={post.title}
-                                    />
-                                </figure>
-                            ) : null}
-                            {userLoggedIn ? (
-                                <section className="post-full-content">
-                                    <h1 className="content-title">
-                                        {post.title}
-                                    </h1>
+                {apiResponse && userLoggedIn && userPlanId == "2" ? (
+                    <article className="content">
+                        {post.feature_image ? (
+                            <figure className="post-feature-image">
+                                <img
+                                    src={post.feature_image}
+                                    alt={post.title}
+                                />
+                            </figure>
+                        ) : null}
+                        <section className="post-full-content">
+                            <h1 className="content-title">{post.title}</h1>
 
-                                    <section
-                                        className="content-body load-external-scripts"
-                                        dangerouslySetInnerHTML={{
-                                            __html: post.html,
-                                        }}
-                                    />
-                                </section>
-                            ) : (
-                                <div class="cardDiv">
-                                    <Card class="card">
-                                        <Card.Body>
-                                            <h2>
-                                                This post is for paying
-                                                subscribers only
-                                            </h2>
-                                            <p>
-                                                <small>
-                                                    Already have an account?{" "}
-                                                    <a href="/login">Sign in</a>
-                                                </small>
-                                            </p>
-                                        </Card.Body>
-                                    </Card>
-                                </div>
-                            )}
-                        </article>
+                            <section
+                                className="content-body load-external-scripts"
+                                dangerouslySetInnerHTML={{
+                                    __html: post.html,
+                                }}
+                            />
+                        </section>
+                    </article>
+                ) : apiResponse &&
+                  userLoggedIn &&
+                  userPlanId == "1" &&
+                  post.tags[0].name == "Premium" ? (
+                    <div class="cardDiv">
+                        <Card class="card">
+                            <Card.Body>
+                                <h2>
+                                    This post is for premium subscribers only
+                                </h2>
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary btn-block btn-premiume"
+                                    onClick={premiumCheckout}
+                                >
+                                    Upgrade to premium
+                                </button>
+                            </Card.Body>
+                        </Card>
                     </div>
-                ) : (
-                    ""
-                )}
-                {userPlanId == "0" ? (
+                ) : apiResponse &&
+                  userLoggedIn &&
+                  userPlanId == "1" &&
+                  post.tags[0].name == "Pro" ? (
+                    <article className="content">
+                        {post.feature_image ? (
+                            <figure className="post-feature-image">
+                                <img
+                                    src={post.feature_image}
+                                    alt={post.title}
+                                />
+                            </figure>
+                        ) : null}
+                        <section className="post-full-content">
+                            <h1 className="content-title">{post.title}</h1>
+
+                            <section
+                                className="content-body load-external-scripts"
+                                dangerouslySetInnerHTML={{
+                                    __html: post.html,
+                                }}
+                            />
+                        </section>
+                    </article>
+                ) : apiResponse && userLoggedIn && userPlanId == "0" ? (
                     <div class="cardDiv">
                         <Card class="card">
                             <Card.Body>
@@ -216,23 +234,19 @@ const Post = ({ data, location }) => {
                             </Card.Body>
                         </Card>
                     </div>
-                ) : (
-                    ""
-                )}
-                {userPlanId == "1" && post.tags[0].name == "Premium" ? (
+                ) : apiResponse && !userLoggedIn ? (
                     <div class="cardDiv">
                         <Card class="card">
                             <Card.Body>
                                 <h2>
-                                    This post is for premium subscribers only
+                                    This post is for paying subscribers only
                                 </h2>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-block btn-premiume"
-                                    onClick={premiumCheckout}
-                                >
-                                    Upgrade to premium
-                                </button>
+                                <p>
+                                    <small>
+                                        Already have an account?{" "}
+                                        <a href="/login">Sign in</a>
+                                    </small>
+                                </p>
                             </Card.Body>
                         </Card>
                     </div>
