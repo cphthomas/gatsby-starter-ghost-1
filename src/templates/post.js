@@ -40,11 +40,20 @@ const Post = ({ data, location }) => {
                 .then((responseJson) => {
                     console.log(responseJson.user[0].plan_id);
                     setApiResponse(true);
-                    setEmail(responseJson.user[0].user_email);
-                    setCustomerId(responseJson.user[0].stripe_id);
-                    setUserPlanId(responseJson.user[0].plan_id);
+                    if (
+                        responseJson.user[0].user_ip ==
+                        cookies.get("loggedInUserIpAddress")
+                    ) {
+                        setEmail(responseJson.user[0].user_email);
+                        setCustomerId(responseJson.user[0].stripe_id);
+                        setUserPlanId(responseJson.user[0].plan_id);
+                        setUserLoggedIn(true);
+                    } else {
+                        cookies.remove("loggedInUser");
+                        cookies.remove("loggedInUserIpAddress");
+                        //window.location.href = "/login";
+                    }
                 });
-            setUserLoggedIn(true);
         } else {
             setApiResponse(true);
         }

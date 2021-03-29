@@ -70,6 +70,10 @@ export default function Login() {
                         path: "/",
                         maxAge: 31536000,
                     });
+                    cookies.set("loggedInUserIpAddress", responseJson.userIp, {
+                        path: "/",
+                        maxAge: 31536000,
+                    });
                     window.location.href = "/";
                 }
                 setShowMessage(true);

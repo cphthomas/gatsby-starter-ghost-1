@@ -1,4 +1,5 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
+const publicIp = require("public-ip");
 
 var mysql = require("mysql");
 exports.handler = async function (event) {
@@ -24,6 +25,12 @@ exports.handler = async function (event) {
         };
     }
 
+    let userIp = "";
+    userIp = await publicIp.v4();
+    console.log(await userIp);
+
+    await updateUser(connection, existUserResult[0].user_email, userIp);
+
     await connection.end();
 
     return {
@@ -33,6 +40,7 @@ exports.handler = async function (event) {
             customerId: existUserResult[0].stripe_id,
             planId: existUserResult[0].plan_id,
             emailId: existUserResult[0].user_email,
+            userIp: userIp,
             message: "User logged in",
         }),
     };
@@ -45,6 +53,22 @@ async function getUserDetail(connection, email, password) {
                 sql:
                     "SELECT * FROM `external_users` WHERE `user_email` = ? AND `user_password` = ?",
                 values: [email, password],
+            },
+            function (error, results, fields) {
+                if (error) reject(err);
+                resolve(results);
+            }
+        );
+    });
+}
+
+async function updateUser(connection, userEmail, userIp) {
+    return new Promise((resolve, reject) => {
+        connection.query(
+            {
+                sql:
+                    "UPDATE external_users SET user_ip = ? WHERE user_email = ?",
+                values: [userIp, userEmail],
             },
             function (error, results, fields) {
                 if (error) reject(err);

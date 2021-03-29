@@ -58,6 +58,10 @@ export default function SignUp() {
                         path: "/",
                         maxAge: 31536000,
                     });
+                    cookies.set("loggedInUserIpAddress", responseJson.userIp, {
+                        path: "/",
+                        maxAge: 31536000,
+                    });
                 }
                 setShowMessage(true);
             })

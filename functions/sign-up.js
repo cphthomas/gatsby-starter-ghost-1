@@ -1,5 +1,6 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
 var mysql = require("mysql");
+const publicIp = require("public-ip");
 
 exports.handler = async function (event) {
     const { email, name, password } = JSON.parse(event.body);
@@ -42,6 +43,12 @@ exports.handler = async function (event) {
         items: [{ price: "price_1IKAnIIP8uHvYRBy68pRrArU" }],
     });
 
+    let userIp = "";
+
+    userIp = await publicIp.v4();
+    //console.log(await publicIp.v6());
+    console.log(await userIp);
+
     var member = {
         user_name: name,
         user_email: email,
@@ -49,6 +56,7 @@ exports.handler = async function (event) {
         stripe_id: customer.id,
         plan_id: "0",
         is_logged_in: 1,
+        user_ip: userIp,
     };
     var query = await connection.query(
         "INSERT INTO external_users SET ?",
@@ -65,6 +73,7 @@ exports.handler = async function (event) {
         body: JSON.stringify({
             error: "0",
             customerId: customer.id,
+            userIp: userIp,
             message:
                 "User created successfully redirecting to stripe checkout...",
         }),

@@ -21,7 +21,7 @@ import "../../styles/app.css";
  *
  */
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [userLoggedIn, setUserLoggedIn] = useState("-1");
     const cookies = new Cookies();
     const site = data.allGhostSettings.edges[0].node;
     const twitterUrl = site.twitter
@@ -33,13 +33,34 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
     function userLogout() {
         cookies.remove("loggedInUser");
+        cookies.remove("loggedInUserIpAddress");
         window.location.href = "/login";
     }
 
-    useEffect(() => {
-        console.log(cookies.get("loggedInUser"));
+    useEffect(async () => {
+        console.log(cookies.get("loggedInUserIpAddress"));
+        const userEmail = cookies.get("loggedInUser");
         if (cookies.get("loggedInUser")) {
-            setUserLoggedIn(true);
+            await fetch("/.netlify/functions/get-user", {
+                method: "POST",
+                body: JSON.stringify({ userEmail }),
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    if (
+                        responseJson.user[0].user_ip !==
+                        cookies.get("loggedInUserIpAddress")
+                    ) {
+                        //userLogout();
+                        cookies.remove("loggedInUser");
+                        cookies.remove("loggedInUserIpAddress");
+                        setUserLoggedIn("0");
+                    } else {
+                        setUserLoggedIn("1");
+                    }
+                });
+        } else {
+            setUserLoggedIn("0");
         }
     }, []);
 
@@ -146,17 +167,19 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 </div>
                                 <div className="site-nav-right">
                                     {/* <Link className="site-nav-button" to="/about">About</Link> */}
-                                    {userLoggedIn ? (
+                                    {userLoggedIn == "1" ? (
                                         <Button onClick={userLogout}>
                                             Logout
                                         </Button>
-                                    ) : (
+                                    ) : userLoggedIn == "0" ? (
                                         <Link
                                             className="site-nav-button"
                                             to="/login"
                                         >
                                             Login
                                         </Link>
+                                    ) : (
+                                        ""
                                     )}
                                 </div>
                             </nav>
