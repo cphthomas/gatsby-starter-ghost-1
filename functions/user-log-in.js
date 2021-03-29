@@ -1,5 +1,6 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
 const publicIp = require("public-ip");
+var uniqid = require('uniqid');
 
 var mysql = require("mysql");
 exports.handler = async function (event) {
@@ -25,9 +26,10 @@ exports.handler = async function (event) {
         };
     }
 
-    let userIp = "";
-    userIp = await publicIp.v4();
-    console.log(await userIp);
+    // let userIp = "";
+    // userIp = await publicIp.v4();
+    const userIp = uniqid();
+    console.log(userIp);
 
     await updateUser(connection, existUserResult[0].user_email, userIp);
 

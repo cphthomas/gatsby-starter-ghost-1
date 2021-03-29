@@ -1,6 +1,6 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
 var mysql = require("mysql");
-const publicIp = require("public-ip");
+var uniqid = require('uniqid');
 
 exports.handler = async function (event) {
     const { email, name, password } = JSON.parse(event.body);
@@ -43,11 +43,12 @@ exports.handler = async function (event) {
         items: [{ price: "price_1IKAnIIP8uHvYRBy68pRrArU" }],
     });
 
-    let userIp = "";
+    // let userIp = "";
 
-    userIp = await publicIp.v4();
+    //userIp = await publicIp.v4();
     //console.log(await publicIp.v6());
-    console.log(await userIp);
+    const userIp = uniqid();
+    console.log(userIp);
 
     var member = {
         user_name: name,
