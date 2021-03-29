@@ -38,6 +38,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     }
 
     useEffect(async () => {
+        console.log(cookies.get("loggedInUser"));
         console.log(cookies.get("loggedInUserIpAddress"));
         const userEmail = cookies.get("loggedInUser");
         if (cookies.get("loggedInUser")) {

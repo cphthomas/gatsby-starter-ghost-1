@@ -21,7 +21,7 @@ exports.handler = async function (event) {
             statusCode: 200,
             body: JSON.stringify({
                 error: "1",
-                message: "User not exist",
+                message: "Wrong Credentials",
             }),
         };
     }
