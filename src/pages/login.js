@@ -18,6 +18,7 @@ export default function Login() {
     useEffect(() => {
         const cookies = new Cookies();
         console.log(cookies.get("loggedInUser"));
+        console.log(cookies.get("loggedInUserIpAddress"));
         if (cookies.get("loggedInUser")) {
             window.location.href = "/";
         }
@@ -44,8 +45,8 @@ export default function Login() {
             method: "POST",
             body: JSON.stringify({ email, password }),
         })
-            .then((response) => response.json())
-            .then((responseJson) => {
+            .then(async (response) => response.json())
+            .then(async(responseJson) => {
                 if (responseJson.error == "1") {
                     setMessageColor("red");
                     setMessage(responseJson.message);
@@ -66,11 +67,11 @@ export default function Login() {
                     planId = responseJson.planId;
                     setMessageColor("green");
                     setMessage("Logged in successfully");
-                    cookies.set("loggedInUser", email, {
+                    await cookies.set("loggedInUser", email, {
                         path: "/",
                         maxAge: 31536000,
                     });
-                    cookies.set("loggedInUserIpAddress", responseJson.userIp, {
+                    await cookies.set("loggedInUserIpAddress", responseJson.userIp, {
                         path: "/",
                         maxAge: 31536000,
                     });
