@@ -66,7 +66,7 @@ export default function Login() {
                             maxAge: 31536000,
                         }
                     );
-                    console.log(responseJson.userIp);
+                    console.log("responseJson.userIp = " + responseJson.userIp);
                     //window.location.href = await "/";
                 }
                 setShowMessage(true);

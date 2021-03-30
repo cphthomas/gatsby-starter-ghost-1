@@ -24,7 +24,7 @@ exports.handler = async function (event) {
             }),
         };
     }
-    const userIp = uniqid();
+    const userIp = await uniqid();
 
     await updateUser(connection, existUserResult[0].user_email, userIp);
 

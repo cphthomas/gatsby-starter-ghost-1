@@ -47,7 +47,7 @@ exports.handler = async function (event) {
 
     //userIp = await publicIp.v4();
     //console.log(await publicIp.v6());
-    const userIp = uniqid();
+    const userIp = await uniqid();
     console.log(userIp);
 
     var member = {
