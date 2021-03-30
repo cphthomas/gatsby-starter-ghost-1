@@ -14,7 +14,6 @@ exports.handler = async function (event) {
     });
     await connection.connect();
     const existUserResult = await getUserDetail(connection, email, password);
-    console.log(existUserResult);
 
     if (!existUserResult[0]) {
         return {
@@ -25,11 +24,7 @@ exports.handler = async function (event) {
             }),
         };
     }
-
-    // let userIp = "";
-    // userIp = await publicIp.v4();
     const userIp = uniqid();
-    console.log(userIp);
 
     await updateUser(connection, existUserResult[0].user_email, userIp);
 
