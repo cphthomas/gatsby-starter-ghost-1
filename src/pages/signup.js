@@ -181,6 +181,10 @@ export default function SignUp() {
                     <p className="forgot-password text-right">
                         Already a member ? <a href="/login">Sign In</a>
                     </p>
+                    <p className="forgot-password text-right">
+                        Forgot password ?{" "}
+                        <a href="/forgotpassword">Click here</a>
+                    </p>
                     <ReactTooltip />
                 </form>
             </div>

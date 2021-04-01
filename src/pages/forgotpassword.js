@@ -17,8 +17,6 @@ export default function Login() {
 
     useEffect(() => {
         const cookies = new Cookies();
-        console.log(cookies.get("loggedInUser"));
-        console.log(cookies.get("loggedInUserIpAddress"));
         if (cookies.get("loggedInUser")) {
             window.location.href = "/";
         }
@@ -37,11 +35,7 @@ export default function Login() {
             setShowMessage(true);
             return;
         }
-        let customerId;
-        let planId;
-        let planType = "pro";
-        const cookies = new Cookies();
-        await fetch("/.netlify/functions/user-log-in", {
+        await fetch("/.netlify/functions/change-password", {
             method: "POST",
             body: JSON.stringify({ email, password }),
         })
@@ -51,39 +45,24 @@ export default function Login() {
                     setMessageColor("red");
                     setMessage(responseJson.message);
                 } else {
-                    planId = responseJson.planId;
                     setMessageColor("green");
-                    setMessage("Logged in successfully");
-                    await cookies.set("loggedInUser", email, {
-                        path: "/",
-                        maxAge: 31536000,
-                    });
-                    await cookies.set(
-                        "loggedInUserIpAddress",
-                        responseJson.userIp,
-                        {
-                            path: "/",
-                            maxAge: 31536000,
-                        }
-                    );
-                    console.log("responseJson.userIp = " + responseJson.userIp);
-                    //window.location.href = await "/";
+                    setMessage(responseJson.message);
+                    setTimeout(function () {
+                        window.location.href = "/login";
+                    }, 3000);
                 }
                 setShowMessage(true);
             })
             .catch((error) => {
                 console.error(error);
             });
-        if (cookies.get("loggedInUser")) {
-            window.location.href = "/";
-        }
     }
 
     return (
         <Layout>
             <div className="form-div">
                 <form onSubmit={handleSubmit}>
-                    <h3 className="page-title">Sign In</h3>
+                    <h3 className="page-title">Forgot Password</h3>
 
                     <div className="form-group">
                         <label>Email address</label>
@@ -97,11 +76,11 @@ export default function Login() {
                     </div>
 
                     <div className="form-group">
-                        <label>Password</label>
+                        <label>New Password</label>
                         <input
                             type="password"
                             className="form-control"
-                            placeholder="Enter password"
+                            placeholder="Enter new password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             maxLength="12"
@@ -113,19 +92,13 @@ export default function Login() {
                         disabled={!validateForm()}
                         className="btn btn-primary btn-block btn-color"
                     >
-                        Log In
+                        Change Password
                     </button>
                     {showMessage ? (
                         <p className="message" style={{ color: messageColor }}>
                             {message}
                         </p>
                     ) : null}
-                    <p className="forgot-password text-right">
-                        Not a member ? <a href="/signup">Sign up</a>
-                    </p>
-                    <p className="forgot-password text-right">
-                        Forgot password ? <a href="/forgotpassword">Click here</a>
-                    </p>
                 </form>
             </div>
         </Layout>
