@@ -5,7 +5,7 @@ exports.handler = async function (event) {
     const { userStripeId } = JSON.parse(event.body);
 
     const subscriptions = await stripe.subscriptions.list({
-        customer: "cus_JEgwHFtGPQTlcv",
+        customer: userStripeId,
         limit: 3,
     });
 
@@ -21,14 +21,15 @@ exports.handler = async function (event) {
     });
     await connection.connect();
 
-    await updateUser(connection, "cus_JEgwHFtGPQTlcv", 0);
+    await updateUser(connection, userStripeId, 0);
 
     await connection.end();
 
     return {
         statusCode: 200,
         body: JSON.stringify({
-            message: "ndvn",
+            error: "0",
+            message: "Subscription cancelled successfully.",
         }),
     };
 };

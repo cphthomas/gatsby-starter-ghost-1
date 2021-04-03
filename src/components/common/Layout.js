@@ -9,6 +9,8 @@ import { Navigation } from ".";
 import config from "../../utils/siteConfig";
 import Cookies from "universal-cookie";
 import "../../styles/layout.css";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 // Styles
 import "../../styles/app.css";
@@ -40,6 +42,23 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         window.location.href = "/login";
     }
 
+    function confirmPopUp() {
+        confirmAlert({
+            title: "Confirm to submit",
+            message: "Are you sure, do you want to cancel your subscription?",
+            buttons: [
+                {
+                    label: "Confirm",
+                    onClick: () => cancelSubscription(),
+                },
+                {
+                    label: "No",
+                    onClick: () => "",
+                },
+            ],
+        });
+    }
+
     async function cancelSubscription() {
         //const userStripeId = "";
         await fetch("/.netlify/functions/cancel-subscription", {
@@ -47,7 +66,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             body: JSON.stringify({ userStripeId }),
         })
             .then((response) => response.json())
-            .then((responseJson) => {});
+            .then((responseJson) => {
+                if (responseJson.error == "0") {
+                    alert(
+                        "Your subscription cancelled successfully, you no more able to see paying content."
+                    );
+                    window.location.href = "/";
+                }
+            });
     }
 
     useEffect(async () => {
@@ -70,7 +96,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         setUserLoggedIn("0");
                     } else {
                         setUserLoggedIn("1");
-                        if (responseJson.user[0].plan_id !== "0") {
+                        if (
+                            responseJson.user[0].stripe_id &&
+                            responseJson.user[0].plan_id !== "0"
+                        ) {
                             setIsSubscribed(true);
                             setUserStripeId(responseJson.user[0].stripe_id);
                         }
@@ -186,7 +215,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     {isSubscribed ? (
                                         <Button
                                             className="margin-right-10"
-                                            onClick={cancelSubscription}
+                                            onClick={confirmPopUp}
                                         >
                                             Cancel Subscription
                                         </Button>
