@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Navigation } from ".";
 import config from "../../utils/siteConfig";
 import Cookies from "universal-cookie";
+import "../../styles/layout.css";
 
 // Styles
 import "../../styles/app.css";
@@ -22,6 +23,8 @@ import "../../styles/app.css";
  */
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [userLoggedIn, setUserLoggedIn] = useState("-1");
+    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [userStripeId, setUserStripeId] = useState(false);
     const cookies = new Cookies();
     const site = data.allGhostSettings.edges[0].node;
     const twitterUrl = site.twitter
@@ -35,6 +38,16 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         cookies.remove("loggedInUser");
         cookies.remove("loggedInUserIpAddress");
         window.location.href = "/login";
+    }
+
+    async function cancelSubscription() {
+        //const userStripeId = "";
+        await fetch("/.netlify/functions/cancel-subscription", {
+            method: "POST",
+            body: JSON.stringify({ userStripeId }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {});
     }
 
     useEffect(async () => {
@@ -52,12 +65,15 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         responseJson.user[0].user_ip !==
                         cookies.get("loggedInUserIpAddress")
                     ) {
-                        //userLogout();
                         cookies.remove("loggedInUser");
                         cookies.remove("loggedInUserIpAddress");
                         setUserLoggedIn("0");
                     } else {
                         setUserLoggedIn("1");
+                        if (responseJson.user[0].plan_id !== "0") {
+                            setIsSubscribed(true);
+                            setUserStripeId(responseJson.user[0].stripe_id);
+                        }
                     }
                 });
         } else {
@@ -167,7 +183,16 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     />
                                 </div>
                                 <div className="site-nav-right">
-                                    {/* <Link className="site-nav-button" to="/about">About</Link> */}
+                                    {isSubscribed ? (
+                                        <Button
+                                            className="margin-right-10"
+                                            onClick={cancelSubscription}
+                                        >
+                                            Cancel Subscription
+                                        </Button>
+                                    ) : (
+                                        ""
+                                    )}
                                     {userLoggedIn == "1" ? (
                                         <Button onClick={userLogout}>
                                             Logout
