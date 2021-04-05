@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import Button from "react-bootstrap/Button";
-
+import { Button, Dropdown, ButtonGroup } from "react-bootstrap";
 import { Navigation } from ".";
 import config from "../../utils/siteConfig";
 import Cookies from "universal-cookie";
@@ -27,6 +26,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [userLoggedIn, setUserLoggedIn] = useState("-1");
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [userStripeId, setUserStripeId] = useState(false);
+    const [userName, setUserName] = useState("");
     const cookies = new Cookies();
     const site = data.allGhostSettings.edges[0].node;
     const twitterUrl = site.twitter
@@ -68,10 +68,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             .then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.error == "0") {
-                    alert(
-                        "Your subscription cancelled successfully, you no more able to see paying content."
-                    );
+                    alert(responseJson.message);
                     window.location.href = "/";
+                } else {
+                    alert(responseJson.message);
                 }
             });
     }
@@ -96,6 +96,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         setUserLoggedIn("0");
                     } else {
                         setUserLoggedIn("1");
+                        setUserName(responseJson.user[0].user_name);
                         if (
                             responseJson.user[0].stripe_id &&
                             responseJson.user[0].plan_id !== "0"
@@ -205,28 +206,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             ) : null}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
-                                    {/* The navigation items as setup in Ghost */}
                                     <Navigation
                                         data={site.navigation}
                                         navClass="site-nav-item"
                                     />
                                 </div>
                                 <div className="site-nav-right">
-                                    {isSubscribed ? (
-                                        <Button
-                                            className="margin-right-10"
-                                            onClick={confirmPopUp}
-                                        >
-                                            Cancel Subscription
-                                        </Button>
-                                    ) : (
-                                        ""
-                                    )}
-                                    {userLoggedIn == "1" ? (
-                                        <Button onClick={userLogout}>
-                                            Logout
-                                        </Button>
-                                    ) : userLoggedIn == "0" ? (
+                                    {userLoggedIn == "0" ? (
                                         <Link
                                             className="site-nav-button"
                                             to="/login"
@@ -234,7 +220,37 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             Login
                                         </Link>
                                     ) : (
-                                        ""
+                                        <Dropdown as={ButtonGroup}>
+                                            <Button variant="secondary">
+                                                {userName}
+                                            </Button>
+                                            <Dropdown.Toggle
+                                                split
+                                                variant="secondary"
+                                                id="dropdown-split-basic"
+                                            />
+                                            <Dropdown.Menu>
+                                                {isSubscribed ? (
+                                                    <div>
+                                                        <Dropdown.Item
+                                                            onClick={
+                                                                confirmPopUp
+                                                            }
+                                                        >
+                                                            Cancel Subscription
+                                                        </Dropdown.Item>
+                                                        <Dropdown.Divider />
+                                                    </div>
+                                                ) : (
+                                                    ""
+                                                )}
+                                                <Dropdown.Item
+                                                    onClick={userLogout}
+                                                >
+                                                    Logout
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
                                     )}
                                 </div>
                             </nav>

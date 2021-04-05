@@ -9,27 +9,44 @@ exports.handler = async function (event) {
         limit: 3,
     });
 
+    //console.log(subscriptions.data[0].cancel_at_period_end);
+
+    if (subscriptions.data[0].cancel_at_period_end == true) {
+        return {
+            statusCode: 200,
+            body: JSON.stringify({
+                error: "1",
+                message: "You have already cancelled your subscription.",
+            }),
+        };
+    }
+
+    // await subscriptions.data.forEach(async (element) => {
+    //     await stripe.subscriptions.del(element.id);
+    // });
+
     await subscriptions.data.forEach(async (element) => {
-        await stripe.subscriptions.del(element.id);
+        stripe.subscriptions.update(element.id, { cancel_at_period_end: true });
     });
 
-    var connection = await mysql.createConnection({
-        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-        user: "ub4b7vh6mgd73b2b",
-        password: "l7w4d31in0msovsc",
-        database: "yj4gfzv5wypf9871",
-    });
-    await connection.connect();
+    // var connection = await mysql.createConnection({
+    //     host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    //     user: "ub4b7vh6mgd73b2b",
+    //     password: "l7w4d31in0msovsc",
+    //     database: "yj4gfzv5wypf9871",
+    // });
+    // await connection.connect();
 
-    await updateUser(connection, userStripeId, 0);
+    // await updateUser(connection, userStripeId, 0);
 
-    await connection.end();
+    // await connection.end();
 
     return {
         statusCode: 200,
         body: JSON.stringify({
             error: "0",
-            message: "Subscription cancelled successfully.",
+            message:
+                "Your subscription has been successfully canceled, it will automatically expire at the end of the subscription period. ",
         }),
     };
 };
