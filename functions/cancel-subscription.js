@@ -11,7 +11,7 @@ exports.handler = async function (event) {
 
     //console.log(subscriptions.data[0].cancel_at_period_end);
 
-    if (subscriptions.data[0].cancel_at_period_end == true) {
+    if (subscriptions.data[0].cancel_at_period_end) {
         return {
             statusCode: 200,
             body: JSON.stringify({

@@ -67,12 +67,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         })
             .then((response) => response.json())
             .then((responseJson) => {
-                if (responseJson.error == "0") {
-                    alert(responseJson.message);
-                    window.location.href = "/";
-                } else {
-                    alert(responseJson.message);
-                }
+                // if (responseJson.error == "0") {
+                //     alert(responseJson.message);
+                //     window.location.href = "/";
+                // } else {
+                //     alert(responseJson.message);
+                // }
+                alert(responseJson.message);
             });
     }
 
