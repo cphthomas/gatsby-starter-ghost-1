@@ -3,13 +3,16 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import { Button, Dropdown, ButtonGroup } from "react-bootstrap";
+import { Button, Dropdown, ButtonGroup, Modal } from "react-bootstrap";
 import { Navigation } from ".";
 import config from "../../utils/siteConfig";
 import Cookies from "universal-cookie";
 import "../../styles/layout.css";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CardSetupForm from "./CardSetupForm";
 
 // Styles
 import "../../styles/app.css";
@@ -27,6 +30,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [userStripeId, setUserStripeId] = useState(false);
     const [userName, setUserName] = useState("");
+
+    const [showCardModal, setShowCardModal] = useState(false);
+
+    const handleCloseCardModal = () => setShowCardModal(false);
+    const handleShowCardModal = () => setShowCardModal(true);
+
+    const stripePromise = loadStripe("pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U");
+
     const cookies = new Cookies();
     const site = data.allGhostSettings.edges[0].node;
     const twitterUrl = site.twitter
@@ -234,6 +245,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                         >
                                                             Cancel Subscription
                                                         </Dropdown.Item>
+                                                        <Dropdown.Item
+                                                            onClick={
+                                                                handleShowCardModal
+                                                            }
+                                                        >
+                                                            Change Card
+                                                        </Dropdown.Item>
                                                         <Dropdown.Divider />
                                                     </div>
                                                 ) : (
@@ -283,6 +301,27 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         </div>
                     </footer>
                 </div>
+                <Modal show={showCardModal} onHide={handleCloseCardModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add Card</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Elements stripe={stripePromise}>
+                            <CardSetupForm customerId={userStripeId} />
+                        </Elements>
+                    </Modal.Body>
+                    {/* <Modal.Footer>
+                        <Button
+                            variant="secondary"
+                            onClick={handleCloseCardModal}
+                        >
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleShowCardModal}>
+                            Save Changes
+                        </Button>
+                    </Modal.Footer> */}
+                </Modal>
             </div>
         </>
     );

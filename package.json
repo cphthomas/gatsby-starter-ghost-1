@@ -37,6 +37,7 @@
     "eslint-plugin-react": "7.22.0"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.0",
     "@stripe/stripe-js": "^1.13.2",
     "@tryghost/helpers": "1.1.38",
     "@tryghost/helpers-gatsby": "1.0.43",
