@@ -32,9 +32,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [userName, setUserName] = useState("");
 
     const [showCardModal, setShowCardModal] = useState(false);
+    const [showAccountModal, setShowAccountModal] = useState(false);
 
     const handleCloseCardModal = () => setShowCardModal(false);
     const handleShowCardModal = () => setShowCardModal(true);
+    const handleCloseAccountModal = () => setShowAccountModal(false);
+    const handleShowAccountModal = () => setShowAccountModal(true);
 
     const stripePromise = loadStripe("pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U");
 
@@ -240,6 +243,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                     <div>
                                                         <Dropdown.Item
                                                             onClick={
+                                                                handleShowAccountModal
+                                                            }
+                                                        >
+                                                            My Account
+                                                        </Dropdown.Item>
+                                                        <Dropdown.Item
+                                                            onClick={
                                                                 confirmPopUp
                                                             }
                                                         >
@@ -310,17 +320,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <CardSetupForm customerId={userStripeId} />
                         </Elements>
                     </Modal.Body>
-                    {/* <Modal.Footer>
-                        <Button
-                            variant="secondary"
-                            onClick={handleCloseCardModal}
-                        >
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={handleShowCardModal}>
-                            Save Changes
-                        </Button>
-                    </Modal.Footer> */}
+                </Modal>
+                <Modal show={showAccountModal} onHide={handleCloseAccountModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>My Account</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body></Modal.Body>
                 </Modal>
             </div>
         </>
