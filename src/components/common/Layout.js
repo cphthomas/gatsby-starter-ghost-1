@@ -30,6 +30,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [userStripeId, setUserStripeId] = useState(false);
     const [userName, setUserName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+    const [userPlan, setUserPlan] = useState("");
+    const [userPlanEndDate, setUserPlanEndDate] = useState("");
 
     const [showCardModal, setShowCardModal] = useState(false);
     const [showAccountModal, setShowAccountModal] = useState(false);
@@ -112,6 +115,44 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         ) {
                             setIsSubscribed(true);
                             setUserStripeId(responseJson.user[0].stripe_id);
+                            setUserEmail(responseJson.user[0].user_email);
+                            if (responseJson.user[0].plan_id == 1) {
+                                setUserPlan("Pro");
+                            } else {
+                                setUserPlan("Premium");
+                            }
+                            console.log(
+                                responseJson.user[0].user_subscription_end
+                            );
+                            const dt =
+                                responseJson.user[0].user_subscription_end +
+                                "000";
+                            console.log(dt);
+
+                            const monthNames = [
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December",
+                            ];
+                            const dateObj = new Date(parseInt(dt));
+                            const month = monthNames[dateObj.getMonth()];
+                            const day = String(dateObj.getDate()).padStart(
+                                2,
+                                "0"
+                            );
+                            const year = dateObj.getFullYear();
+                            const output = month + " " + day + "," + year;
+                            console.log(output);
+                            setUserPlanEndDate(output);
                         }
                     }
                 });
@@ -325,7 +366,20 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <Modal.Header closeButton>
                         <Modal.Title>My Account</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body></Modal.Body>
+                    <Modal.Body className="accountBody">
+                        <p>
+                            <b>Name: {userName}</b>
+                        </p>
+                        <p>
+                            <b>Email: {userEmail}</b>
+                        </p>
+                        <p>
+                            <b>Current plan: {userPlan}</b>
+                        </p>
+                        <p>
+                            <b>Subscription end date: {userPlanEndDate}</b>
+                        </p>
+                    </Modal.Body>
                 </Modal>
             </div>
         </>
