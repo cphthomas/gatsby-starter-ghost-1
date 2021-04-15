@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import { Button, Dropdown, ButtonGroup, Modal } from "react-bootstrap";
+import {
+    Button,
+    Dropdown,
+    ButtonGroup,
+    Modal,
+    Row,
+    Col,
+} from "react-bootstrap";
 import { Navigation } from ".";
 import config from "../../utils/siteConfig";
 import Cookies from "universal-cookie";
@@ -28,11 +35,15 @@ import "../../styles/app.css";
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [userLoggedIn, setUserLoggedIn] = useState("-1");
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [userStripeId, setUserStripeId] = useState(false);
+    const [userStripeId, setUserStripeId] = useState("");
     const [userName, setUserName] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [userPlan, setUserPlan] = useState("");
     const [userPlanEndDate, setUserPlanEndDate] = useState("");
+    const [userInvoiceUrl, setUserInvoiceUrl] = useState("");
+    const [userCardBrand, setUserCardBrand] = useState("");
+    const [userCardDigit, setUserCardDigit] = useState("");
+    const [userCardExp, setUserCardExp] = useState("");
 
     const [showCardModal, setShowCardModal] = useState(false);
     const [showAccountModal, setShowAccountModal] = useState(false);
@@ -92,13 +103,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         console.log(cookies.get("loggedInUser"));
         console.log(cookies.get("loggedInUserIpAddress"));
         const userEmail = cookies.get("loggedInUser");
+        let customerStripeId = "";
         if (cookies.get("loggedInUser")) {
             await fetch("/.netlify/functions/get-user", {
                 method: "POST",
                 body: JSON.stringify({ userEmail }),
             })
                 .then((response) => response.json())
-                .then((responseJson) => {
+                .then(async (responseJson) => {
                     if (
                         responseJson.user[0].user_ip !==
                         cookies.get("loggedInUserIpAddress")
@@ -116,6 +128,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             setIsSubscribed(true);
                             setUserStripeId(responseJson.user[0].stripe_id);
                             setUserEmail(responseJson.user[0].user_email);
+                            customerStripeId = await responseJson.user[0]
+                                .stripe_id;
                             if (responseJson.user[0].plan_id == 1) {
                                 setUserPlan("Pro");
                             } else {
@@ -155,6 +169,33 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             setUserPlanEndDate(output);
                         }
                     }
+                });
+
+            console.log(customerStripeId);
+            await fetch("/.netlify/functions/customer-payment-method", {
+                method: "POST",
+                body: JSON.stringify({ customerStripeId }),
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    setUserCardBrand(responseJson.data[0].card.brand);
+                    setUserCardDigit(responseJson.data[0].card.last4);
+                    setUserCardExp(
+                        responseJson.data[0].card.exp_month +
+                            ", " +
+                            responseJson.data[0].card.exp_year
+                    );
+                });
+
+            await fetch("/.netlify/functions/customer-invoices", {
+                method: "POST",
+                body: JSON.stringify({ customerStripeId }),
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson.data[0].hosted_invoice_url);
+                    setUserInvoiceUrl(responseJson.data[0].hosted_invoice_url);
                 });
         } else {
             setUserLoggedIn("0");
@@ -367,18 +408,34 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         <Modal.Title>My Account</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="accountBody">
-                        <p>
-                            <b>Name: {userName}</b>
-                        </p>
-                        <p>
-                            <b>Email: {userEmail}</b>
-                        </p>
-                        <p>
-                            <b>Current plan: {userPlan}</b>
-                        </p>
-                        <p>
-                            <b>Subscription end date: {userPlanEndDate}</b>
-                        </p>
+                        <p className="detail-head">User Detail:</p>
+                        <Row className="detail-text">
+                            <Col>Name: {userName}</Col>
+                            <Col>Email: {userEmail}</Col>
+                        </Row>
+                        <p className="detail-head">Subscription Detail:</p>
+                        <Row className="detail-text">
+                            <Col>Current plan: {userPlan}</Col>
+                            <Col>End date: {userPlanEndDate}</Col>
+                        </Row>
+                        <p className="detail-head">Card Detail:</p>
+                        <Row className="detail-text">
+                            <Col>Brand: {userCardBrand}</Col>
+                            <Col>Last 4 digits: {userCardDigit}</Col>
+                            <Col>Exp date: {userCardExp}</Col>
+                        </Row>
+                        <p className="detail-head">Latest Invoice:</p>
+                        <Row className="detail-text">
+                            <Col>
+                                <p>
+                                    Click{" "}
+                                    <a target="_blank" href={userInvoiceUrl}>
+                                        here
+                                    </a>{" "}
+                                    to view latest invoice
+                                </p>
+                            </Col>
+                        </Row>
                     </Modal.Body>
                 </Modal>
             </div>
