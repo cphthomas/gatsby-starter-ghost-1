@@ -9,13 +9,19 @@
  * via ids/classnames etc.
  *
  */
+require("bootstrap/dist/css/bootstrap.min.css");
+require("bootstrap/dist/js/bootstrap.min.js");
+require("@popperjs/core/dist/umd/popper.min.js");
+
 var trustAllScripts = function () {
-    var scriptNodes = document.querySelectorAll('.load-external-scripts script');
+    var scriptNodes = document.querySelectorAll(
+        ".load-external-scripts script"
+    );
 
     for (var i = 0; i < scriptNodes.length; i += 1) {
         var node = scriptNodes[i];
-        var s = document.createElement('script');
-        s.type = node.type || 'text/javascript';
+        var s = document.createElement("script");
+        s.type = node.type || "text/javascript";
 
         if (node.attributes.src) {
             s.src = node.attributes.src.value;
@@ -23,7 +29,7 @@ var trustAllScripts = function () {
             s.innerHTML = node.innerHTML;
         }
 
-        document.getElementsByTagName('head')[0].appendChild(s);
+        document.getElementsByTagName("head")[0].appendChild(s);
     }
 };
 
