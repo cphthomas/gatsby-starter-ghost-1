@@ -9,9 +9,11 @@
  * via ids/classnames etc.
  *
  */
+require("bootstrap");
 require("bootstrap/dist/css/bootstrap.min.css");
 require("bootstrap/dist/js/bootstrap.min.js");
 require("@popperjs/core/dist/umd/popper.min.js");
+require("./src/js/custom");
 
 var trustAllScripts = function () {
     var scriptNodes = document.querySelectorAll(
