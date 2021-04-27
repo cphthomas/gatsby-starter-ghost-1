@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import { Layout } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import Cookies from "universal-cookie";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import "../styles/post.css";
 import ReactTooltip from "react-tooltip";

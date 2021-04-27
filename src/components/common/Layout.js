@@ -324,9 +324,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                 {isSubscribed ? (
                                                     <div>
                                                         <Dropdown.Item
-                                                            onClick={
-                                                                handleShowAccountModal
-                                                            }
+                                                            data-toggle="modal"
+                                                            data-target="#exampleModal"
                                                         >
                                                             My Account
                                                         </Dropdown.Item>
@@ -338,9 +337,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                             Cancel Subscription
                                                         </Dropdown.Item>
                                                         <Dropdown.Item
-                                                            onClick={
-                                                                handleShowCardModal
-                                                            }
+                                                            data-toggle="modal"
+                                                            data-target="#changeCardModal"
                                                         >
                                                             Change Card
                                                         </Dropdown.Item>
@@ -393,7 +391,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         </div>
                     </footer>
                 </div>
-                <Modal show={showCardModal} onHide={handleCloseCardModal}>
+                {/* <Modal show={showCardModal} onHide={handleCloseCardModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Add Card</Modal.Title>
                     </Modal.Header>
@@ -402,8 +400,115 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <CardSetupForm customerId={userStripeId} />
                         </Elements>
                     </Modal.Body>
-                </Modal>
-                <Modal show={showAccountModal} onHide={handleCloseAccountModal}>
+                </Modal> */}
+                <div
+                    class="modal fade"
+                    id="changeCardModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="changeCardModalLabel"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5
+                                    class="modal-title"
+                                    id="changeCardModalLabel"
+                                >
+                                    Add Card
+                                </h5>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <Elements stripe={stripePromise}>
+                                    <CardSetupForm customerId={userStripeId} />
+                                </Elements>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    My Account
+                                </h5>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p className="detail-head">User Detail:</p>
+                                <div class="row">
+                                    <div class="col-md-6">Name: {userName}</div>
+                                    <div class="col-md-6">
+                                        Email: {userEmail}
+                                    </div>
+                                </div>
+                                <p className="detail-head">
+                                    Subscription Detail:
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Current plan: {userPlan}
+                                    </div>
+                                    <div class="col-md-6">
+                                        End date: {userPlanEndDate}
+                                    </div>
+                                </div>
+                                <p className="detail-head">Card Detail:</p>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Brand: {userCardBrand}
+                                    </div>
+                                    <div class="col-md-4">
+                                        Last 4 digits: {userCardDigit}
+                                    </div>
+                                    <div class="col-md-4">
+                                        Exp date: {userCardExp}
+                                    </div>
+                                </div>
+                                <p className="detail-head">Latest Invoice:</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Click{" "}
+                                            <a
+                                                target="_blank"
+                                                href={userInvoiceUrl}
+                                            >
+                                                here
+                                            </a>{" "}
+                                            to view latest invoice
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* <Modal show={showAccountModal} onHide={handleCloseAccountModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>My Account</Modal.Title>
                     </Modal.Header>
@@ -437,7 +542,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </Col>
                         </Row>
                     </Modal.Body>
-                </Modal>
+                </Modal> */}
             </div>
         </>
     );
