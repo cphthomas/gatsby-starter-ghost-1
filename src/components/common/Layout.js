@@ -215,11 +215,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     {/* The main header section on top of the screen */}
                     <header
                         className="site-head"
-                        style={{
-                            ...(site.cover_image && {
-                                backgroundImage: `url(${site.cover_image})`,
-                            }),
-                        }}
+                        // style={{
+                        //     ...(site.cover_image && {
+                        //         backgroundImage: `url(${site.cover_image})`,
+                        //     }),
+                        // }}
                     >
                         <div className="container">
                             <div className="site-mast">
@@ -285,7 +285,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </a>
                                 </div>
                             </div>
-                            {isHome ? (
+                            {/* {isHome ? (
                                 <div className="site-banner">
                                     <h1 className="site-banner-title">
                                         {site.title}
@@ -294,7 +294,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         {site.description}
                                     </p>
                                 </div>
-                            ) : null}
+                            ) : null} */}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
                                     <Navigation
@@ -310,15 +310,19 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         >
                                             Login
                                         </Link>
-                                    ) : (
+                                    ) : userName ? (
                                         <Dropdown as={ButtonGroup}>
-                                            <Button variant="secondary">
+                                            <Button
+                                                variant="secondary"
+                                                className="account-btn"
+                                            >
                                                 {userName}
                                             </Button>
                                             <Dropdown.Toggle
                                                 split
                                                 variant="secondary"
                                                 id="dropdown-split-basic"
+                                                className="account-btn"
                                             />
                                             <Dropdown.Menu>
                                                 {isSubscribed ? (
@@ -354,6 +358,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                 </Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
+                                    ) : (
+                                        ""
                                     )}
                                 </div>
                             </nav>
@@ -366,9 +372,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </main>
                 </div>
 
-                <div className="viewport-bottom">
-                    {/* The footer at the very bottom of the screen */}
-                    <footer className="site-foot">
+                {/* <div className="viewport-bottom"> */}
+                {/* The footer at the very bottom of the screen */}
+                {/* <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <div className="site-foot-nav-left">
                                 <Link to="/">{site.title}</Link> © 2021 &mdash;
@@ -389,8 +395,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 />
                             </div>
                         </div>
-                    </footer>
-                </div>
+                    </footer> */}
+                {/* </div> */}
                 {/* <Modal show={showCardModal} onHide={handleCloseCardModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Add Card</Modal.Title>
