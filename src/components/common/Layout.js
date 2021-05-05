@@ -222,7 +222,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         // }}
                     >
                         <div className="container">
-                            <div className="site-mast">
+                            {/* <div className="site-mast">
                                 <div className="site-mast-left">
                                     <Link to="/">
                                         {site.logo ? (
@@ -284,7 +284,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         />
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* {isHome ? (
                                 <div className="site-banner">
                                     <h1 className="site-banner-title">

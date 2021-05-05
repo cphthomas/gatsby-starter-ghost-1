@@ -71,6 +71,7 @@
     "react-helmet": "6.1.0",
     "react-tooltip": "^4.2.15",
     "stripe": "^8.137.0",
+    "tocbot": "^4.12.3",
     "uniqid": "^5.3.0",
     "universal-cookie": "^4.0.4"
   }

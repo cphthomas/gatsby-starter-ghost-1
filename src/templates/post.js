@@ -11,6 +11,7 @@ import Card from "react-bootstrap/Card";
 import "../styles/post.css";
 import ReactTooltip from "react-tooltip";
 import { loadStripe } from "@stripe/stripe-js";
+import * as tocbot from "tocbot";
 
 /**
  * Single post view (/:slug)
@@ -54,6 +55,12 @@ const Post = ({ data, location }) => {
                         //window.location.href = "/login";
                     }
                 });
+            tocbot.init({
+                tocSelector: ".toc",
+                contentSelector: ".content-body",
+                hasInnerContainers: true,
+            });
+            tocbot.refresh();
         } else {
             setApiResponse(true);
         }
@@ -119,26 +126,31 @@ const Post = ({ data, location }) => {
 
             <Layout>
                 {apiResponse && userLoggedIn && userPlanId == "2" ? (
-                    <article className="content">
-                        {post.feature_image ? (
-                            <figure className="post-feature-image">
-                                <img
-                                    src={post.feature_image}
-                                    alt={post.title}
-                                />
-                            </figure>
-                        ) : null}
-                        <section className="post-full-content">
-                            <h1 className="content-title">{post.title}</h1>
+                    <div>
+                        <article className="content">
+                            {post.feature_image ? (
+                                <figure className="post-feature-image">
+                                    <img
+                                        src={post.feature_image}
+                                        alt={post.title}
+                                    />
+                                </figure>
+                            ) : null}
+                            <aside class="toc-container">
+                                <div class="toc"></div>
+                            </aside>
+                            <section className="post-full-content">
+                                <h1 className="content-title">{post.title}</h1>
 
-                            <section
-                                className="content-body load-external-scripts"
-                                dangerouslySetInnerHTML={{
-                                    __html: post.html,
-                                }}
-                            />
-                        </section>
-                    </article>
+                                <section
+                                    className="content-body load-external-scripts"
+                                    dangerouslySetInnerHTML={{
+                                        __html: post.html,
+                                    }}
+                                />
+                            </section>
+                        </article>
+                    </div>
                 ) : apiResponse &&
                   userLoggedIn &&
                   userPlanId == "1" &&
@@ -163,26 +175,31 @@ const Post = ({ data, location }) => {
                   userLoggedIn &&
                   userPlanId == "1" &&
                   post.tags[0].name == "Pro" ? (
-                    <article className="content">
-                        {post.feature_image ? (
-                            <figure className="post-feature-image">
-                                <img
-                                    src={post.feature_image}
-                                    alt={post.title}
-                                />
-                            </figure>
-                        ) : null}
-                        <section className="post-full-content">
-                            <h1 className="content-title">{post.title}</h1>
+                    <div>
+                        <article className="content">
+                            {post.feature_image ? (
+                                <figure className="post-feature-image">
+                                    <img
+                                        src={post.feature_image}
+                                        alt={post.title}
+                                    />
+                                </figure>
+                            ) : null}
+                            <aside class="toc-container">
+                                <div class="toc"></div>
+                            </aside>
+                            <section className="post-full-content">
+                                <h1 className="content-title">{post.title}</h1>
 
-                            <section
-                                className="content-body load-external-scripts"
-                                dangerouslySetInnerHTML={{
-                                    __html: post.html,
-                                }}
-                            />
-                        </section>
-                    </article>
+                                <section
+                                    className="content-body load-external-scripts"
+                                    dangerouslySetInnerHTML={{
+                                        __html: post.html,
+                                    }}
+                                />
+                            </section>
+                        </article>
+                    </div>
                 ) : apiResponse && userLoggedIn && userPlanId == "0" ? (
                     <div class="cardDiv">
                         <Card class="card">
