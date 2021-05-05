@@ -1189,9 +1189,9 @@ h6 {
     font-size: 1.6rem;
     line-height: 1.6em;
     padding: 0 0.8em;
-    width: 20%;
+    width: 22%;
     /* float: right; */
-    /* right: 0; */
+    right: 0;
     overflow: auto;
     height: 90%;
 }
