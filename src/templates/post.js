@@ -88,7 +88,7 @@ const Post = ({ data, location }) => {
                 } else {
                     el.css({
                         position: "unset",
-                        float: "right",
+                        // float: "right",
                     });
                 }
 
