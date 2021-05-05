@@ -1192,8 +1192,8 @@ h6 {
     width: 22%;
     /* float: right; */
     right: 0;
-    overflow-y: scroll;
-    height: 80%;
+    overflow: auto;
+    height: 90%;
 }
 
 .is-active-link::before {
