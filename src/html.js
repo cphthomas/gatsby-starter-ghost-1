@@ -46,6 +46,10 @@ export default function HTML(props) {
                     crossOrigin="anonymous"
                     defer
                 /> */}
+                <script
+                    async
+                    src="https://cse.google.com/cse.js?cx=6a9cf1797a309edbf"
+                ></script>
                 <link
                     rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"

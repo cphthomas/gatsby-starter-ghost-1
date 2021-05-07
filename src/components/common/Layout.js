@@ -302,6 +302,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         navClass="site-nav-item"
                                     />
                                 </div>
+                                <div class="gcse-search"></div>
                                 <div className="site-nav-right">
                                     {userLoggedIn == "0" ? (
                                         <Link
