@@ -46,10 +46,6 @@ export default function HTML(props) {
                     crossOrigin="anonymous"
                     defer
                 /> */}
-                <script
-                    async
-                    src="https://cse.google.com/cse.js?cx=6a9cf1797a309edbf"
-                ></script>
                 <link
                     rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -57,7 +53,7 @@ export default function HTML(props) {
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.min.js"></script>
-                <script src="https://unpkg.com/gojs/release/go-debug.js"></script> 
+                <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
                 <script
                     type="text/javascript"
                     src={withPrefix("js/custom.js")}
