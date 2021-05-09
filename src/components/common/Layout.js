@@ -100,7 +100,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     }
 
     useEffect(async () => {
-        var id = "f3658966-ae48-11eb-a9b5-0242ac130002";
+        var id = "1f6d35dc-af10-11eb-8319-0242ac130002";
         var ci_search = document.createElement("script");
         ci_search.type = "text/javascript";
         ci_search.async = true;
