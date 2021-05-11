@@ -24,3 +24,34 @@
     /* opacity: 0.7; */
     background-color: #15171a !important;
 }
+
+/* ============ desktop view ============ */
+/* @media all and (min-width: 992px) { */
+
+.nav-item {
+    margin: unset !important;
+    line-height: unset !important;
+    margin-top: -24px !important;
+}
+.nav-item a {
+    font-size: 12px;
+}
+.nav-item a:hover {
+    text-decoration: none !important;
+}
+.nav-item .dropdown-menu {
+    display: none;
+}
+.nav-item:hover .nav-link {
+}
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+.nav-item .dropdown-menu {
+    margin-top: 0;
+    max-width: 200px;
+    height: 500px;
+    overflow: auto;
+}
+/* } */
+/* ============ desktop view .end// ============ */

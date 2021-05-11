@@ -64,6 +64,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}`
         : null;
 
+    console.log(data);
+
+    const allPosts = data.allGhostPost.edges;
+
     function userLogout() {
         cookies.remove("loggedInUser");
         cookies.remove("loggedInUserIpAddress");
@@ -222,94 +226,38 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             <div className="viewport">
                 <div className="viewport-top">
                     {/* The main header section on top of the screen */}
-                    <header
-                        className="site-head"
-                        // style={{
-                        //     ...(site.cover_image && {
-                        //         backgroundImage: `url(${site.cover_image})`,
-                        //     }),
-                        // }}
-                    >
+                    <header className="site-head">
                         <div className="container">
-                            {/* <div className="site-mast">
-                                <div className="site-mast-left">
-                                    <Link to="/">
-                                        {site.logo ? (
-                                            <img
-                                                className="site-logo"
-                                                src={site.logo}
-                                                alt={site.title}
-                                            />
-                                        ) : (
-                                            <Img
-                                                fixed={
-                                                    data.file.childImageSharp
-                                                        .fixed
-                                                }
-                                                alt={site.title}
-                                            />
-                                        )}
-                                    </Link>
-                                </div>
-                                <div className="site-mast-right">
-                                    {site.twitter && (
-                                        <a
-                                            href={twitterUrl}
-                                            className="site-nav-item"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <img
-                                                className="site-nav-icon"
-                                                src="/images/icons/twitter.svg"
-                                                alt="Twitter"
-                                            />
-                                        </a>
-                                    )}
-                                    {site.facebook && (
-                                        <a
-                                            href={facebookUrl}
-                                            className="site-nav-item"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <img
-                                                className="site-nav-icon"
-                                                src="/images/icons/facebook.svg"
-                                                alt="Facebook"
-                                            />
-                                        </a>
-                                    )}
-                                    <a
-                                        className="site-nav-item"
-                                        href={`https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <img
-                                            className="site-nav-icon"
-                                            src="/images/icons/rss.svg"
-                                            alt="RSS Feed"
-                                        />
-                                    </a>
-                                </div>
-                            </div> */}
-                            {/* {isHome ? (
-                                <div className="site-banner">
-                                    <h1 className="site-banner-title">
-                                        {site.title}
-                                    </h1>
-                                    <p className="site-banner-desc">
-                                        {site.description}
-                                    </p>
-                                </div>
-                            ) : null} */}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
                                     <Navigation
                                         data={site.navigation}
                                         navClass="site-nav-item"
                                     />
+                                </div>
+                                <div>
+                                    <li class="nav-item dropdown">
+                                        <a
+                                            class="nav-link  dropdown-toggle"
+                                            href="#"
+                                            data-bs-toggle="dropdown"
+                                        >
+                                            {" "}
+                                            All Chapters{" "}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            {allPosts.map(({ node }) => (
+                                                <li>
+                                                    <a
+                                                        class="dropdown-item"
+                                                        href={node.slug}
+                                                    >
+                                                        {node.title}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </li>
                                 </div>
                                 <ci-search></ci-search>
                                 <div className="site-nav-right">
@@ -381,42 +329,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         {children}
                     </main>
                 </div>
-
-                {/* <div className="viewport-bottom"> */}
-                {/* The footer at the very bottom of the screen */}
-                {/* <footer className="site-foot">
-                        <div className="site-foot-nav container">
-                            <div className="site-foot-nav-left">
-                                <Link to="/">{site.title}</Link> © 2021 &mdash;
-                                Published with{" "}
-                                <a
-                                    className="site-foot-nav-item"
-                                    href="https://ghost.org"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Ghost
-                                </a>
-                            </div>
-                            <div className="site-foot-nav-right">
-                                <Navigation
-                                    data={site.navigation}
-                                    navClass="site-foot-nav-item"
-                                />
-                            </div>
-                        </div>
-                    </footer> */}
-                {/* </div> */}
-                {/* <Modal show={showCardModal} onHide={handleCloseCardModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Add Card</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Elements stripe={stripePromise}>
-                            <CardSetupForm customerId={userStripeId} />
-                        </Elements>
-                    </Modal.Body>
-                </Modal> */}
                 <div
                     class="modal fade"
                     id="changeCardModal"
@@ -524,41 +436,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         </div>
                     </div>
                 </div>
-                {/* <Modal show={showAccountModal} onHide={handleCloseAccountModal}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>My Account</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="accountBody">
-                        <p className="detail-head">User Detail:</p>
-                        <Row className="detail-text">
-                            <Col>Name: {userName}</Col>
-                            <Col>Email: {userEmail}</Col>
-                        </Row>
-                        <p className="detail-head">Subscription Detail:</p>
-                        <Row className="detail-text">
-                            <Col>Current plan: {userPlan}</Col>
-                            <Col>End date: {userPlanEndDate}</Col>
-                        </Row>
-                        <p className="detail-head">Card Detail:</p>
-                        <Row className="detail-text">
-                            <Col>Brand: {userCardBrand}</Col>
-                            <Col>Last 4 digits: {userCardDigit}</Col>
-                            <Col>Exp date: {userCardExp}</Col>
-                        </Row>
-                        <p className="detail-head">Latest Invoice:</p>
-                        <Row className="detail-text">
-                            <Col>
-                                <p>
-                                    Click{" "}
-                                    <a target="_blank" href={userInvoiceUrl}>
-                                        here
-                                    </a>{" "}
-                                    to view latest invoice
-                                </p>
-                            </Col>
-                        </Row>
-                    </Modal.Body>
-                </Modal> */}
             </div>
         </>
     );
@@ -571,6 +448,7 @@ DefaultLayout.propTypes = {
     data: PropTypes.shape({
         file: PropTypes.object,
         allGhostSettings: PropTypes.object.isRequired,
+        allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
 };
 
@@ -589,6 +467,13 @@ const DefaultLayoutSettingsQuery = (props) => (
                     childImageSharp {
                         fixed(width: 30, height: 30) {
                             ...GatsbyImageSharpFixed
+                        }
+                    }
+                }
+                allGhostPost(sort: { order: DESC, fields: [published_at] }) {
+                    edges {
+                        node {
+                            ...GhostPostFields
                         }
                     }
                 }
