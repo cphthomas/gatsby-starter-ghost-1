@@ -31,13 +31,30 @@
 .nav-item {
     margin: unset !important;
     line-height: unset !important;
-    margin-top: -24px !important;
+    /* margin-top: -24px !important; */
 }
 .nav-item a {
     font-size: 12px;
 }
-.nav-item a:hover {
+.btn-primary {
+    border-radius: unset !important;
+    background-color: #15171a !important;
+    height: 24px !important;
+    padding: 4px 12px !important;
+}
+.btn-primary:hover {
+    background-color: #15171a !important;
     text-decoration: none !important;
+}
+.nav-item a:hover {
+    /* text-decoration: underline !important; */
+    /* background-color: unset !important; */
+    /* color: #23527c !important; */
+}
+.nav-item li a:hover {
+    background-color: unset !important;
+    text-decoration: underline !important;
+    color: #23527c !important;
 }
 .nav-item .dropdown-menu {
     display: none;

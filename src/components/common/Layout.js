@@ -238,8 +238,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <div>
                                     <li class="nav-item dropdown">
                                         <a
-                                            class="nav-link  dropdown-toggle"
+                                            class="nav-link  dropdown-toggle btn btn-primary"
                                             href="#"
+                                            role="button"
                                             data-bs-toggle="dropdown"
                                         >
                                             {" "}
