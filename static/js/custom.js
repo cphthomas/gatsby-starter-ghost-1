@@ -49,7 +49,7 @@ $(document).ready(function () {
   });
 });
 
-const columnDefs = [
+/* const columnDefs = [
   { field: "make" },
   { field: "model" },
   { field: "price" }
@@ -72,7 +72,7 @@ const gridOptions = {
 const eGridDiv = document.querySelector('#myGrid');
 
 // create the grid passing in the div to use together with the columns & data we want to use
-new agGrid.Grid(eGridDiv, gridOptions);
+new agGrid.Grid(eGridDiv, gridOptions); */
 
 
 });
