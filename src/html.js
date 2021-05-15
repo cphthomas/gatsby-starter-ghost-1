@@ -58,7 +58,10 @@ export default function HTML(props) {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.css"/>
                 <script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.js"/>
                 <script src="https://code.highcharts.com/highcharts.src.js"></script> 
-                {/* thomas aggrid */}
+                {/* thomas handsontable */}
+                <script src="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.js"></script>
+                <link href="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.css" rel="stylesheet" media="screen">
+
                 
                 
                 <script
