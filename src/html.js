@@ -60,7 +60,7 @@ export default function HTML(props) {
                 <script src="https://code.highcharts.com/highcharts.src.js"></script> 
                 {/* thomas handsontable */}
                 <script src="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.js"></script>
-                <link href="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.css" rel="stylesheet" media="screen">
+                
 
                 
                 
