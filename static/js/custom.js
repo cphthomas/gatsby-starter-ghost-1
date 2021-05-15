@@ -22,57 +22,24 @@ $(document).ready(function () {
      var options = {};
      var container = document.querySelector('.network');
      network = new vis.Network(container, data, options);
- // thomas highcharts.js sample
- document.addEventListener('DOMContentLoaded', function () {
-  const chart = Highcharts.chart('container', {
-      chart: {
-          type: 'bar'
-      },
-      title: {
-          text: 'Fruit Consumption'
-      },
-      xAxis: {
-          categories: ['Apples', 'Bananas', 'Oranges']
-      },
-      yAxis: {
-          title: {
-              text: 'Fruit eaten'
-          }
-      },
-      series: [{
-          name: 'Jane',
-          data: [1, 0, 4]
-      }, {
-          name: 'John',
-          data: [5, 7, 3]
-      }]
-  });
-});
+ 
+     var data = [
+      ['', 'Ford', 'Tesla', 'Toyota', 'Honda'],
+      ['2017', 10, 11, 12, 13],
+      ['2018', 20, 11, 14, 13],
+      ['2019', 30, 15, 12, 13]
+    ];
+    
+    var container = document.getElementById('example23');
+    var hot = new Handsontable(container, {
+      data: data,
+      rowHeaders: true,
+      colHeaders: true,
+      filters: true,
+      dropdownMenu: true
+    });
+ 
 
-/* const columnDefs = [
-  { field: "make" },
-  { field: "model" },
-  { field: "price" }
-];
-
-// specify the data
-const rowData = [
-  { make: "Toyota", model: "Celica", price: 35000 },
-  { make: "Ford", model: "Mondeo", price: 32000 },
-  { make: "Porsche", model: "Boxter", price: 72000 }
-];
-
-// let the grid know which columns and what data to use
-const gridOptions = {
-  columnDefs: columnDefs,
-  rowData: rowData
-};
-
-// lookup the container we want the Grid to use
-const eGridDiv = document.querySelector('#myGrid');
-
-// create the grid passing in the div to use together with the columns & data we want to use
-new agGrid.Grid(eGridDiv, gridOptions); */
 
 
 });
