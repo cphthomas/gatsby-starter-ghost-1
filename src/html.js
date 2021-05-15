@@ -58,6 +58,11 @@ export default function HTML(props) {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.css"/>
                 <script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.js"/>
                 <script src="https://code.highcharts.com/highcharts.src.js"></script> 
+                {/* thomas aggrid */}
+                <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+                <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+                <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css"></link>
+                
                 <script
                     type="text/javascript"
                     src={withPrefix("js/custom.js")}
