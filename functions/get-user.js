@@ -8,9 +8,14 @@ exports.handler = async function (event) {
         password: "l7w4d31in0msovsc",
         database: "yj4gfzv5wypf9871",
     });
-    await connection.connect();
-    const user = await getUser(connection, userEmail);
-    console.log(user);
+    let user = "";
+    try {
+        await connection.connect();
+        user = await getUser(connection, userEmail);
+        await connection.end();
+    } catch (e) {
+        console.log(`User not found due to error= ${e}`);
+    }
     return {
         statusCode: 200,
         body: JSON.stringify({
@@ -27,7 +32,7 @@ async function getUser(connection, email) {
                 values: [email],
             },
             function (error, results, fields) {
-                if (error) reject(err);
+                if (error) reject(error);
                 resolve(results);
             }
         );

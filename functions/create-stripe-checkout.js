@@ -4,7 +4,6 @@ exports.handler = async function (event) {
     const { email, customerId, planType } = JSON.parse(event.body);
 
     let price = "";
-    console.log(planType);
     if (planType == "pro") {
         price = "price_1IMFmTIP8uHvYRBy8XgXjweR";
     } else {
@@ -20,8 +19,6 @@ exports.handler = async function (event) {
         mode: "subscription",
         //customer_email: email,
     });
-
-    console.log(session);
 
     return {
         statusCode: 200,

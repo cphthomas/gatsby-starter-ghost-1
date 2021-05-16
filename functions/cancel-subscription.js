@@ -9,8 +9,6 @@ exports.handler = async function (event) {
         limit: 3,
     });
 
-    //console.log(subscriptions.data[0].cancel_at_period_end);
-
     if (subscriptions.data[0].cancel_at_period_end) {
         return {
             statusCode: 200,

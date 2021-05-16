@@ -27,7 +27,6 @@ const Post = ({ data, location }) => {
     const [planType, setPlanType] = useState("");
     const [email, setEmail] = useState("");
     const [customerId, setCustomerId] = useState("");
-    //console.log(post.tags[0].name);
 
     useEffect(async () => {
         const cookies = new Cookies();
@@ -39,7 +38,6 @@ const Post = ({ data, location }) => {
             })
                 .then((response) => response.json())
                 .then((responseJson) => {
-                    console.log(responseJson.user[0].plan_id);
                     setApiResponse(true);
                     if (
                         responseJson.user[0].user_ip ==
@@ -66,7 +64,6 @@ const Post = ({ data, location }) => {
         }
 
         if ($(".toc").length && $(".post-feature-image").length) {
-            console.log("in if");
             var el = $(".toc");
             el.css({
                 top: "580px",
@@ -106,14 +103,12 @@ const Post = ({ data, location }) => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        console.log(customerId);
         await fetch("/.netlify/functions/create-stripe-checkout", {
             method: "POST",
             body: JSON.stringify({ customerId, email, planType }),
         })
             .then(async (response) => response.json())
             .then(async (responseJson) => {
-                console.log(responseJson);
                 const stripePromise = await loadStripe(
                     "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
                 );
@@ -129,7 +124,6 @@ const Post = ({ data, location }) => {
 
     async function premiumCheckout(e) {
         e.preventDefault();
-        console.log(customerId);
         const planType = "premium";
         await fetch("/.netlify/functions/create-stripe-checkout", {
             method: "POST",
@@ -137,7 +131,6 @@ const Post = ({ data, location }) => {
         })
             .then(async (response) => response.json())
             .then(async (responseJson) => {
-                console.log(responseJson);
                 const stripePromise = await loadStripe(
                     "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
                 );
@@ -170,8 +163,8 @@ const Post = ({ data, location }) => {
                                     />
                                 </figure>
                             ) : null}
-                            <aside class="toc-container">
-                                <div class="toc"></div>
+                            <aside className="toc-container">
+                                <div className="toc"></div>
                             </aside>
                             <section className="post-full-content">
                                 <h1 className="content-title">{post.title}</h1>
@@ -189,8 +182,8 @@ const Post = ({ data, location }) => {
                   userLoggedIn &&
                   userPlanId == "1" &&
                   post.tags[0].name == "Premium" ? (
-                    <div class="cardDiv">
-                        <Card class="card">
+                    <div className="cardDiv">
+                        <Card className="card">
                             <Card.Body>
                                 <h2>
                                     This post is for premium subscribers only
@@ -219,8 +212,8 @@ const Post = ({ data, location }) => {
                                     />
                                 </figure>
                             ) : null}
-                            <aside class="toc-container">
-                                <div class="toc"></div>
+                            <aside className="toc-container">
+                                <div className="toc"></div>
                             </aside>
                             <section className="post-full-content">
                                 <h1 className="content-title">{post.title}</h1>
@@ -235,8 +228,8 @@ const Post = ({ data, location }) => {
                         </article>
                     </div>
                 ) : apiResponse && userLoggedIn && userPlanId == "0" ? (
-                    <div class="cardDiv">
-                        <Card class="card">
+                    <div className="cardDiv">
+                        <Card className="card">
                             <Card.Body>
                                 <h2>
                                     This post is for paying subscribers only
@@ -295,8 +288,8 @@ const Post = ({ data, location }) => {
                         </Card>
                     </div>
                 ) : apiResponse && !userLoggedIn ? (
-                    <div class="cardDiv">
-                        <Card class="card">
+                    <div className="cardDiv">
+                        <Card className="card">
                             <Card.Body>
                                 <h2>
                                     This post is for paying subscribers only

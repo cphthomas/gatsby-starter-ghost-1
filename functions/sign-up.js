@@ -5,8 +5,6 @@ var uniqid = require('uniqid');
 exports.handler = async function (event) {
     const { email, name, password } = JSON.parse(event.body);
 
-    //console.log("email = " + email);
-
     var connection = await mysql.createConnection({
         host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
         user: "ub4b7vh6mgd73b2b",
@@ -43,12 +41,7 @@ exports.handler = async function (event) {
         items: [{ price: "price_1IKAnIIP8uHvYRBy68pRrArU" }],
     });
 
-    // let userIp = "";
-
-    //userIp = await publicIp.v4();
-    //console.log(await publicIp.v6());
     const userIp = await uniqid();
-    //console.log(userIp);
 
     var member = {
         user_name: name,

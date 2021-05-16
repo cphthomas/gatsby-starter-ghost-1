@@ -15,14 +15,12 @@ export default function CardSetupForm(props) {
     const userStripeId = props.customerId;
 
     useEffect(async () => {
-        console.log(userStripeId);
         await fetch("/.netlify/functions/setup-intent", {
             method: "POST",
             body: JSON.stringify({ userStripeId }),
         })
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson.client_secret);
                 setUserSecret(responseJson.client_secret);
             });
     }, []);
@@ -40,8 +38,6 @@ export default function CardSetupForm(props) {
             return;
         }
 
-        console.log(event);
-
         const result = await stripe.confirmCardSetup(userSecret, {
             payment_method: {
                 card: elements.getElement(CardElement),
@@ -49,7 +45,6 @@ export default function CardSetupForm(props) {
         });
 
         if (result.error) {
-            console.log(result.error);
             //alert();
             setErrorMessage(result.error.message);
             setBtnDisable(false);
@@ -57,17 +52,14 @@ export default function CardSetupForm(props) {
             // The setup has succeeded. Display a success message and send
             // result.setupIntent.payment_method to your server to save the
             // card to a Customer
-            console.log(result.setupIntent);
             const pm = result.setupIntent.payment_method;
             const us = userStripeId;
-            console.log("us = " + us);
             await fetch("/.netlify/functions/update-payment-method", {
                 method: "POST",
                 body: JSON.stringify({ us, pm }),
             })
                 .then((response) => response.json())
                 .then((responseJson) => {
-                    console.log(responseJson);
                     //setUserSecret(responseJson.client_secret);
                     setSuccessMessage("Your card added successfully.");
                 });

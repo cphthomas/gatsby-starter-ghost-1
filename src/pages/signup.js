@@ -19,7 +19,6 @@ export default function SignUp() {
 
     useEffect(() => {
         const cookies = new Cookies();
-        console.log(cookies.get("loggedInUser"));
         if (cookies.get("loggedInUser")) {
             window.location.href = "/";
         }
@@ -75,8 +74,6 @@ export default function SignUp() {
             })
                 .then(async (response) => response.json())
                 .then(async (responseJson) => {
-                    console.log(responseJson);
-                    //window.location.href = responseJson;
                     const stripePromise = await loadStripe(
                         "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
                     );

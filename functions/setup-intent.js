@@ -7,13 +7,6 @@ exports.handler = async function (event) {
         customer: customerId,
     });
 
-    //console.log(intent);
-    // const card = await stripe.customers.createSource("cus_JChkY4128k73XE", {
-    //     source: "tok_visa",
-    // });
-
-    // console.log(card);
-
     return {
         statusCode: 200,
         body: JSON.stringify(intent),

@@ -45,14 +45,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [userCardDigit, setUserCardDigit] = useState("");
     const [userCardExp, setUserCardExp] = useState("");
 
-    const [showCardModal, setShowCardModal] = useState(false);
-    const [showAccountModal, setShowAccountModal] = useState(false);
-
-    const handleCloseCardModal = () => setShowCardModal(false);
-    const handleShowCardModal = () => setShowCardModal(true);
-    const handleCloseAccountModal = () => setShowAccountModal(false);
-    const handleShowAccountModal = () => setShowAccountModal(true);
-
     const stripePromise = loadStripe("pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U");
 
     const cookies = new Cookies();
@@ -63,8 +55,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const facebookUrl = site.facebook
         ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}`
         : null;
-
-    console.log(data);
 
     const allPosts = data.allGhostPost.edges;
 
@@ -113,8 +103,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(ci_search, s);
 
-        console.log(cookies.get("loggedInUser"));
-        console.log(cookies.get("loggedInUserIpAddress"));
         const userEmail = cookies.get("loggedInUser");
         let customerStripeId = "";
         if (cookies.get("loggedInUser")) {
@@ -148,13 +136,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             } else {
                                 setUserPlan("Premium");
                             }
-                            console.log(
-                                responseJson.user[0].user_subscription_end
-                            );
                             const dt =
                                 responseJson.user[0].user_subscription_end +
                                 "000";
-                            console.log(dt);
 
                             const monthNames = [
                                 "January",
@@ -178,20 +162,16 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             );
                             const year = dateObj.getFullYear();
                             const output = month + " " + day + "," + year;
-                            console.log(output);
                             setUserPlanEndDate(output);
                         }
                     }
                 });
-
-            console.log(customerStripeId);
             await fetch("/.netlify/functions/customer-payment-method", {
                 method: "POST",
                 body: JSON.stringify({ customerStripeId }),
             })
                 .then((response) => response.json())
                 .then((responseJson) => {
-                    console.log(responseJson);
                     setUserCardBrand(responseJson.data[0].card.brand);
                     setUserCardDigit(responseJson.data[0].card.last4);
                     setUserCardExp(
@@ -207,7 +187,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             })
                 .then((response) => response.json())
                 .then((responseJson) => {
-                    console.log(responseJson.data[0].hosted_invoice_url);
                     setUserInvoiceUrl(responseJson.data[0].hosted_invoice_url);
                 });
         } else {
@@ -236,9 +215,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     />
                                 </div>
                                 <div>
-                                    <li class="nav-item dropdown">
+                                    <li className="nav-item dropdown">
                                         <a
-                                            class="nav-link  dropdown-toggle btn btn-primary"
+                                            className="nav-link  dropdown-toggle btn btn-primary"
                                             href="#"
                                             role="button"
                                             data-bs-toggle="dropdown"
@@ -246,11 +225,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             {" "}
                                             All Chapters{" "}
                                         </a>
-                                        <ul class="dropdown-menu">
+                                        <ul className="dropdown-menu">
                                             {allPosts.map(({ node }) => (
                                                 <li>
                                                     <a
-                                                        class="dropdown-item"
+                                                        className="dropdown-item"
                                                         href={node.slug}
                                                     >
                                                         {node.title}
@@ -331,32 +310,32 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </main>
                 </div>
                 <div
-                    class="modal fade"
+                    className="modal fade"
                     id="changeCardModal"
-                    tabindex="-1"
+                    tabIndex="-1"
                     role="dialog"
                     aria-labelledby="changeCardModalLabel"
                     aria-hidden="true"
                 >
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
                                 <h5
-                                    class="modal-title"
+                                    className="modal-title"
                                     id="changeCardModalLabel"
                                 >
                                     Add Card
                                 </h5>
                                 <button
                                     type="button"
-                                    class="close"
+                                    className="close"
                                     data-dismiss="modal"
                                     aria-label="Close"
                                 >
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 <Elements stripe={stripePromise}>
                                     <CardSetupForm customerId={userStripeId} />
                                 </Elements>
@@ -365,62 +344,67 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </div>
                 </div>
                 <div
-                    class="modal fade"
+                    className="modal fade"
                     id="exampleModal"
-                    tabindex="-1"
+                    tabIndex="-1"
                     role="dialog"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
                 >
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5
+                                    className="modal-title"
+                                    id="exampleModalLabel"
+                                >
                                     My Account
                                 </h5>
                                 <button
                                     type="button"
-                                    class="close"
+                                    className="close"
                                     data-dismiss="modal"
                                     aria-label="Close"
                                 >
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 <p className="detail-head">User Detail:</p>
-                                <div class="row">
-                                    <div class="col-md-6">Name: {userName}</div>
-                                    <div class="col-md-6">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        Name: {userName}
+                                    </div>
+                                    <div className="col-md-6">
                                         Email: {userEmail}
                                     </div>
                                 </div>
                                 <p className="detail-head">
                                     Subscription Detail:
                                 </p>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div className="row">
+                                    <div className="col-md-6">
                                         Current plan: {userPlan}
                                     </div>
-                                    <div class="col-md-6">
+                                    <div className="col-md-6">
                                         End date: {userPlanEndDate}
                                     </div>
                                 </div>
                                 <p className="detail-head">Card Detail:</p>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                <div className="row">
+                                    <div className="col-md-4">
                                         Brand: {userCardBrand}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div className="col-md-4">
                                         Last 4 digits: {userCardDigit}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div className="col-md-4">
                                         Exp date: {userCardExp}
                                     </div>
                                 </div>
                                 <p className="detail-head">Latest Invoice:</p>
-                                <div class="row">
-                                    <div class="col-md-12">
+                                <div className="row">
+                                    <div className="col-md-12">
                                         <p>
                                             Click{" "}
                                             <a

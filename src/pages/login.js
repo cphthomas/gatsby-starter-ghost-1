@@ -17,8 +17,6 @@ export default function Login() {
 
     useEffect(() => {
         const cookies = new Cookies();
-        console.log(cookies.get("loggedInUser"));
-        console.log(cookies.get("loggedInUserIpAddress"));
         if (cookies.get("loggedInUser")) {
             window.location.href = "/";
         }
@@ -66,8 +64,6 @@ export default function Login() {
                             maxAge: 31536000,
                         }
                     );
-                    console.log("responseJson.userIp = " + responseJson.userIp);
-                    //window.location.href = await "/";
                 }
                 setShowMessage(true);
             })
