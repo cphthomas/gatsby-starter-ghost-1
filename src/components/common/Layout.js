@@ -94,15 +94,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     }
 
     useEffect(async () => {
-        var id = "1f6d35dc-af10-11eb-8319-0242ac130002";
-        var ci_search = document.createElement("script");
-        ci_search.type = "text/javascript";
-        ci_search.async = true;
-        ci_search.src =
-            "https://cse.expertrec.com/api/js/ci_common.js?id=" + id;
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(ci_search, s);
-
         const userEmail = cookies.get("loggedInUser");
         let customerStripeId = "";
         if (cookies.get("loggedInUser")) {
