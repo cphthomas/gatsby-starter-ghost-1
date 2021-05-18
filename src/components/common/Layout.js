@@ -224,7 +224,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                 <li>
                                                     <a
                                                         className="dropdown-item"
-                                                        href={node.slug}
+                                                        href={"/" + node.slug}
                                                     >
                                                         {node.title}
                                                     </a>
