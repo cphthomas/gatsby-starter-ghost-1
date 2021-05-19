@@ -73,103 +73,7 @@ function visScript() {
         { id: 13, value: 2, label: "13" },
         { id: 14, value: 1, label: "14" },
     ]);
-
-    // create an array with edges
-    var edges = new vis.DataSet([
-        { from: 1, to: 2 },
-        { from: 1, to: 4 },
-        { from: 1, to: 5 },
-        { from: 2, to: 6 },
-        { from: 2, to: 7 },
-        { from: 2, to: 8 },
-        { from: 3, to: 9 },
-        { from: 3, to: 10 },
-        { from: 3, to: 11 },
-        { from: 10, to: 12 },
-        { from: 10, to: 13 },
-        { from: 10, to: 14 },
-        { from: 7, to: 11 },
-        { from: 8, to: 14 },
-        { from: 11, to: 12 },
-        { from: 5, to: 9 },
-    ]);
-
-    // create a network
-    var container = document.getElementById("mynetwork");
-
-    // provide the data in the vis format
-    var data = {
-        nodes: nodes,
-        edges: edges,
-    };
-    var options = {
-        nodes: {
-            autoResize: true,
-            height: "100%",
-            width: "100%",
-            shape: "circle",
-            font: {
-                size: 30,
-            },
-            scaling: {
-                label: {
-                    min: 8,
-                    max: 50,
-                },
-            },
-            borderWidth: 1,
-            shadow: true,
-            margin: {
-                top: 10,
-                left: 20,
-                right: 20,
-                bottom: 10,
-            },
-            color: {
-                border: "",
-                background: "#b2dfdb",
-                highlight: {
-                    border: "#e57373",
-                    background: "#ffcdd2",
-                },
-            },
-        },
-        layout: {
-            improvedLayout: true,
-            hierarchical: {
-                enabled: false,
-                direction: "UD",
-                sortMethod: "hubsize",
-                parentCentralization: true,
-                blockShifting: true,
-                edgeMinimization: true,
-            },
-        },
-        edges: {
-            smooth: true,
-            chosen: true,
-            arrows: {
-                to: {
-                    enabled: true,
-                    type: "arrow",
-                },
-            },
-            color: {
-                color: "#b2dfdb",
-                highlight: "#ffcdd2",
-                hover: "#848484",
-                inherit: "from",
-                opacity: 1.0,
-            },
-        },
-    };
-
-    // initialize your network!
-    var network = new vis.Network(container, data, options);
-}
-
-function visScript() {
-    var nodes = new vis.DataSet([
+    var nodes2 = new vis.DataSet([
         { id: 1, value: 23, label: "1" },
         { id: 2, value: 23, label: "2" },
         { id: 3, value: 23, label: "3" },
@@ -205,14 +109,37 @@ function visScript() {
         { from: 11, to: 12 },
         { from: 5, to: 9 },
     ]);
+    var edges2 = new vis.DataSet([
+        { from: 1, to: 2 },
+        { from: 1, to: 4 },
+        { from: 1, to: 5 },
+        { from: 2, to: 6 },
+        { from: 2, to: 7 },
+        { from: 2, to: 8 },
+        { from: 3, to: 9 },
+        { from: 3, to: 10 },
+        { from: 3, to: 11 },
+        { from: 10, to: 12 },
+        { from: 10, to: 13 },
+        { from: 10, to: 14 },
+        { from: 7, to: 11 },
+        { from: 8, to: 14 },
+        { from: 11, to: 12 },
+        { from: 5, to: 9 },
+    ]);
 
     // create a network
-    var container = document.getElementById("mynetwork2");
+    var container = document.getElementById("mynetwork");
+    var container2 = document.getElementById("mynetwork2");
 
     // provide the data in the vis format
     var data = {
         nodes: nodes,
         edges: edges,
+    };
+    var data2 = {
+        nodes: nodes2,
+        edges: edges2,
     };
     var options = {
         nodes: {
@@ -278,6 +205,9 @@ function visScript() {
 
     // initialize your network!
     var network = new vis.Network(container, data, options);
+    var network2 = new vis.Network(container2, data2, options);
 }
+
+
 
 export default customJS;
