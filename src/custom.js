@@ -30,7 +30,7 @@ const customJS = () => {
     );
     document.body.appendChild(myScript);
 
-    waitForElement("#mynetwork", 8000)
+    waitForElement("#mynetwork","#mynetwork2", 8000)
         .then(function () {
             console.log("element is loaded.. do stuff");
             visScript();
@@ -73,6 +73,22 @@ function visScript() {
         { id: 13, value: 2, label: "13" },
         { id: 14, value: 1, label: "14" },
     ]);
+    var nodes2 = new vis.DataSet([
+        { id: 1, value: 23, label: "1" },
+        { id: 2, value: 23, label: "2" },
+        { id: 3, value: 23, label: "3" },
+        { id: 4, value: 23, label: "4" },
+        { id: 5, value: 23, label: "5" },
+        { id: 6, value: 10, label: "6" },
+        { id: 7, value: 50, label: "7" },
+        { id: 8, value: 10, label: "8" },
+        { id: 9, value: 10, label: "9" },
+        { id: 10, value: 10, label: "10" },
+        { id: 11, value: 10, label: "11" },
+        { id: 12, value: 4, label: "12" },
+        { id: 13, value: 2, label: "13" },
+        { id: 14, value: 1, label: "14" },
+    ]);
 
     // create an array with edges
     var edges = new vis.DataSet([
@@ -93,14 +109,37 @@ function visScript() {
         { from: 11, to: 12 },
         { from: 5, to: 9 },
     ]);
+    var edges2 = new vis.DataSet([
+        { from: 1, to: 2 },
+        { from: 1, to: 4 },
+        { from: 1, to: 5 },
+        { from: 2, to: 6 },
+        { from: 2, to: 7 },
+        { from: 2, to: 8 },
+        { from: 3, to: 9 },
+        { from: 3, to: 10 },
+        { from: 3, to: 11 },
+        { from: 10, to: 12 },
+        { from: 10, to: 13 },
+        { from: 10, to: 14 },
+        { from: 7, to: 11 },
+        { from: 8, to: 14 },
+        { from: 11, to: 12 },
+        { from: 5, to: 9 },
+    ]);
 
     // create a network
     var container = document.getElementById("mynetwork");
+    var container2 = document.getElementById("mynetwork2");
 
     // provide the data in the vis format
     var data = {
         nodes: nodes,
         edges: edges,
+    };
+    var data2 = {
+        nodes: nodes2,
+        edges: edges2,
     };
     var options = {
         nodes: {
@@ -166,6 +205,9 @@ function visScript() {
 
     // initialize your network!
     var network = new vis.Network(container, data, options);
+    var network2 = new vis.Network(container2, data2, options);
 }
+
+
 
 export default customJS;
