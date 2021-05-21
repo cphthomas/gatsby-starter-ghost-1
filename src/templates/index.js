@@ -14,7 +14,14 @@ import { MetaData } from "../components/common/meta";
  *
  */
 const Index = ({ data, location, pageContext }) => {
-    const posts = data.allGhostPost.edges;
+    let posts = data.allGhostPost.edges;
+
+    posts = posts.sort(function (a, b) {
+        return a.node.title.localeCompare(b.node.title, undefined, {
+            numeric: true,
+            sensitivity: "base",
+        });
+    });
 
     return (
         <>
@@ -67,7 +74,7 @@ export default Index;
 
 export const pageQuery = graphql`
     query GhostPostQuery {
-        allGhostPost(sort: { order: DESC, fields: [published_at] }) {
+        allGhostPost {
             edges {
                 node {
                     ...GhostPostFields

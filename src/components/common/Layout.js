@@ -57,7 +57,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}`
         : null;
 
-    const allPosts = data.allGhostPost.edges;
+    let allPosts = data.allGhostPost.edges;
+
+    allPosts = allPosts.sort(function (a, b) {
+        return a.node.title.localeCompare(b.node.title, undefined, {
+            numeric: true,
+            sensitivity: "base",
+        });
+    });
 
     function userLogout() {
         cookies.remove("loggedInUser");
@@ -449,7 +456,7 @@ const DefaultLayoutSettingsQuery = (props) => (
                         }
                     }
                 }
-                allGhostPost(sort: { order: DESC, fields: [published_at] }) {
+                allGhostPost {
                     edges {
                         node {
                             ...GhostPostFields
