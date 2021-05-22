@@ -121,11 +121,14 @@ function visScript() {
         edges: edges2,
     };
     var options = {
+        
+        
         nodes: {
             autoResize: true,
             height: "100%",
             width: "100%",
             shape: "box",
+            
             font: {
                 color: "white",
                 size: 10,
@@ -156,6 +159,24 @@ function visScript() {
                 },
             },
         },
+        autoResize: true,
+    physics: {
+        hierarchicalRepulsion: {
+            centralGravity: 0.0,
+            springLength: 230,
+            springConstant: 0.18,
+            avoidOverlap: -10,
+            treeSpacing:1000,
+            nodeDistance:200
+        },
+        maxVelocity: 146,
+        solver: 'hierarchicalRepulsion',
+        timestep: 0.35,
+        stabilization: {
+            enabled: true,
+            iterations: 2000,
+        }
+    },
         layout: {
             improvedLayout: true,
             hierarchical: {
