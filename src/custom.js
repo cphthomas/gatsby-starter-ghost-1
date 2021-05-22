@@ -204,67 +204,6 @@ function visScript() {
         },
     };
 
-    var options2 = {
-        nodes: {
-            autoResize: true,
-            height: "100%",
-            width: "100%",
-            shape: "circle",
-            font: {
-                size: 30,
-            },
-            scaling: {
-                label: {
-                    min: 8,
-                    max: 50,
-                },
-            },
-            borderWidth: 1,
-            shadow: true,
-            margin: {
-                top: 10,
-                left: 20,
-                right: 20,
-                bottom: 10,
-            },
-            color: {
-                border: "",
-                background: "#b2dfdb",
-                highlight: {
-                    border: "#e57373",
-                    background: "#ffcdd2",
-                },
-            },
-        },
-        layout: {
-            improvedLayout: true,
-            hierarchical: {
-                enabled: false,
-                direction: "UD",
-                sortMethod: "hubsize",
-                parentCentralization: true,
-                blockShifting: true,
-                edgeMinimization: true,
-            },
-        },
-        edges: {
-            smooth: true,
-            chosen: true,
-            arrows: {
-                to: {
-                    enabled: true,
-                    type: "arrow",
-                },
-            },
-            color: {
-                color: "#b2dfdb",
-                highlight: "#ffcdd2",
-                hover: "#848484",
-                inherit: "from",
-                opacity: 1.0,s
-            },
-        },
-    };
     // initialize your network!
     var network = new vis.Network(container, data, options);
     var network2 = new vis.Network(container2, data2, options2);
