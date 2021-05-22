@@ -19,8 +19,9 @@
     text-align: center;
     width: 50%;
     margin: 0 auto;
-    background-color: #dc143c !important;
+    background-color: #15171a !important;
     border-radius: 0px !important;
+    color: white !important;
 }
 
 .card-body h2 {

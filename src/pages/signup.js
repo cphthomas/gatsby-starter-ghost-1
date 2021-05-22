@@ -165,7 +165,7 @@ export default function SignUp() {
 
                     <button
                         type="submit"
-                        className="btn btn-primary btn-block btn-color"
+                        className="btn btn-primary btn-color"
                         disabled={!validateForm()}
                     >
                         Sign Up
