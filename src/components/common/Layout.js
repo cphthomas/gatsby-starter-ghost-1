@@ -72,23 +72,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         window.location.href = "/login";
     }
 
-    function confirmPopUp() {
-        confirmAlert({
-            title: "Confirm to submit",
-            message: "Are you sure, do you want to cancel your subscription?",
-            buttons: [
-                {
-                    label: "Confirm",
-                    onClick: () => cancelSubscription(),
-                },
-                {
-                    label: "No",
-                    onClick: () => "",
-                },
-            ],
-        });
-    }
-
     async function cancelSubscription() {
         //const userStripeId = "";
         await fetch("/.netlify/functions/cancel-subscription", {
@@ -273,9 +256,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                             My Account
                                                         </Dropdown.Item>
                                                         <Dropdown.Item
-                                                            onClick={
-                                                                confirmPopUp
-                                                            }
+                                                            data-toggle="modal"
+                                                            data-target="#confirmCancelModal"
                                                         >
                                                             Cancel Subscription
                                                         </Dropdown.Item>
@@ -309,6 +291,54 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         {/* All the main content gets inserted here, index.js, post.js */}
                         {children}
                     </main>
+                </div>
+                <div
+                    className="modal fade"
+                    id="confirmCancelModal"
+                    tabIndex="-1"
+                    role="dialog"
+                    aria-labelledby="confirmCancelModalLabel"
+                    aria-hidden="true"
+                >
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5
+                                    className="modal-title"
+                                    id="confirmCancelModalLabel"
+                                >
+                                    Cancel Subscription
+                                </h5>
+                                <button
+                                    type="button"
+                                    className="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <p>
+                                    Are you sure, do you want to cancel your
+                                    subscription?
+                                </p>
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <button
+                                            className="btn btn-primary cnfrmBtn"
+                                            onClick={cancelSubscription}
+                                        >
+                                            Confirm
+                                        </button>
+                                    </div>
+                                    {/* <div className="col-md-6">
+                                        <button>No</button>
+                                    </div> */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div
                     className="modal fade"
@@ -371,51 +401,61 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <p className="detail-head">User Detail:</p>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        Name: {userName}
-                                    </div>
-                                    <div className="col-md-6">
-                                        Email: {userEmail}
-                                    </div>
-                                </div>
-                                <p className="detail-head">
-                                    Subscription Detail:
-                                </p>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        Current plan: {userPlan}
-                                    </div>
-                                    <div className="col-md-6">
-                                        End date: {userPlanEndDate}
+                                <div className="marginWithBorder">
+                                    <p className="detail-head">User Detail:</p>
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            Name: {userName}
+                                        </div>
+                                        <div className="col-md-6">
+                                            Email: {userEmail}
+                                        </div>
                                     </div>
                                 </div>
-                                <p className="detail-head">Card Detail:</p>
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        Brand: {userCardBrand}
-                                    </div>
-                                    <div className="col-md-4">
-                                        Last 4 digits: {userCardDigit}
-                                    </div>
-                                    <div className="col-md-4">
-                                        Exp date: {userCardExp}
+                                <div className="marginWithBorder">
+                                    <p className="detail-head">
+                                        Subscription Detail:
+                                    </p>
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            Current plan: {userPlan}
+                                        </div>
+                                        <div className="col-md-6">
+                                            End date: {userPlanEndDate}
+                                        </div>
                                     </div>
                                 </div>
-                                <p className="detail-head">Latest Invoice:</p>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <p>
-                                            Click{" "}
-                                            <a
-                                                target="_blank"
-                                                href={userInvoiceUrl}
-                                            >
-                                                here
-                                            </a>{" "}
-                                            to view latest invoice
-                                        </p>
+                                <div className="marginWithBorder">
+                                    <p className="detail-head">Card Detail:</p>
+                                    <div className="row">
+                                        <div className="col-md-4">
+                                            Brand: {userCardBrand}
+                                        </div>
+                                        <div className="col-md-4">
+                                            Last 4 digits: {userCardDigit}
+                                        </div>
+                                        <div className="col-md-4">
+                                            Exp date: {userCardExp}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="marginWithBorder">
+                                    <p className="detail-head">
+                                        Latest Invoice:
+                                    </p>
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <p>
+                                                Click{" "}
+                                                <a
+                                                    target="_blank"
+                                                    href={userInvoiceUrl}
+                                                >
+                                                    here
+                                                </a>{" "}
+                                                to view latest invoice
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

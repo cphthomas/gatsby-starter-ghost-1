@@ -182,21 +182,17 @@ const Post = ({ data, location }) => {
                   userLoggedIn &&
                   userPlanId == "1" &&
                   post.tags[0].name == "Premium" ? (
-                    <div className="cardDiv">
-                        <Card className="card">
-                            <Card.Body>
-                                <h2>
-                                    This post is for premium subscribers only
-                                </h2>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-block btn-premiume"
-                                    onClick={premiumCheckout}
-                                >
-                                    Upgrade to premium
-                                </button>
-                            </Card.Body>
-                        </Card>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>This post is for premium subscribers only</h2>
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-premiume"
+                                onClick={premiumCheckout}
+                            >
+                                Upgrade to premium
+                            </button>
+                        </div>
                     </div>
                 ) : apiResponse &&
                   userLoggedIn &&
@@ -228,80 +224,65 @@ const Post = ({ data, location }) => {
                         </article>
                     </div>
                 ) : apiResponse && userLoggedIn && userPlanId == "0" ? (
-                    <div className="cardDiv">
-                        <Card className="card">
-                            <Card.Body>
-                                <h2>
-                                    This post is for paying subscribers only
-                                </h2>
-                                <div className="form-group">
-                                    <label className="font-size-15">
-                                        Choose your subscription
-                                    </label>
-                                    <form onSubmit={handleSubmit}>
-                                        <div>
-                                            <label
-                                                data-tip="Access to pro content with, 49.00kr DKK / Month"
-                                                className="margin-right-20"
-                                            >
-                                                <input
-                                                    type="radio"
-                                                    name="size"
-                                                    id="pro"
-                                                    value="pro"
-                                                    onChange={(e) =>
-                                                        setPlanType(
-                                                            e.target.value
-                                                        )
-                                                    }
-                                                    required
-                                                />{" "}
-                                                Pro
-                                            </label>
-                                            <label data-tip="Full Access with, 69.00kr DKK / Month">
-                                                <input
-                                                    type="radio"
-                                                    name="size"
-                                                    id="premium"
-                                                    value="premium"
-                                                    required
-                                                    onChange={(e) =>
-                                                        setPlanType(
-                                                            e.target.value
-                                                        )
-                                                    }
-                                                />{" "}
-                                                Premium
-                                            </label>
-                                        </div>
-                                        <button
-                                            type="submit"
-                                            className="btn btn-primary btn-block btn-color"
-                                            disabled={!validateForm()}
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>This post is for paying subscribers only</h2>
+                            <div className="form-group">
+                                <label className="font-size-15">
+                                    Choose your subscription
+                                </label>
+                                <form onSubmit={handleSubmit}>
+                                    <div>
+                                        <label
+                                            data-tip="Access to pro content with, 49.00kr DKK / Month"
+                                            className="margin-right-20"
                                         >
-                                            Upgrade Subscription
-                                        </button>
-                                    </form>
-                                </div>
-                                <ReactTooltip />
-                            </Card.Body>
-                        </Card>
+                                            <input
+                                                type="radio"
+                                                name="size"
+                                                id="pro"
+                                                value="pro"
+                                                onChange={(e) =>
+                                                    setPlanType(e.target.value)
+                                                }
+                                                required
+                                            />{" "}
+                                            Pro
+                                        </label>
+                                        <label data-tip="Full Access with, 69.00kr DKK / Month">
+                                            <input
+                                                type="radio"
+                                                name="size"
+                                                id="premium"
+                                                value="premium"
+                                                required
+                                                onChange={(e) =>
+                                                    setPlanType(e.target.value)
+                                                }
+                                            />{" "}
+                                            Premium
+                                        </label>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary btn-premiume"
+                                        disabled={!validateForm()}
+                                    >
+                                        Upgrade Subscription
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 ) : apiResponse && !userLoggedIn ? (
-                    <div className="cardDiv">
-                        <Card className="card">
-                            <Card.Body>
-                                <h2>
-                                    This post is for paying subscribers only
-                                </h2>
-                                <p>
-                                    <small>
-                                        Already have an account?{" "}
-                                        <a href="/login">Sign in</a>
-                                    </small>
-                                </p>
-                            </Card.Body>
-                        </Card>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>This post is for paying subscribers only</h2>
+                            <p className="font-18">
+                                Already have an account?{" "}
+                                <a href="/login">Sign in</a>
+                            </p>
+                        </div>
                     </div>
                 ) : (
                     ""
