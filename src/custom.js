@@ -34,6 +34,7 @@ const customJS = () => {
         .then(function () {
             console.log("element is loaded.. do stuff");
             visScript();
+            
         })
         .catch(() => {
             console.log("element did not load in 8 seconds");
@@ -74,13 +75,13 @@ function visScript() {
         { id: 14, value: 1, label: "14" },
     ]);
     var nodes2 = new vis.DataSet([
-        { id: 1, value: 23, label: "1" },
-        { id: 2, value: 23, label: "2" },
-        { id: 3, value: 23, label: "3" },
-        { id: 4, value: 23, label: "4" },
-        { id: 5, value: 23, label: "5" },
-        { id: 6, value: 10, label: "6" },
-        { id: 7, value: 50, label: "7" },
+        { id: 1, value: 1, label: "23" },
+        { id: 2, value: 2, label: "23" },
+        { id: 3, value: 3, label: "23" },
+        { id: 4, value: 4, label: "23" },
+        { id: 5, value: 23, label: "23" },
+        { id: 6, value: 10, label: "23" },
+        { id: 7, value: 50, label: "23" },
         { id: 8, value: 10, label: "8" },
         { id: 9, value: 10, label: "9" },
         { id: 10, value: 10, label: "10" },
@@ -203,10 +204,73 @@ function visScript() {
         },
     };
 
+    var options2 = {
+        nodes: {
+            autoResize: true,
+            height: "100%",
+            width: "100%",
+            shape: "circle",
+            font: {
+                size: 30,
+            },
+            scaling: {
+                label: {
+                    min: 8,
+                    max: 50,
+                },
+            },
+            borderWidth: 1,
+            shadow: true,
+            margin: {
+                top: 10,
+                left: 20,
+                right: 20,
+                bottom: 10,
+            },
+            color: {
+                border: "",
+                background: "#b2dfdb",
+                highlight: {
+                    border: "#e57373",
+                    background: "#ffcdd2",
+                },
+            },
+        },
+        layout: {
+            improvedLayout: true,
+            hierarchical: {
+                enabled: false,
+                direction: "UD",
+                sortMethod: "hubsize",
+                parentCentralization: true,
+                blockShifting: true,
+                edgeMinimization: true,
+            },
+        },
+        edges: {
+            smooth: true,
+            chosen: true,
+            arrows: {
+                to: {
+                    enabled: true,
+                    type: "arrow",
+                },
+            },
+            color: {
+                color: "#b2dfdb",
+                highlight: "#ffcdd2",
+                hover: "#848484",
+                inherit: "from",
+                opacity: 1.0,s
+            },
+        },
+    };
     // initialize your network!
     var network = new vis.Network(container, data, options);
-    var network2 = new vis.Network(container2, data2, options);
+    var network2 = new vis.Network(container2, data2, options2);
 }
+
+
 
 
 
