@@ -1,9 +1,9 @@
-.card {
+/* .card {
     background-color: #15171a !important;
     color: white !important;
     text-align: center;
     padding: 40px;
-    border-radius: 12px;
+    border-radius: 0px !important;
 }
 
 .card h2 {
@@ -13,6 +13,18 @@
 .cardDiv {
     padding-left: 150px;
     padding-right: 150px;
+} */
+
+.card {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #dc143c !important;
+    border-radius: 0px !important;
+}
+
+.card-body h2 {
+    margin-top: 0px;
 }
 
 .form-group {
@@ -31,10 +43,16 @@
 }
 
 .btn-premiume {
-    display: initial !important;
+    /* display: initial !important;
     margin-top: 10px;
-    width: 115px;
-    padding: 10px;
+    width: 115px; */
+    /* padding: 10px; */
+    /* width: 30% !important; */
+    line-height: 0.428571 !important;
+}
+
+.font-18 {
+    font-size: 18px;
 }
 
 h1::before,
