@@ -143,8 +143,8 @@ function visScript() {
             shadow: false,
             margin: {
                 top: 10,
-                left: 5,
-                right: 5,
+                left: 10,
+                right: 10,
                 bottom: 10,
             },
             color: {
