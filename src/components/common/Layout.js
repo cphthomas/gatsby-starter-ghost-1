@@ -21,6 +21,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardSetupForm from "./CardSetupForm";
 import customJS from "../../custom.js";
+import customNewJS from "../../newscript.js"
 
 // Styles
 import "../../styles/app.css";
@@ -86,6 +87,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
     useEffect(async () => {
         customJS();
+        customNewJS();
 
         const userEmail = cookies.get("loggedInUser");
         let customerStripeId = "";
