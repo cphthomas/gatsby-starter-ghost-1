@@ -1,17 +1,16 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
-const publicIp = require("public-ip");
-var uniqid = require('uniqid');
+var uniqid = require("uniqid");
 
-var mysql = require("mysql");
-exports.handler = async function (event) {
-    const { email, password } = JSON.parse(event.body);
-
-    var connection = await mysql.createConnection({
+const connection = require("serverless-mysql")({
+    config: {
         host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+        database: "yj4gfzv5wypf9871",
         user: "ub4b7vh6mgd73b2b",
         password: "l7w4d31in0msovsc",
-        database: "yj4gfzv5wypf9871",
-    });
+    },
+});
+exports.handler = async function (event) {
+    const { email, password } = JSON.parse(event.body);
     await connection.connect();
     const existUserResult = await getUserDetail(connection, email, password);
 
@@ -49,6 +48,7 @@ async function getUserDetail(connection, email, password) {
             {
                 sql:
                     "SELECT * FROM `external_users` WHERE `user_email` = ? AND `user_password` = ?",
+                timeout: 10000,
                 values: [email, password],
             },
             function (error, results, fields) {
@@ -65,6 +65,7 @@ async function updateUser(connection, userEmail, userIp) {
             {
                 sql:
                     "UPDATE external_users SET user_ip = ? WHERE user_email = ?",
+                timeout: 10000,
                 values: [userIp, userEmail],
             },
             function (error, results, fields) {

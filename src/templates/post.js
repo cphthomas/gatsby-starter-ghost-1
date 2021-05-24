@@ -73,7 +73,7 @@ const Post = ({ data, location }) => {
 
             $(window).scroll(function () {
                 var limit =
-                    $(".post-feature-image").offset().top - stickyHeight - 20;
+                    $(".post-feature-image").offset()?.top - stickyHeight - 20;
 
                 var windowTop = $(window).scrollTop();
 

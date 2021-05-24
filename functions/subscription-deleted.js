@@ -1,6 +1,12 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const fetch = require("node-fetch");
-var mysql = require("mysql");
+const connection = require("serverless-mysql")({
+    config: {
+        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+        database: "yj4gfzv5wypf9871",
+        user: "ub4b7vh6mgd73b2b",
+        password: "l7w4d31in0msovsc",
+    },
+});
 
 exports.handler = async function ({ body, headers }, context) {
     try {
@@ -12,13 +18,6 @@ exports.handler = async function ({ body, headers }, context) {
         if (stripeEvent.type !== "customer.subscription.deleted") return;
 
         const subscription = await stripeEvent.data.object;
-
-        var connection = await mysql.createConnection({
-            host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-            user: "ub4b7vh6mgd73b2b",
-            password: "l7w4d31in0msovsc",
-            database: "yj4gfzv5wypf9871",
-        });
 
         try {
             await connection.connect();
@@ -51,6 +50,7 @@ async function updateUser(connection, stripeId, plan) {
             {
                 sql:
                     "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
+                timeout: 10000,
                 values: [plan, stripeId],
             },
             function (error, results, fields) {

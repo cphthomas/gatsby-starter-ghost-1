@@ -1,13 +1,15 @@
-var mysql = require("mysql");
+const connection = require("serverless-mysql")({
+    config: {
+        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+        database: "yj4gfzv5wypf9871",
+        user: "ub4b7vh6mgd73b2b",
+        password: "l7w4d31in0msovsc",
+    },
+});
+
 exports.handler = async function (event) {
     const { userEmail } = JSON.parse(event.body);
 
-    var connection = await mysql.createConnection({
-        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-        user: "ub4b7vh6mgd73b2b",
-        password: "l7w4d31in0msovsc",
-        database: "yj4gfzv5wypf9871",
-    });
     let user = "";
     try {
         await connection.connect();
@@ -29,6 +31,7 @@ async function getUser(connection, email) {
         connection.query(
             {
                 sql: "SELECT * FROM `external_users` WHERE `user_email` = ?",
+                timeout: 10000,
                 values: [email],
             },
             function (error, results, fields) {

@@ -1,16 +1,17 @@
 const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
-var mysql = require("mysql");
-var uniqid = require('uniqid');
+var uniqid = require("uniqid");
+
+const connection = require("serverless-mysql")({
+    config: {
+        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+        database: "yj4gfzv5wypf9871",
+        user: "ub4b7vh6mgd73b2b",
+        password: "l7w4d31in0msovsc",
+    },
+});
 
 exports.handler = async function (event) {
     const { email, name, password } = JSON.parse(event.body);
-
-    var connection = await mysql.createConnection({
-        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-        user: "ub4b7vh6mgd73b2b",
-        password: "l7w4d31in0msovsc",
-        database: "yj4gfzv5wypf9871",
-    });
 
     await connection.connect();
     const existUserResult = await getUserDetail(connection, email);
@@ -22,13 +23,6 @@ exports.handler = async function (event) {
                 message: "User exist alredy with same email id",
             }),
         };
-        // await connection.query(
-        //     "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
-        //     ["2", "cus_J94f2jQBK6f4gn"],
-        //     function (error, results, fields) {
-        //         if (error) throw error;
-        //     }
-        // );
     }
 
     const customer = await stripe.customers.create({
@@ -79,6 +73,7 @@ async function getUserDetail(connection, email) {
         connection.query(
             {
                 sql: "SELECT * FROM `external_users` WHERE `user_email` = ?",
+                timeout: 10000,
                 values: [email],
             },
             function (error, results, fields) {
