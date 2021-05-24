@@ -21,10 +21,12 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardSetupForm from "./CardSetupForm";
 import customJS from "../../custom.js";
-import customNewJS from "../../newscript.js"
+import customNewJS from "../../newscript.js";
 
 // Styles
 import "../../styles/app.css";
+import ClientOnly from "../../hooks/ClientOnly";
+import Search from "../../components/Search";
 
 /**
  * Main layout component
@@ -152,29 +154,32 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         }
                     }
                 });
-            await fetch("/.netlify/functions/customer-payment-method", {
-                method: "POST",
-                body: JSON.stringify({ customerStripeId }),
-            })
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    setUserCardBrand(responseJson.data[0].card.brand);
-                    setUserCardDigit(responseJson.data[0].card.last4);
-                    setUserCardExp(
-                        responseJson.data[0].card.exp_month +
-                            ", " +
-                            responseJson.data[0].card.exp_year
-                    );
-                });
-
-            await fetch("/.netlify/functions/customer-invoices", {
-                method: "POST",
-                body: JSON.stringify({ customerStripeId }),
-            })
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    setUserInvoiceUrl(responseJson.data[0].hosted_invoice_url);
-                });
+            if (customerStripeId) {
+                await fetch("/.netlify/functions/customer-payment-method", {
+                    method: "POST",
+                    body: JSON.stringify({ customerStripeId }),
+                })
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        setUserCardBrand(responseJson.data[0].card.brand);
+                        setUserCardDigit(responseJson.data[0].card.last4);
+                        setUserCardExp(
+                            responseJson.data[0].card.exp_month +
+                                ", " +
+                                responseJson.data[0].card.exp_year
+                        );
+                    });
+                await fetch("/.netlify/functions/customer-invoices", {
+                    method: "POST",
+                    body: JSON.stringify({ customerStripeId }),
+                })
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        setUserInvoiceUrl(
+                            responseJson.data[0].hosted_invoice_url
+                        );
+                    });
+            }
         } else {
             setUserLoggedIn("0");
         }
@@ -225,7 +230,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                         </ul>
                                     </li>
                                 </div>
-                                <ci-search></ci-search>
+                                {/* <ci-search></ci-search> */}
+                                <ClientOnly>
+                                    <Search />
+                                </ClientOnly>
                                 <div className="site-nav-right">
                                     {userLoggedIn == "0" ? (
                                         <Link

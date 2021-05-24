@@ -1,34 +1,5 @@
-let check = 0;
-
 const customJS = () => {
-    console.log("I'm ready = " + check);
-
-    // if (check == 0) {
     $("body").tooltip({ selector: "[data-toggle=tooltip]" });
-
-    // var id = "1f6d35dc-af10-11eb-8319-0242ac130002";
-    // var ci_search = document.createElement("script");
-    // ci_search.type = "text/javascript";
-    // ci_search.async = true;
-    // ci_search.src =
-    //     "https://cse.expertrec.com/api/js/ci_common.js?id=" + id;
-    // var s = document.getElementsByTagName("script")[0];
-    // s.parentNode.insertBefore(ci_search, s);
-    // let myScript = document.createElement("script");
-    // myScript.setAttribute(
-    //     "src",
-    //     "https://cse.expertrec.com/api/js/ci_common.js?id=1f6d35dc-af10-11eb-8319-0242ac130002"
-    // );
-    // document.body.appendChild(myScript);
-    // check++;
-    //}
-
-    let myScript = document.createElement("script");
-    myScript.setAttribute(
-        "src",
-        "https://cse.expertrec.com/api/js/ci_common.js?id=1f6d35dc-af10-11eb-8319-0242ac130002"
-    );
-    document.body.appendChild(myScript);
 
     waitForElement("#mynetwork1, #mynetwork2", 8000)
         .then(function () {
@@ -39,6 +10,16 @@ const customJS = () => {
             console.log("element did not load in 8 seconds");
         });
 };
+
+// (function () {
+//     var id = "1f6d35dc-af10-11eb-8319-0242ac130002";
+//     var ci_search = document.createElement("script");
+//     ci_search.type = "text/javascript";
+//     ci_search.async = true;
+//     ci_search.src = "https://cse.expertrec.com/api/js/ci_common.js?id=" + id;
+//     var s = document.getElementsByTagName("script")[0];
+//     s.parentNode.insertBefore(ci_search, s);
+// })();
 
 function waitForElement(querySelector, timeout = 0) {
     const startTime = new Date().getTime();
