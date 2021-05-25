@@ -11,16 +11,6 @@ const customJS = () => {
         });
 };
 
-// (function () {
-//     var id = "1f6d35dc-af10-11eb-8319-0242ac130002";
-//     var ci_search = document.createElement("script");
-//     ci_search.type = "text/javascript";
-//     ci_search.async = true;
-//     ci_search.src = "https://cse.expertrec.com/api/js/ci_common.js?id=" + id;
-//     var s = document.getElementsByTagName("script")[0];
-//     s.parentNode.insertBefore(ci_search, s);
-// })();
-
 function waitForElement(querySelector, timeout = 0) {
     const startTime = new Date().getTime();
     return new Promise((resolve, reject) => {
@@ -67,7 +57,7 @@ function visScript() {
         { id: 6, font: { size: 14 }, level: "2", label: "Kriminalretten" },
     ]);
     var nodes31 = new vis.DataSet(
-        options = 
+        options =
         [
         { id: 1, value: 10, level: "1", label: "Aftaleloven" },
         { id: 2, value: 10, level: "2", label: "Indgåelse af forsikringsaftaler" },
@@ -83,8 +73,8 @@ function visScript() {
         { from: 1, to: 2 },
         { from: 2, to: 3 },
         { from: 3, to: 1 },
-        
-       
+
+
     ]);
     var edges12 = new vis.DataSet([
         { from: 1, to: 2 },
@@ -118,7 +108,7 @@ function visScript() {
     var container12 = document.getElementById("vis12");
     var container13 = document.getElementById("vis13");
     var container31 = document.getElementById("vis31");
-    
+
 
     // provide the data in the vis format
     var data11 = {
@@ -134,8 +124,8 @@ function visScript() {
         edges: edges13,
     };
     var data31 = {
-        
-        
+
+
         nodes: nodes31,
         edges: edges31,
     };
@@ -320,7 +310,7 @@ function visScript() {
     var vis12 = new vis.Network(container12, data12, options);
     var vis13 = new vis.Network(container13, data13, options);
     var vis31 = new vis.Network(container31, data31, options2);
-    
+
 }
 
 export default customJS;
