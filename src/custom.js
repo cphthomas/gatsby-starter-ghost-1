@@ -110,6 +110,7 @@ function visScript() {
         { from: 1, to: 4 },
         { from: 1, to: 5 },
         { from: 1, to: 6 },
+        { from: 1, to: 7 },
     ]);
 
     // create a network
@@ -226,11 +227,99 @@ function visScript() {
         },
     };
 
+    var options2 = {
+        nodes: {
+            autoResize: true,
+            height: "100%",
+            width: "100%",
+            shape: "box",
+
+            font: {
+                color: "white",
+                size: 10,
+            },
+            scaling: {
+                label: {
+                    min: 8,
+                    max: 50,
+                },
+            },
+            borderWidth: 1,
+            shadow: false,
+            margin: {
+                top: 10,
+                left: 10,
+                right: 10,
+                bottom: 10,
+            },
+            color: {
+                border: "black",
+                background: "black",
+                highlight: {
+                    fontColor: "black",
+
+                    border: "orange",
+                    background: "orange",
+                },
+            },
+        },
+        autoResize: true,
+        physics: {
+            hierarchicalRepulsion: {
+                centralGravity: 0.0,
+                springLength: 230,
+                springConstant: 0.18,
+                avoidOverlap: -10,
+                treeSpacing: 100,
+                nodeDistance: 100,
+            },
+            maxVelocity: 146,
+            solver: "hierarchicalRepulsion",
+            timestep: 0.35,
+            stabilization: {
+                enabled: true,
+                iterations: 2000,
+            },
+        },
+        layout: {
+            improvedLayout: true,
+            hierarchical: {
+                enabled: true,
+                direction: "LR",
+                levelSeparation: 420,
+                nodeSpacing: 10,
+                treeSpacing: 10,
+                blockShifting: true,
+                sortMethod: "hubsize",
+                parentCentralization: true,
+                blockShifting: true,
+                edgeMinimization: true,
+            },
+        },
+        edges: {
+            smooth: false,
+            chosen: true,
+            arrows: {
+                to: {
+                    enabled: false,
+                    type: "arrow",
+                },
+            },
+            color: {
+                color: "black",
+                highlight: "orange",
+                hover: "#848484",
+                inherit: "from",
+                opacity: 1.0,
+            },
+        },
+    };
+
     // initialize your network!
     var vis11 = new vis.Network(container11, data11, options);
     var vis12 = new vis.Network(container12, data12, options);
     var vis13 = new vis.Network(container13, data13, options);
-    var vis31 = new vis.Network(container31, data31, options);
+    var vis31 = new vis.Network(container31, data31, options2);
     
 }
 
