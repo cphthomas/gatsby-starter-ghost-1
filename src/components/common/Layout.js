@@ -25,8 +25,8 @@ import customNewJS from "../../newscript.js";
 
 // Styles
 import "../../styles/app.css";
-import ClientOnly from "../../hooks/ClientOnly";
-import Search from "../../components/Search";
+import Search from "../search";
+const searchIndices = [{ name: `Ghost`, title: `Posts` }];
 
 /**
  * Main layout component
@@ -231,9 +231,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </li>
                                 </div>
                                 {/* <ci-search></ci-search> */}
-                                <ClientOnly>
-                                    <Search />
-                                </ClientOnly>
+                                <Search indices={searchIndices} />
                                 <div className="site-nav-right">
                                     {userLoggedIn == "0" ? (
                                         <Link
