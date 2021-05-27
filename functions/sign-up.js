@@ -25,6 +25,8 @@ exports.handler = async function (event) {
         };
     }
 
+    console.log("existUserResult = " + existUserResult);
+
     const customer = await stripe.customers.create({
         email: email,
     });
@@ -46,13 +48,20 @@ exports.handler = async function (event) {
         is_logged_in: 1,
         user_ip: userIp,
     };
-    var query = await connection.query(
-        "INSERT INTO external_users SET ?",
-        member,
-        function (error, results, fields) {
-            if (error) throw error;
-        }
-    );
+    try {
+        var query = await connection.query(
+            {
+                sql: "INSERT INTO external_users SET ?",
+                timeout: 20000,
+                values: [member],
+            }
+            // function (error, results, fields) {
+            //     if (error) throw error;
+            // }
+        );
+    } catch (e) {
+        console.log(`User not created= ${e}`);
+    }
 
     await connection.end();
 
