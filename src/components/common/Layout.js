@@ -199,36 +199,40 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <header className="site-head">
                         <div className="container">
                             <nav className="site-nav">
-                                <div className="site-nav-left">
-                                    <Navigation
-                                        data={site.navigation}
-                                        navClass="site-nav-item"
-                                    />
-                                </div>
-                                <div>
-                                    <li className="nav-item dropdown">
-                                        <a
-                                            className="nav-link  dropdown-toggle btn btn-primary"
-                                            href="#"
-                                            role="button"
-                                            data-bs-toggle="dropdown"
-                                        >
-                                            {" "}
-                                            All Chapters{" "}
-                                        </a>
-                                        <ul className="dropdown-menu">
-                                            {allPosts.map(({ node }) => (
-                                                <li>
-                                                    <a
-                                                        className="dropdown-item"
-                                                        href={"/" + node.slug}
-                                                    >
-                                                        {node.title}
-                                                    </a>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </li>
+                                <div className="site-nav-left row">
+                                    <div className="col-md-6 col-xs-3">
+                                        <Navigation
+                                            data={site.navigation}
+                                            navClass="site-nav-item"
+                                        />
+                                    </div>
+                                    <div className="col-md-6 col-xs-6">
+                                        <li className="nav-item dropdown">
+                                            <a
+                                                className="nav-link  dropdown-toggle btn btn-primary"
+                                                href="#"
+                                                role="button"
+                                                data-bs-toggle="dropdown"
+                                            >
+                                                {" "}
+                                                All Chapters{" "}
+                                            </a>
+                                            <ul className="dropdown-menu allChapterUl">
+                                                {allPosts.map(({ node }) => (
+                                                    <li>
+                                                        <a
+                                                            className="dropdown-item"
+                                                            href={
+                                                                "/" + node.slug
+                                                            }
+                                                        >
+                                                            {node.title}
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </li>
+                                    </div>
                                 </div>
                                 {/* <ci-search></ci-search> */}
                                 <Search indices={searchIndices} />
@@ -241,53 +245,105 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             Login
                                         </Link>
                                     ) : userName ? (
-                                        <Dropdown as={ButtonGroup}>
-                                            <Button
-                                                variant="secondary"
-                                                className="account-btn"
+                                        <li className="nav-item dropdown accountLi">
+                                            <a
+                                                className="nav-link dropdown-toggle account"
+                                                href="#"
+                                                id="navbarDropdown"
+                                                role="button"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
                                             >
                                                 {userName}
-                                            </Button>
-                                            <Dropdown.Toggle
-                                                split
-                                                variant="secondary"
-                                                id="dropdown-split-basic"
-                                                className="account-btn"
-                                            />
-                                            <Dropdown.Menu>
+                                            </a>
+                                            <div
+                                                className="dropdown-menu"
+                                                aria-labelledby="navbarDropdown"
+                                            >
                                                 {isSubscribed ? (
                                                     <div>
-                                                        <Dropdown.Item
+                                                        <a
+                                                            className="dropdown-item"
                                                             data-toggle="modal"
                                                             data-target="#exampleModal"
                                                         >
                                                             My Account
-                                                        </Dropdown.Item>
-                                                        <Dropdown.Item
+                                                        </a>
+                                                        <a
+                                                            className="dropdown-item"
                                                             data-toggle="modal"
                                                             data-target="#confirmCancelModal"
                                                         >
                                                             Cancel Subscription
-                                                        </Dropdown.Item>
-                                                        <Dropdown.Item
+                                                        </a>
+                                                        <a
+                                                            className="dropdown-item"
                                                             data-toggle="modal"
                                                             data-target="#changeCardModal"
                                                         >
                                                             Change Card
-                                                        </Dropdown.Item>
-                                                        <Dropdown.Divider />
+                                                        </a>
+                                                        <div className="dropdown-divider"></div>
+                                                        <a
+                                                            className="dropdown-item"
+                                                            onClick={userLogout}
+                                                        >
+                                                            Logout
+                                                        </a>
                                                     </div>
                                                 ) : (
                                                     ""
                                                 )}
-                                                <Dropdown.Item
-                                                    onClick={userLogout}
-                                                >
-                                                    Logout
-                                                </Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
+                                            </div>
+                                        </li>
                                     ) : (
+                                        // <Dropdown as={ButtonGroup}>
+                                        //     <Button
+                                        //         variant="secondary"
+                                        //         className="account-btn"
+                                        //     >
+                                        //         {userName}
+                                        //     </Button>
+                                        //     <Dropdown.Toggle
+                                        //         split
+                                        //         variant="secondary"
+                                        //         id="dropdown-split-basic"
+                                        //         className="account-btn"
+                                        //     />
+                                        //     <Dropdown.Menu>
+                                        //         {isSubscribed ? (
+                                        //             <div>
+                                        //                 <Dropdown.Item
+                                        //                     data-toggle="modal"
+                                        //                     data-target="#exampleModal"
+                                        //                 >
+                                        //                     My Account
+                                        //                 </Dropdown.Item>
+                                        //                 <Dropdown.Item
+                                        //                     data-toggle="modal"
+                                        //                     data-target="#confirmCancelModal"
+                                        //                 >
+                                        //                     Cancel Subscription
+                                        //                 </Dropdown.Item>
+                                        //                 <Dropdown.Item
+                                        //                     data-toggle="modal"
+                                        //                     data-target="#changeCardModal"
+                                        //                 >
+                                        //                     Change Card
+                                        //                 </Dropdown.Item>
+                                        //                 <Dropdown.Divider />
+                                        //             </div>
+                                        //         ) : (
+                                        //             ""
+                                        //         )}
+                                        //         <Dropdown.Item
+                                        //             onClick={userLogout}
+                                        //         >
+                                        //             Logout
+                                        //         </Dropdown.Item>
+                                        //     </Dropdown.Menu>
+                                        // </Dropdown>
                                         ""
                                     )}
                                 </div>

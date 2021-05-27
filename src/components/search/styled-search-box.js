@@ -2,11 +2,12 @@ import styled, { css } from "styled-components"
 import SearchBox from "./search-box"
 
 const open = css`
-  width: 9em;
+  width: 7em;
   background: ${({ theme }) => theme.background};
   cursor: text;
   margin-left: -1.6em;
   padding-left: 1.6em;
+  margin-right: 8px;
 `
 
 const closed = css`
