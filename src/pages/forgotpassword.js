@@ -60,7 +60,7 @@ export default function Login() {
 
     return (
         <Layout>
-            <div className="form-div">
+            <div className="form-div customFormDiv">
                 <form onSubmit={handleSubmit}>
                     <h3 className="page-title">Forgot Password</h3>
 

@@ -90,7 +90,7 @@ export default function SignUp() {
 
     return (
         <Layout>
-            <div className="form-div">
+            <div className="form-div customFormDiv">
                 <form onSubmit={handleSubmit}>
                     <h3 className="page-title">Sign Up</h3>
 

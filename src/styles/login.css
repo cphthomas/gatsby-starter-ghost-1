@@ -44,3 +44,15 @@ input {
 .margin-right-20 {
     margin-right: 20px;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 812px) {
+    .customFormDiv {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+}
+
+.customFormDiv {
+    padding-left: 30%;
+    padding-right: 30%;
+}
