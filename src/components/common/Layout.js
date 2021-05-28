@@ -101,7 +101,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 .then((response) => response.json())
                 .then(async (responseJson) => {
                     if (
-                        responseJson.user[0].user_ip !==
+                        responseJson.user[0]?.user_ip !==
                         cookies.get("loggedInUserIpAddress")
                     ) {
                         cookies.remove("loggedInUser");
@@ -284,66 +284,20 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                         >
                                                             Change Card
                                                         </a>
-                                                        <div className="dropdown-divider"></div>
-                                                        <a
-                                                            className="dropdown-item"
-                                                            onClick={userLogout}
-                                                        >
-                                                            Logout
-                                                        </a>
                                                     </div>
                                                 ) : (
                                                     ""
                                                 )}
+                                                <div className="dropdown-divider"></div>
+                                                <a
+                                                    className="dropdown-item"
+                                                    onClick={userLogout}
+                                                >
+                                                    Logout
+                                                </a>
                                             </div>
                                         </li>
                                     ) : (
-                                        // <Dropdown as={ButtonGroup}>
-                                        //     <Button
-                                        //         variant="secondary"
-                                        //         className="account-btn"
-                                        //     >
-                                        //         {userName}
-                                        //     </Button>
-                                        //     <Dropdown.Toggle
-                                        //         split
-                                        //         variant="secondary"
-                                        //         id="dropdown-split-basic"
-                                        //         className="account-btn"
-                                        //     />
-                                        //     <Dropdown.Menu>
-                                        //         {isSubscribed ? (
-                                        //             <div>
-                                        //                 <Dropdown.Item
-                                        //                     data-toggle="modal"
-                                        //                     data-target="#exampleModal"
-                                        //                 >
-                                        //                     My Account
-                                        //                 </Dropdown.Item>
-                                        //                 <Dropdown.Item
-                                        //                     data-toggle="modal"
-                                        //                     data-target="#confirmCancelModal"
-                                        //                 >
-                                        //                     Cancel Subscription
-                                        //                 </Dropdown.Item>
-                                        //                 <Dropdown.Item
-                                        //                     data-toggle="modal"
-                                        //                     data-target="#changeCardModal"
-                                        //                 >
-                                        //                     Change Card
-                                        //                 </Dropdown.Item>
-                                        //                 <Dropdown.Divider />
-                                        //             </div>
-                                        //         ) : (
-                                        //             ""
-                                        //         )}
-                                        //         <Dropdown.Item
-                                        //             onClick={userLogout}
-                                        //         >
-                                        //             Logout
-                                        //         </Dropdown.Item>
-                                        //     </Dropdown.Menu>
-                                        // </Dropdown>
                                         ""
                                     )}
                                 </div>
