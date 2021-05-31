@@ -1,4 +1,4 @@
-const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
+const stripe = require("stripe")(process.env.GATSBY_STRIPE_SK_KEY);
 var uniqid = require("uniqid");
 
 const connection = require("serverless-mysql")({

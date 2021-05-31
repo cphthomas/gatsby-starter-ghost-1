@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-
 import { Layout } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import Cookies from "universal-cookie";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "react-bootstrap/Card";
 import "../styles/post.css";
-import ReactTooltip from "react-tooltip";
 import { loadStripe } from "@stripe/stripe-js";
 import * as tocbot from "tocbot";
+import { constants } from "../utils/constants";
+import { Image } from "react-bootstrap";
 
 /**
  * Single post view (/:slug)
@@ -50,7 +48,6 @@ const Post = ({ data, location }) => {
                     } else {
                         cookies.remove("loggedInUser");
                         cookies.remove("loggedInUserIpAddress");
-                        //window.location.href = "/login";
                     }
                 });
             tocbot.init({
@@ -110,7 +107,7 @@ const Post = ({ data, location }) => {
             .then(async (response) => response.json())
             .then(async (responseJson) => {
                 const stripePromise = await loadStripe(
-                    "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
+                    process.env.GATSBY_STRIPE_PK_KEY
                 );
                 const stripe = await stripePromise;
                 await stripe.redirectToCheckout({
@@ -132,7 +129,7 @@ const Post = ({ data, location }) => {
             .then(async (response) => response.json())
             .then(async (responseJson) => {
                 const stripePromise = await loadStripe(
-                    "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
+                    process.env.GATSBY_STRIPE_PK_KEY
                 );
                 const stripe = await stripePromise;
                 await stripe.redirectToCheckout({
@@ -150,80 +147,52 @@ const Post = ({ data, location }) => {
             <Helmet>
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
             </Helmet>
-
             <Layout>
-                {apiResponse && userLoggedIn && userPlanId == "2" ? (
-                    <div>
-                        <article className="content">
-                            {post.feature_image ? (
-                                <figure className="post-feature-image">
-                                    <img
-                                        src={post.feature_image}
-                                        alt={post.title}
-                                    />
-                                </figure>
-                            ) : null}
-                            <aside className="toc-container">
-                                <div className="toc"></div>
-                            </aside>
-                            <section className="post-full-content">
-                                <h1 className="content-title">{post.title}</h1>
-
-                                <section
-                                    className="content-body load-external-scripts"
-                                    dangerouslySetInnerHTML={{
-                                        __html: post.html,
-                                    }}
+                {apiResponse &&
+                (post.tags[0].name == constants.FREE_POST ||
+                    userPlanId == constants.USER_PREMIUM_PLAN_ID ||
+                    (userPlanId == constants.USER_PRO_PLAN_ID &&
+                        post.tags[0].name == constants.PRO_POST)) ? (
+                    <article className="content">
+                        {post.feature_image ? (
+                            <figure className="post-feature-image">
+                                <img
+                                    src={post.feature_image}
+                                    alt={post.title}
                                 />
-                            </section>
-                        </article>
-                    </div>
+                            </figure>
+                        ) : null}
+                        <aside className="toc-container">
+                            <div className="toc"></div>
+                        </aside>
+                        <section className="post-full-content">
+                            <h1 className="content-title">{post.title}</h1>
+                            <section
+                                className="content-body load-external-scripts"
+                                dangerouslySetInnerHTML={{
+                                    __html: post.html,
+                                }}
+                            />
+                        </section>
+                    </article>
                 ) : apiResponse &&
-                  userLoggedIn &&
-                  userPlanId == "1" &&
-                  post.tags[0].name == "Premium" ? (
+                  !userLoggedIn &&
+                  (post.tags[0].name == constants.PRO_POST ||
+                      post.tags[0].name == constants.PREMIUM_POST) ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2>This post is for premium subscribers only</h2>
-                            <button
-                                type="submit"
-                                className="btn btn-primary btn-premiume"
-                                onClick={premiumCheckout}
-                            >
-                                Upgrade to premium
-                            </button>
+                            <h2>This post is for paying subscribers only</h2>
+                            <p className="font-18">
+                                Already have an account?{" "}
+                                <a href="/login">Sign in</a>
+                            </p>
                         </div>
                     </div>
                 ) : apiResponse &&
                   userLoggedIn &&
-                  userPlanId == "1" &&
-                  post.tags[0].name == "Pro" ? (
-                    <div>
-                        <article className="content">
-                            {post.feature_image ? (
-                                <figure className="post-feature-image">
-                                    <img
-                                        src={post.feature_image}
-                                        alt={post.title}
-                                    />
-                                </figure>
-                            ) : null}
-                            <aside className="toc-container">
-                                <div className="toc"></div>
-                            </aside>
-                            <section className="post-full-content">
-                                <h1 className="content-title">{post.title}</h1>
-
-                                <section
-                                    className="content-body load-external-scripts"
-                                    dangerouslySetInnerHTML={{
-                                        __html: post.html,
-                                    }}
-                                />
-                            </section>
-                        </article>
-                    </div>
-                ) : apiResponse && userLoggedIn && userPlanId == "0" ? (
+                  userPlanId == constants.USER_NO_PLAN_ID &&
+                  (post.tags[0].name == constants.PRO_POST ||
+                      post.tags[0].name == constants.PREMIUM_POST) ? (
                     <div class="card">
                         <div class="card-body">
                             <h2>This post is for paying subscribers only</h2>
@@ -274,18 +243,26 @@ const Post = ({ data, location }) => {
                             </div>
                         </div>
                     </div>
-                ) : apiResponse && !userLoggedIn ? (
+                ) : apiResponse &&
+                  userLoggedIn &&
+                  userPlanId == constants.USER_PRO_PLAN_ID &&
+                  post.tags[0].name == constants.PREMIUM_POST ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2>This post is for paying subscribers only</h2>
-                            <p className="font-18">
-                                Already have an account?{" "}
-                                <a href="/login">Sign in</a>
-                            </p>
+                            <h2>This post is for premium subscribers only</h2>
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-premiume"
+                                onClick={premiumCheckout}
+                            >
+                                Upgrade to premium
+                            </button>
                         </div>
                     </div>
                 ) : (
-                    ""
+                    <div className="loaderImgDiv">
+                        <Image className="loaderImg" src={"/images/loader.gif"} alt="dataLoadImage" />
+                    </div>
                 )}
             </Layout>
         </div>

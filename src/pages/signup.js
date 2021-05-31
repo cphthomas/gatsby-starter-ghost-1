@@ -75,7 +75,7 @@ export default function SignUp() {
                 .then(async (response) => response.json())
                 .then(async (responseJson) => {
                     const stripePromise = await loadStripe(
-                        "pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U"
+                        process.env.GATSBY_STRIPE_PK_KEY
                     );
                     const stripe = await stripePromise;
                     await stripe.redirectToCheckout({

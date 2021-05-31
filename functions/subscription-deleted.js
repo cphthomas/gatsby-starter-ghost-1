@@ -13,7 +13,7 @@ exports.handler = async function ({ body, headers }, context) {
         const stripeEvent = await stripe.webhooks.constructEvent(
             body,
             headers["stripe-signature"],
-            "whsec_QQfWIfXTmZW4ZSIR8ypfIbrb0YC7rRZ4"
+            process.env.GATSBY_STRIPE_DELETE_WEBHOOK
         );
         if (stripeEvent.type !== "customer.subscription.deleted") return;
 

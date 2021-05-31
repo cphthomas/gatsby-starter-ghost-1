@@ -68,3 +68,11 @@ h6::before {
     margin-top: 15px;
     visibility: hidden;
 }
+
+.loaderImgDiv {
+    text-align: center;
+}
+
+.loaderImg {
+    width: 30%;
+}

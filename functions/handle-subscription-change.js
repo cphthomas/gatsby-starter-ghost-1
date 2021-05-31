@@ -13,7 +13,7 @@ exports.handler = async function ({ body, headers }, context) {
         const stripeEvent = await stripe.webhooks.constructEvent(
             body,
             headers["stripe-signature"],
-            "whsec_TtO91dQXunKYoofz8go1AZfQpKIxnweg"
+            process.env.GATSBY_STRIPE_CHANGE_WEBHOOK
         );
 
         if (stripeEvent.type !== "customer.subscription.updated") return;

@@ -1,4 +1,4 @@
-const stripe = require("stripe")("sk_test_6uOkcnnJw0VAoDZmIaKWEqzu");
+const stripe = require("stripe")(process.env.GATSBY_STRIPE_SK_KEY);
 
 exports.handler = async function (event) {
     const { email, customerId, planType } = JSON.parse(event.body);

@@ -49,7 +49,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const [userCardDigit, setUserCardDigit] = useState("");
     const [userCardExp, setUserCardExp] = useState("");
 
-    const stripePromise = loadStripe("pk_test_VtVbrLQ6xPiMm1pMmRVsiU1U");
+    const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PK_KEY);
 
     const cookies = new Cookies();
     const site = data.allGhostSettings.edges[0].node;
