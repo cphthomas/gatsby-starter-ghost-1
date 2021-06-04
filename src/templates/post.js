@@ -260,8 +260,14 @@ const Post = ({ data, location }) => {
                         </div>
                     </div>
                 ) : (
-                    <div className="loaderImgDiv">
-                        <Image className="loaderImg" src={"/images/loader.gif"} alt="dataLoadImage" />
+                    // <div className="loaderImgDiv">
+                    //     <Image className="loaderImg" src={"/images/loader.gif"} alt="dataLoadImage" />
+                    // </div>
+                    <div className="loadwrap">
+                        <div>
+                            <div className="bounceball"></div>
+                            <div className="loadText">NOW LOADING</div>
+                        </div>
                     </div>
                 )}
             </Layout>
