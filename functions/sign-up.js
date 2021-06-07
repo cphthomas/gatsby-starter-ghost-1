@@ -47,6 +47,7 @@ exports.handler = async function (event) {
         plan_id: "0",
         is_logged_in: 1,
         user_ip: userIp,
+        book_access: process.env.GATSBY_BOOK_ACCESS,
     };
     try {
         var query = await connection.query(
@@ -81,9 +82,10 @@ async function getUserDetail(connection, email) {
     return new Promise((resolve, reject) => {
         connection.query(
             {
-                sql: "SELECT * FROM `external_users` WHERE `user_email` = ?",
+                sql:
+                    "SELECT * FROM `external_users` WHERE `user_email` = ? AND `book_access` = ?",
                 timeout: 10000,
-                values: [email],
+                values: [email, process.env.GATSBY_BOOK_ACCESS],
             },
             function (error, results, fields) {
                 if (error) reject(err);
