@@ -300,7 +300,7 @@ export const postQuery = graphql`
     query($slug: String!) {
         ghostPost(
             slug: { eq: $slug }
-            tags: { elemMatch: { name: { eq: "BOOK_MAIN" } } }
+            tags: { elemMatch: { name: { eq: "Jura" } } }
         ) {
             ...GhostPostFields
         }

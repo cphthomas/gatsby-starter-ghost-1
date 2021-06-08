@@ -516,7 +516,7 @@ const DefaultLayoutSettingsQuery = (props) => (
                 }
                 allGhostPost(
                     filter: {
-                        tags: { elemMatch: { name: { eq: "BOOK_MAIN" } } }
+                        tags: { elemMatch: { name: { eq: "Jura" } } }
                     }
                 ) {
                     edges {

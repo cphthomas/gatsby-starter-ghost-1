@@ -6,7 +6,7 @@ const indexName = `Ghost`;
 const pageQuery = `{
   pages: allGhostPost(
     filter: {
-        tags: { elemMatch: { name: { eq: "BOOK_MAIN" } } }
+        tags: { elemMatch: { name: { eq: "Jura" } } }
     }
 ) {
     edges {
