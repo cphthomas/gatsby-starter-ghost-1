@@ -50,16 +50,11 @@ exports.handler = async function (event) {
         book_access: process.env.GATSBY_BOOK_ACCESS,
     };
     try {
-        var query = await connection.query(
-            {
-                sql: "INSERT INTO external_users SET ?",
-                timeout: 20000,
-                values: [member],
-            }
-            // function (error, results, fields) {
-            //     if (error) throw error;
-            // }
-        );
+        var query = await connection.query({
+            sql: "INSERT INTO external_users SET ?",
+            timeout: 20000,
+            values: [member],
+        });
     } catch (e) {
         console.log(`User not created= ${e}`);
     }
