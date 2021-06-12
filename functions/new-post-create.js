@@ -5,6 +5,9 @@ exports.handler = async function ({ body, headers }, context) {
         console.log(body);
         console.log("-------------headers--------------");
         console.log(headers);
+        if (true) {
+            throw new Error(`You can't post this error`);
+        }
         return {
             statusCode: 200,
             body: JSON.stringify({ received: subscription.customer }),
