@@ -1,6 +1,10 @@
 exports.handler = async function ({ body, headers }, context) {
     try {
         console.log("Yes this works!!!");
+        console.log("----------------body--------------");
+        console.log(body);
+        console.log("-------------headers--------------");
+        console.log(headers);
         return {
             statusCode: 200,
             body: JSON.stringify({ received: subscription.customer }),
