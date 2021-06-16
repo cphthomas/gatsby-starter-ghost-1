@@ -172,7 +172,7 @@ function handsonTableScript() {
                 forceNumeric: true,
             },
         ],
-        language: "en-US",
+        language: "da-dk",
     };
     var hot = new Handsontable(hotElement, hotSettings);
 
