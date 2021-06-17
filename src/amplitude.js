@@ -103,7 +103,7 @@ Amplitude.init({
     songs: [
         {
             name: "Jura 1 podcast",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url:
                 "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936160/podcasts/Poscast_til_eksamensopgave_9.6._Joachim_btjteb.m4a",
@@ -112,7 +112,7 @@ Amplitude.init({
         },
         {
             name: "The Gun",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/08 The Gun.mp3",
             cover_art_url:
@@ -120,7 +120,7 @@ Amplitude.init({
         },
         {
             name: "Anvil",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
             cover_art_url:
@@ -128,7 +128,7 @@ Amplitude.init({
         },
         {
             name: "I Came Running",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url:
                 "https://521dimensions.com/song/ICameRunning-AncientAstronauts.mp3",
@@ -137,7 +137,7 @@ Amplitude.init({
         },
         {
             name: "First Snow",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
             cover_art_url:
@@ -145,7 +145,7 @@ Amplitude.init({
         },
         {
             name: "Terrain",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/Terrain-pglost.mp3",
             cover_art_url:
@@ -153,7 +153,7 @@ Amplitude.init({
         },
         {
             name: "Vorel",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/Vorel-RussianCircles.mp3",
             cover_art_url:
@@ -161,7 +161,7 @@ Amplitude.init({
         },
         {
             name: "Intro / Sweet Glory",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url:
                 "https://521dimensions.com/song/IntroSweetGlory-Jimkata.mp3",
@@ -170,7 +170,7 @@ Amplitude.init({
         },
         {
             name: "Offcut #6",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/Offcut6-LittlePeople.mp3",
             cover_art_url:
@@ -179,7 +179,7 @@ Amplitude.init({
         },
         {
             name: "Dusk To Dawn",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url:
                 "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
@@ -188,7 +188,7 @@ Amplitude.init({
         },
         {
             name: "Anthem",
-            artist: "Sonny Christoffersen",
+            artist: "Sonny Kristoffersen",
             album: "Finansjura",
             url: "https://521dimensions.com/song/Anthem-Emancipator.mp3",
             cover_art_url:
@@ -217,11 +217,11 @@ Amplitude.init({
     },
 });
 
-    /* Amplitude.init({
+    Amplitude.init({
         songs: [
             {
                 name: "Jura 1 podcast",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url:
                     "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936160/podcasts/Poscast_til_eksamensopgave_9.6._Joachim_btjteb.m4a",
@@ -230,7 +230,7 @@ Amplitude.init({
             },
             {
                 name: "The Gun",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/08 The Gun.mp3",
                 cover_art_url:
@@ -238,7 +238,7 @@ Amplitude.init({
             },
             {
                 name: "Anvil",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
                 cover_art_url:
@@ -246,7 +246,7 @@ Amplitude.init({
             },
             {
                 name: "I Came Running",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url:
                     "https://521dimensions.com/song/ICameRunning-AncientAstronauts.mp3",
@@ -255,7 +255,7 @@ Amplitude.init({
             },
             {
                 name: "First Snow",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
                 cover_art_url:
@@ -263,7 +263,7 @@ Amplitude.init({
             },
             {
                 name: "Terrain",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/Terrain-pglost.mp3",
                 cover_art_url:
@@ -271,7 +271,7 @@ Amplitude.init({
             },
             {
                 name: "Vorel",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/Vorel-RussianCircles.mp3",
                 cover_art_url:
@@ -279,7 +279,7 @@ Amplitude.init({
             },
             {
                 name: "Intro / Sweet Glory",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url:
                     "https://521dimensions.com/song/IntroSweetGlory-Jimkata.mp3",
@@ -288,7 +288,7 @@ Amplitude.init({
             },
             {
                 name: "Offcut #6",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/Offcut6-LittlePeople.mp3",
                 cover_art_url:
@@ -297,7 +297,7 @@ Amplitude.init({
             },
             {
                 name: "Dusk To Dawn",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url:
                     "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
@@ -306,7 +306,7 @@ Amplitude.init({
             },
             {
                 name: "Anthem",
-                artist: "Sonny Christoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url: "https://521dimensions.com/song/Anthem-Emancipator.mp3",
                 cover_art_url:
@@ -333,7 +333,7 @@ Amplitude.init({
         waveforms: {
             sample_rate: 50,
         },
-    }); */
+    });
     document.getElementById("large-visualization").style.height =
         document.getElementById("album-art").offsetWidth + "px";
 }
