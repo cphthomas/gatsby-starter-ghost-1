@@ -89,43 +89,43 @@ function amplitudePlayerScript() {
     Amplitude.init({
         songs: [
             {
-                name: "First Snow",
+                name: "Eksamensopgave 9.7. Knudsen Properties v. Dennis Knudsen",
                 artist: "Emancipator",
-                album: "Soon It Will Be Cold Enough",
-                url: "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
+                album: "Finansjura",
+                url: "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936132/podcasts/Poscast_til_eksamensopgave_9.7._Knudsen_Properties_v._Dennis_Knudsen_m2sllj.m4a",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
             },
         ],
         playlists: {
             emancipator: {
                 songs: [
                     {
-                        name: "First Snow",
-                        artist: "Emancipator",
-                        album: "Soon It Will Be Cold Enough",
+                        name: "Eksamensopgave 9.3. Tømrermester Bertil Jaobsen og Tina Jensen",
+                        artist: "Sonny Kristoffersen",
+                        album: "Finansjura",
                         url:
-                            "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
+                            "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936130/podcasts/Poscast_til_eksamensopgave_9.3._T%C3%B8mrermester_Bertil_Jaobsen_og_Tina_Jensen_vosge7.m4a",
                         cover_art_url:
-                            "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
                     },
                     {
                         name: "Dusk To Dawn",
-                        artist: "Emancipator",
-                        album: "Dusk To Dawn",
+                        artist: "Sonny Kristoffersen",
+                        album: "Finansjura",
                         url:
                             "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
                         cover_art_url:
-                            "https://521dimensions.com/img/open-source/amplitudejs/album-art/from-dusk-to-dawn.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938952/sonnyjuraimages/legal3_qdy0v9.jpg",
                     },
                     {
-                        name: "Anthem",
-                        artist: "Emancipator",
-                        album: "Soon It Will Be Cold Enough",
+                        name: "Eksamensopgave 9.4. Lottogevinsten",
+                        artist: "Sonny Kristoffersen",
+                        album: "Finansjura",
                         url:
-                            "https://521dimensions.com/song/Anthem-Emancipator.mp3",
+                            "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936133/podcasts/Poscast_til_eksamensopgave_9.4._Lottogevinsten_mkzmxp.m4a",
                         cover_art_url:
-                            "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
                     },
                 ],
             },
@@ -133,25 +133,25 @@ function amplitudePlayerScript() {
                 songs: [
                     {
                         name: "Risin' High (feat Raashan Ahmad)",
-                        artist: "Ancient Astronauts",
-                        album: "We Are to Answer",
+                        artist: "Sonny Kristoffersen",
+                        album: "Finansjura",
                         url:
-                            "https://521dimensions.com/song/Ancient Astronauts - Risin' High (feat Raashan Ahmad).mp3",
+                            "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936135/podcasts/Poscast_til_eksamensopgave_6.1._Ejendomsm%C3%A6glerens_st%C3%B8vler_gujuq8.m4a",
                         cover_art_url:
-                            "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-to-answer.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938959/sonnyjuraimages/legal1_quhdds.jpg",
                     },
                     {
-                        name: "The Gun",
-                        artist: "Lorn",
-                        album: "Ask The Dust",
-                        url: "https://521dimensions.com/song/08 The Gun.mp3",
+                        name: "Eksamensopgave 7.1. Børge brugtvognsforhandler",
+                        artist: "Sonny Kristoffersen",
+                        album: "Finansjura",
+                        url: "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936139/podcasts/Poscast_til_eksamensopgave_7.1._B%C3%B8rge_brugtvognsforhandler_jwsb7s.m4a",
                         cover_art_url:
-                            "https://521dimensions.com/img/open-source/amplitudejs/album-art/ask-the-dust.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal5_qkiogk.jpg",
                     },
                     {
                         name: "Anvil",
-                        artist: "Lorn",
-                        album: "Anvil",
+                        artist: "Sonny Kristoffersen",
+                        album: "Finansjura",
                         url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
                         cover_art_url:
                             "https://521dimensions.com/img/open-source/amplitudejs/album-art/anvil.jpg",
