@@ -104,11 +104,11 @@ function amplitudePlayerScript() {
             {
                 name: "Risin' High (feat Raashan Ahmad)",
                 artist: "Ancient Astronauts",
-                album: "We Are to Answer",
+                album: "Jura",
                 url:
-                    "https://521dimensions.com/song/Ancient Astronauts - Risin' High (feat Raashan Ahmad).mp3",
+                    "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936176/Eksamensopgave_10.3_Bo_Bjerrehus_etunzh.m4a",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-to-answer.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1615031146/sample.jpg",
             },
             {
                 name: "The Gun",
