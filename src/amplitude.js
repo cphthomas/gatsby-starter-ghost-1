@@ -99,99 +99,218 @@ function amplitudePlayerScript() {
     /*
 	Initializes AmplitudeJS
 */
-    Amplitude.init({
+Amplitude.init({
+    songs: [
+        {
+            name: "Jura 1 podcast",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url:
+                "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936160/podcasts/Poscast_til_eksamensopgave_9.6._Joachim_btjteb.m4a",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938959/sonnyjuraimages/legal1_quhdds.jpg",
+        },
+        {
+            name: "The Gun",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/08 The Gun.mp3",
+            cover_art_url:
+            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
+        },
+        {
+            name: "Anvil",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal7_tkypaw.jpg",
+        },
+        {
+            name: "I Came Running",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url:
+                "https://521dimensions.com/song/ICameRunning-AncientAstronauts.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938952/sonnyjuraimages/legal3_qdy0v9.jpg",
+        },
+        {
+            name: "First Snow",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
+            cover_art_url:
+            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal5_qkiogk.jpg",
+        },
+        {
+            name: "Terrain",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/Terrain-pglost.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal4_eprxz2.jpg",
+        },
+        {
+            name: "Vorel",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/Vorel-RussianCircles.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal6_gmd4fn.jpg",
+        },
+        {
+            name: "Intro / Sweet Glory",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url:
+                "https://521dimensions.com/song/IntroSweetGlory-Jimkata.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal9_tkzi0d.jpg",
+        },
+        {
+            name: "Offcut #6",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/Offcut6-LittlePeople.mp3",
+            cover_art_url:
+            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal13_a5duka.jpg",
+                
+        },
+        {
+            name: "Dusk To Dawn",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url:
+                "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal8_bwxadc.jpg",
+        },
+        {
+            name: "Anthem",
+            artist: "Sonny Christoffersen",
+            album: "Finansjura",
+            url: "https://521dimensions.com/song/Anthem-Emancipator.mp3",
+            cover_art_url:
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal12_mdul7h.jpg",
+        },
+    ],
+    callbacks: {
+        play: function () {
+            document.getElementById("album-art").style.visibility =
+                "hidden";
+            document.getElementById(
+                "large-visualization"
+            ).style.visibility = "visible";
+        },
+
+        pause: function () {
+            document.getElementById("album-art").style.visibility =
+                "visible";
+            document.getElementById(
+                "large-visualization"
+            ).style.visibility = "hidden";
+        },
+    },
+    waveforms: {
+        sample_rate: 50,
+    },
+});
+
+    /* Amplitude.init({
         songs: [
             {
-                name: "Risin' High (feat Raashan Ahmad)",
-                artist: "Ancient Astronauts",
-                album: "Jura",
+                name: "Jura 1 podcast",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url:
-                    "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936176/Eksamensopgave_10.3_Bo_Bjerrehus_etunzh.m4a",
+                    "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936160/podcasts/Poscast_til_eksamensopgave_9.6._Joachim_btjteb.m4a",
                 cover_art_url:
-                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1615031146/sample.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938959/sonnyjuraimages/legal1_quhdds.jpg",
             },
             {
                 name: "The Gun",
-                artist: "Lorn",
-                album: "Ask The Dust",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/08 The Gun.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/ask-the-dust.jpg",
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
             },
             {
                 name: "Anvil",
-                artist: "Lorn",
-                album: "Anvil",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/anvil.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal7_tkypaw.jpg",
             },
             {
                 name: "I Came Running",
-                artist: "Ancient Astronauts",
-                album: "We Are to Answer",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url:
                     "https://521dimensions.com/song/ICameRunning-AncientAstronauts.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-to-answer.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938952/sonnyjuraimages/legal3_qdy0v9.jpg",
             },
             {
                 name: "First Snow",
-                artist: "Emancipator",
-                album: "Soon It Will Be Cold Enough",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal5_qkiogk.jpg",
             },
             {
                 name: "Terrain",
-                artist: "pg.lost",
-                album: "Key",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/Terrain-pglost.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/key.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal4_eprxz2.jpg",
             },
             {
                 name: "Vorel",
-                artist: "Russian Circles",
-                album: "Guidance",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/Vorel-RussianCircles.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/guidance.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal6_gmd4fn.jpg",
             },
             {
                 name: "Intro / Sweet Glory",
-                artist: "Jimkata",
-                album: "Die Digital",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url:
                     "https://521dimensions.com/song/IntroSweetGlory-Jimkata.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/die-digital.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal9_tkzi0d.jpg",
             },
             {
                 name: "Offcut #6",
-                artist: "Little People",
-                album: "We Are But Hunks of Wood Remixes",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/Offcut6-LittlePeople.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-but-hunks-of-wood.jpg",
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal13_a5duka.jpg",
+                    
             },
             {
                 name: "Dusk To Dawn",
-                artist: "Emancipator",
-                album: "Dusk To Dawn",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url:
                     "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/from-dusk-to-dawn.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal8_bwxadc.jpg",
             },
             {
                 name: "Anthem",
-                artist: "Emancipator",
-                album: "Soon It Will Be Cold Enough",
+                artist: "Sonny Christoffersen",
+                album: "Finansjura",
                 url: "https://521dimensions.com/song/Anthem-Emancipator.mp3",
                 cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938948/sonnyjuraimages/legal12_mdul7h.jpg",
             },
         ],
         callbacks: {
@@ -214,124 +333,7 @@ function amplitudePlayerScript() {
         waveforms: {
             sample_rate: 50,
         },
-    });
-
-    Amplitude.init({
-        songs: [
-            {
-                name: "Risin' High (feat Raashan Ahmad)",
-                artist: "Ancient Astronauts",
-                album: "Jura",
-                url:
-                    "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936176/Eksamensopgave_10.3_Bo_Bjerrehus_etunzh.m4a",
-                cover_art_url:
-                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1615031146/sample.jpg",
-            },
-            {
-                name: "The Gun",
-                artist: "Lorn",
-                album: "Ask The Dust",
-                url: "https://521dimensions.com/song/08 The Gun.mp3",
-                cover_art_url:
-                    "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936166/podcasts/Poscast_til_eksamensopgave_9.5._Jenett_Apollo_v2qq4q.m4a",
-            },
-            {
-                name: "Anvil",
-                artist: "Lorn",
-                album: "Anvil",
-                url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/anvil.jpg",
-            },
-            {
-                name: "I Came Running",
-                artist: "Ancient Astronauts",
-                album: "We Are to Answer",
-                url:
-                    "https://521dimensions.com/song/ICameRunning-AncientAstronauts.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-to-answer.jpg",
-            },
-            {
-                name: "First Snow",
-                artist: "Emancipator",
-                album: "Soon It Will Be Cold Enough",
-                url: "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
-            },
-            {
-                name: "Terrain",
-                artist: "pg.lost",
-                album: "Key",
-                url: "https://521dimensions.com/song/Terrain-pglost.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/key.jpg",
-            },
-            {
-                name: "Vorel",
-                artist: "Russian Circles",
-                album: "Guidance",
-                url: "https://521dimensions.com/song/Vorel-RussianCircles.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/guidance.jpg",
-            },
-            {
-                name: "Intro / Sweet Glory",
-                artist: "Jimkata",
-                album: "Die Digital",
-                url:
-                    "https://521dimensions.com/song/IntroSweetGlory-Jimkata.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/die-digital.jpg",
-            },
-            {
-                name: "Offcut #6",
-                artist: "Little People",
-                album: "We Are But Hunks of Wood Remixes",
-                url: "https://521dimensions.com/song/Offcut6-LittlePeople.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-but-hunks-of-wood.jpg",
-            },
-            {
-                name: "Dusk To Dawn",
-                artist: "Emancipator",
-                album: "Dusk To Dawn",
-                url:
-                    "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/from-dusk-to-dawn.jpg",
-            },
-            {
-                name: "Anthem",
-                artist: "Emancipator",
-                album: "Soon It Will Be Cold Enough",
-                url: "https://521dimensions.com/song/Anthem-Emancipator.mp3",
-                cover_art_url:
-                    "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg",
-            },
-        ],
-        callbacks: {
-            play: function () {
-                document.getElementById("album-art").style.visibility =
-                    "hidden";
-                document.getElementById(
-                    "large-visualization"
-                ).style.visibility = "visible";
-            },
-
-            pause: function () {
-                document.getElementById("album-art").style.visibility =
-                    "visible";
-                document.getElementById(
-                    "large-visualization"
-                ).style.visibility = "hidden";
-            },
-        },
-        waveforms: {
-            sample_rate: 50,
-        },
-    });
+    }); */
     document.getElementById("large-visualization").style.height =
         document.getElementById("album-art").offsetWidth + "px";
 }
