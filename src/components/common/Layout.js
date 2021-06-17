@@ -23,6 +23,7 @@ import CardSetupForm from "./CardSetupForm";
 import customJS from "../../custom.js";
 import customNewJS from "../../newscript.js";
 import handsonJS from "../../handson.js";
+import amplitudeJS from "../../amplitude.js";
 
 // Styles
 import "../../styles/app.css";
@@ -92,6 +93,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         customJS();
         customNewJS();
         handsonJS();
+        amplitudeJS();
 
         const userEmail = cookies.get("loggedInUser");
         let customerStripeId = "";

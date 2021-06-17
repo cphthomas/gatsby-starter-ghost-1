@@ -42,6 +42,10 @@ export default function HTML(props) {
                     rel="stylesheet"
                     href="https://cdn.jsdelivr.net/npm/handsontable@9.0.0/dist/handsontable.full.min.css"
                 ></link>
+                <script
+                    type="text/javascript"
+                    src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.js"
+                ></script>
                 {props.headComponents}
             </head>
             <body {...props.bodyAttributes}>
