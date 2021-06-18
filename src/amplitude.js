@@ -107,7 +107,7 @@ function amplitudePlayerScript() {
                         url:
                             "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936130/podcasts/Poscast_til_eksamensopgave_9.3._T%C3%B8mrermester_Bertil_Jaobsen_og_Tina_Jensen_vosge7.m4a",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                     {
                         name: "Dusk To Dawn",
@@ -116,7 +116,7 @@ function amplitudePlayerScript() {
                         url:
                             "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938952/sonnyjuraimages/legal3_qdy0v9.jpg",
+                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                     {
                         name: "Eksamensopgave 9.4. Lottogevinsten",
@@ -132,7 +132,7 @@ function amplitudePlayerScript() {
             trip_hop: {
                 songs: [
                     {
-                        name: "Risin' High (feat Raashan Ahmad)",
+                        name: "Jura Front",
                         artist: "Sonny Kristoffersen",
                         album: "Finansjura",
                         url:
