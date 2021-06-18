@@ -94,7 +94,7 @@ function amplitudePlayerScript() {
                 album: "Finansjura",
                 url: "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936132/podcasts/Poscast_til_eksamensopgave_9.7._Knudsen_Properties_v._Dennis_Knudsen_m2sllj.m4a",
                 cover_art_url:
-                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
+                "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
             },
         ],
         playlists: {
@@ -107,7 +107,8 @@ function amplitudePlayerScript() {
                         url:
                             "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936130/podcasts/Poscast_til_eksamensopgave_9.3._T%C3%B8mrermester_Bertil_Jaobsen_og_Tina_Jensen_vosge7.m4a",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
+                        "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
+                        
                     },
                     {
                         name: "Dusk To Dawn",
@@ -116,7 +117,7 @@ function amplitudePlayerScript() {
                         url:
                             "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
+                        "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                     {
                         name: "Eksamensopgave 9.4. Lottogevinsten",
@@ -125,7 +126,7 @@ function amplitudePlayerScript() {
                         url:
                             "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936133/podcasts/Poscast_til_eksamensopgave_9.4._Lottogevinsten_mkzmxp.m4a",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938956/sonnyjuraimages/legal2_w8dskp.jpg",
+                        "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                 ],
             },
@@ -138,7 +139,7 @@ function amplitudePlayerScript() {
                         url:
                             "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936135/podcasts/Poscast_til_eksamensopgave_6.1._Ejendomsm%C3%A6glerens_st%C3%B8vler_gujuq8.m4a",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938959/sonnyjuraimages/legal1_quhdds.jpg",
+                        "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                     {
                         name: "Eksamensopgave 7.1. Børge brugtvognsforhandler",
@@ -146,7 +147,7 @@ function amplitudePlayerScript() {
                         album: "Finansjura",
                         url: "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936139/podcasts/Poscast_til_eksamensopgave_7.1._B%C3%B8rge_brugtvognsforhandler_jwsb7s.m4a",
                         cover_art_url:
-                            "https://res.cloudinary.com/hndu2f8jv/image/upload/v1623938951/sonnyjuraimages/legal5_qkiogk.jpg",
+                        "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                     {
                         name: "Anvil",
@@ -154,7 +155,7 @@ function amplitudePlayerScript() {
                         album: "Finansjura",
                         url: "https://521dimensions.com/song/LORN - ANVIL.mp3",
                         cover_art_url:
-                            "https://521dimensions.com/img/open-source/amplitudejs/album-art/anvil.jpg",
+                        "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
                 ],
             },
