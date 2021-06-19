@@ -10,7 +10,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as tocbot from "tocbot";
 import { constants } from "../utils/constants";
 import { Image } from "react-bootstrap";
-
+import { useSpeechSynthesis } from 'react-speech-kit';
+//import Speech from "speak-tts";
 /**
  * Single post view (/:slug)
  *
@@ -18,11 +19,36 @@ import { Image } from "react-bootstrap";
  *
  */
 const Post = ({ data, location }) => {
+    const { speak } = useSpeechSynthesis();
+    // const speech = new Speech();
+    // speech
+    //     .init({
+    //         volume: 0.5,
+    //         lang: "en-GB",
+    //         rate: 1,
+    //         pitch: 1,
+    //         //'voice':'Google UK English Male',
+    //         //'splitSentences': false,
+    //         listeners: {
+    //             onvoiceschanged: (voices) => {
+    //                 console.log("Voices changed", voices);
+    //             },
+    //         },
+    //     })
+    //     .then((data) => {
+    //         console.log("Speech is ready", data);
+    //         //_addVoicesList(data.voices);
+    //         //_prepareSpeakButton(speech);
+    //     })
+    //     .catch((e) => {
+    //         console.error("An error occured while initializing : ", e);
+    //     });
+
     const post = data.ghostPost;
+
     if (!post) {
         const isBrowser = () => typeof window !== "undefined";
         isBrowser() && window.location.replace(process.env.GATSBY_SITE_URL);
-        //window.location.href = process.env.GATSBY_SITE_URL;
     }
     const fisrtTagPlan = post?.tags[0] ? post.tags[0].name : "";
     //const secondTagBookAccess = post.tags[1] ? post.tags[1].name : "";
@@ -148,6 +174,46 @@ const Post = ({ data, location }) => {
             });
     }
 
+    async function selectedText() {
+        // window.getSelection().toString()
+        //     ? console.log(window.getSelection().toString())
+        //     : null;
+        //if (typeof window !== "undefined") {
+        //window.getSelection().toString();
+        //}
+        speak({ text: "this is the value" })
+        // speech
+        //     .speak({
+        //         text: "",
+        //         queue: false,
+        //         listeners: {
+        //             onstart: () => {
+        //                 console.log("Start utterance");
+        //             },
+        //             onend: () => {
+        //                 console.log("End utterance");
+        //             },
+        //             onresume: () => {
+        //                 console.log("Resume utterance");
+        //             },
+        //             onboundary: (event) => {
+        //                 console.log(
+        //                     event.name +
+        //                         " boundary reached after " +
+        //                         event.elapsedTime +
+        //                         " milliseconds."
+        //                 );
+        //             },
+        //         },
+        //     })
+        //     .then((data) => {
+        //         console.log("Success !", data);
+        //     })
+        //     .catch((e) => {
+        //         console.error("An error occurred :", e);
+        //     });
+    }
+
     return (
         <div>
             <MetaData data={data} location={location} type="article" />
@@ -179,6 +245,7 @@ const Post = ({ data, location }) => {
                                 dangerouslySetInnerHTML={{
                                     __html: post.html,
                                 }}
+                                onMouseUpCapture={selectedText}
                             />
                         </section>
                     </article>
