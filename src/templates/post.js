@@ -10,7 +10,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as tocbot from "tocbot";
 import { constants } from "../utils/constants";
 import { Image } from "react-bootstrap";
-import { useSpeechSynthesis } from 'react-speech-kit';
+import { useSpeechSynthesis } from "react-speech-kit";
 //import Speech from "speak-tts";
 /**
  * Single post view (/:slug)
@@ -178,10 +178,11 @@ const Post = ({ data, location }) => {
         // window.getSelection().toString()
         //     ? console.log(window.getSelection().toString())
         //     : null;
-        //if (typeof window !== "undefined") {
-        //window.getSelection().toString();
-        //}
-        speak({ text: "this is the value" })
+        let textToSpeech = "";
+        if (typeof window !== "undefined") {
+            textToSpeech = window.getSelection().toString();
+        }
+        speak({ text: textToSpeech });
         // speech
         //     .speak({
         //         text: "",
