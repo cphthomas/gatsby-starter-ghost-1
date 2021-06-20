@@ -26,7 +26,7 @@ const Post = ({ data, location }) => {
         speech
             .init({
                 volume: 0.5,
-                lang: "en-GB",
+                lang: "da-DK",
                 rate: 1,
                 pitch: 1,
                 //'voice':'Google UK English Male',
