@@ -10,8 +10,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as tocbot from "tocbot";
 import { constants } from "../utils/constants";
 import { Image } from "react-bootstrap";
-import { useSpeechSynthesis } from "react-speech-kit";
-//import Speech from "speak-tts";
+// import { useSpeechSynthesis } from "react-speech-kit";
+import Speech from "speak-tts";
 /**
  * Single post view (/:slug)
  *
@@ -19,30 +19,33 @@ import { useSpeechSynthesis } from "react-speech-kit";
  *
  */
 const Post = ({ data, location }) => {
-    const { speak } = useSpeechSynthesis();
-    // const speech = new Speech();
-    // speech
-    //     .init({
-    //         volume: 0.5,
-    //         lang: "en-GB",
-    //         rate: 1,
-    //         pitch: 1,
-    //         //'voice':'Google UK English Male',
-    //         //'splitSentences': false,
-    //         listeners: {
-    //             onvoiceschanged: (voices) => {
-    //                 console.log("Voices changed", voices);
-    //             },
-    //         },
-    //     })
-    //     .then((data) => {
-    //         console.log("Speech is ready", data);
-    //         //_addVoicesList(data.voices);
-    //         //_prepareSpeakButton(speech);
-    //     })
-    //     .catch((e) => {
-    //         console.error("An error occured while initializing : ", e);
-    //     });
+    //const { speak } = useSpeechSynthesis();
+    let speech;
+    if (typeof window !== "undefined") {
+        speech = new Speech();
+        speech
+            .init({
+                volume: 0.5,
+                lang: "en-GB",
+                rate: 1,
+                pitch: 1,
+                //'voice':'Google UK English Male',
+                //'splitSentences': false,
+                listeners: {
+                    onvoiceschanged: (voices) => {
+                        console.log("Voices changed", voices);
+                    },
+                },
+            })
+            .then((data) => {
+                console.log("Speech is ready", data);
+                //_addVoicesList(data.voices);
+                //_prepareSpeakButton(speech);
+            })
+            .catch((e) => {
+                console.error("An error occured while initializing : ", e);
+            });
+    }
 
     const post = data.ghostPost;
 
@@ -182,37 +185,38 @@ const Post = ({ data, location }) => {
         if (typeof window !== "undefined") {
             textToSpeech = window.getSelection().toString();
         }
-        speak({ text: textToSpeech });
-        // speech
-        //     .speak({
-        //         text: "",
-        //         queue: false,
-        //         listeners: {
-        //             onstart: () => {
-        //                 console.log("Start utterance");
-        //             },
-        //             onend: () => {
-        //                 console.log("End utterance");
-        //             },
-        //             onresume: () => {
-        //                 console.log("Resume utterance");
-        //             },
-        //             onboundary: (event) => {
-        //                 console.log(
-        //                     event.name +
-        //                         " boundary reached after " +
-        //                         event.elapsedTime +
-        //                         " milliseconds."
-        //                 );
-        //             },
-        //         },
-        //     })
-        //     .then((data) => {
-        //         console.log("Success !", data);
-        //     })
-        //     .catch((e) => {
-        //         console.error("An error occurred :", e);
-        //     });
+        console.log(textToSpeech);
+        //speak({ text: textToSpeech });
+        speech
+            .speak({
+                text: textToSpeech,
+                queue: false,
+                listeners: {
+                    onstart: () => {
+                        console.log("Start utterance");
+                    },
+                    onend: () => {
+                        console.log("End utterance");
+                    },
+                    onresume: () => {
+                        console.log("Resume utterance");
+                    },
+                    onboundary: (event) => {
+                        console.log(
+                            event.name +
+                                " boundary reached after " +
+                                event.elapsedTime +
+                                " milliseconds."
+                        );
+                    },
+                },
+            })
+            .then((data) => {
+                console.log("Success !", data);
+            })
+            .catch((e) => {
+                console.error("An error occurred :", e);
+            });
     }
 
     return (
