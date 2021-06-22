@@ -86,40 +86,36 @@ function amplitudePlayerScript() {
             ).style.display = "none";
         });
 
-    document
+        document
         .getElementById("speedTextPlayer1")
         .addEventListener("click", function () {
-            var currentInnerText = document.getElementById("speedTextPlayer1")
-                .innerHTML;
-            console.log(currentInnerText.includes("hd"));
-            if (currentInnerText.includes("1 U+00D7 speed")) {
-                document.getElementById("speedTextPlayer1").innerHTML =
-                    "1.5 U+00D7 speed";
-            } else if (currentInnerText.includes("1.5 U+00D7 speed")) {
-                document.getElementById("speedTextPlayer1").innerHTML =
-                    "2 U+00D7 speed";
-            } else if (currentInnerText.includes("2 U+00D7 speed")) {
-                document.getElementById("speedTextPlayer1").innerHTML =
-                    "1 U+00D7 speed";
-            }
+          var currentInnerText = parseFloat(
+            document.getElementById("speedUpText").innerHTML
+          );
+          console.log(currentInnerText);
+          if (currentInnerText == 1) {
+            document.getElementById("speedUpText").innerHTML = "1.5";
+          } else if (currentInnerText == 1.5) {
+            document.getElementById("speedUpText").innerHTML = "2";
+          } else if (currentInnerText == 2) {
+            document.getElementById("speedUpText").innerHTML = "1";
+          }
         });
 
-    document
+      document
         .getElementById("speedTextPlayer2")
         .addEventListener("click", function () {
-            var currentInnerText = document.getElementById("speedTextPlayer2")
-                .innerHTML;
-            console.log(currentInnerText.includes("hd"));
-            if (currentInnerText.includes("1 U+00D7 speed")) {
-                document.getElementById("speedTextPlayer2").innerHTML =
-                    "1.5 U+00D7 speed";
-            } else if (currentInnerText.includes("1.5 U+00D7 speed")) {
-                document.getElementById("speedTextPlayer2").innerHTML =
-                    "2 U+00D7 speed";
-            } else if (currentInnerText.includes("2 U+00D7 speed")) {
-                document.getElementById("speedTextPlayer2").innerHTML =
-                    "1 U+00D7 speed";
-            }
+          var currentInnerText = parseFloat(
+            document.getElementById("speedUpText2").innerHTML
+          );
+          console.log(currentInnerText);
+          if (currentInnerText == 1) {
+            document.getElementById("speedUpText2").innerHTML = "1.5";
+          } else if (currentInnerText == 1.5) {
+            document.getElementById("speedUpText2").innerHTML = "2";
+          } else if (currentInnerText == 2) {
+            document.getElementById("speedUpText2").innerHTML = "1";
+          }
         });
 
     Amplitude.init({
