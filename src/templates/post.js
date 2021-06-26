@@ -33,12 +33,12 @@ const Post = ({ data, location }) => {
                 //'splitSentences': false,
                 listeners: {
                     onvoiceschanged: (voices) => {
-                        console.log("Voices changed", voices);
+                        //console.log("Voices changed", voices);
                     },
                 },
             })
             .then((data) => {
-                console.log("Speech is ready", data);
+                //console.log("Speech is ready", data);
                 //_addVoicesList(data.voices);
                 //_prepareSpeakButton(speech);
             })
@@ -232,6 +232,14 @@ const Post = ({ data, location }) => {
                     (userPlanId == constants.USER_PRO_PLAN_ID &&
                         fisrtTagPlan == constants.PRO_POST)) ? (
                     <article className="content">
+                        <Helmet>
+                            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                            <script
+                                id="MathJax-script"
+                                async
+                                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+                            ></script>
+                        </Helmet>
                         {post.feature_image ? (
                             <figure className="post-feature-image">
                                 <img
