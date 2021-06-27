@@ -219,7 +219,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                 data-bs-toggle="dropdown"
                                             >
                                                 {" "}
-                                                All Chapters{" "}
+                                                Indhold{" "}
                                             </a>
                                             <ul className="dropdown-menu allChapterUl">
                                                 {allPosts.map(({ node }) => (

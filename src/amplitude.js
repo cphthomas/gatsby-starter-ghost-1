@@ -122,11 +122,11 @@ function amplitudePlayerScript() {
         songs: [
             {
                 name:
-                    "Eksamensopgave 9.7. Knudsen Properties v. Dennis Knudsen",
-                artist: "Emancipator",
+                    "DREksamensopgave 9.7. Knudsen Properties v. Dennis Knudsen",
+                    artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url:
-                    "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936132/podcasts/Poscast_til_eksamensopgave_9.7._Knudsen_Properties_v._Dennis_Knudsen_m2sllj.m4a",
+                    "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?dl=0",
                 cover_art_url:
                     "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
             },
@@ -136,11 +136,11 @@ function amplitudePlayerScript() {
                 songs: [
                     {
                         name:
-                            "Eksamensopgave 9.3. Tømrermester Bertil Jaobsen og Tina Jensen",
+                            "DREksamensopgave 9.3. Tømrermester Bertil Jaobsen og Tina Jensen",
                         artist: "Sonny Kristoffersen",
                         album: "Finansjura",
                         url:
-                            "https://res.cloudinary.com/hndu2f8jv/video/upload/v1623936130/podcasts/Poscast_til_eksamensopgave_9.3._T%C3%B8mrermester_Bertil_Jaobsen_og_Tina_Jensen_vosge7.m4a",
+                        "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?raw=1",
                         cover_art_url:
                             "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
@@ -149,7 +149,7 @@ function amplitudePlayerScript() {
                         artist: "Sonny Kristoffersen",
                         album: "Finansjura",
                         url:
-                            "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
+                        "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?raw=1",
                         cover_art_url:
                             "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
