@@ -24,6 +24,7 @@ import customJS from "../../custom.js";
 import customNewJS from "../../newscript.js";
 import handsonJS from "../../handson.js";
 import amplitudeJS from "../../amplitude.js";
+import highchartJS from "../../highcharts.js";
 
 // Styles
 import "../../styles/app.css";
@@ -94,6 +95,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         customNewJS();
         handsonJS();
         amplitudeJS();
+        highchartJS();
 
         const userEmail = cookies.get("loggedInUser");
         let customerStripeId = "";

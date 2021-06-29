@@ -52,6 +52,12 @@ export default function HTML(props) {
                     type="text/javascript"
                     src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.js"
                 ></script>
+                <script src="https://code.highcharts.com/highcharts.js"></script>
+                <script src="https://code.highcharts.com/modules/data.js"></script>
+                <script src="https://code.highcharts.com/highcharts-more.js"></script>
+                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                <script src="https://code.highcharts.com/modules/accessibility.js"></script>
                 {props.headComponents}
             </head>
             <body {...props.bodyAttributes}>
@@ -71,7 +77,7 @@ export default function HTML(props) {
                 <script
                     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                    crossorigin="anonymous"
+                    crossOrigin="anonymous"
                 ></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.min.js"></script>
                 <script
