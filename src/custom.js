@@ -1,7 +1,7 @@
 const customJS = () => {
     $("body").tooltip({ selector: "[data-toggle=tooltip]" });
 
-    waitForElement("#vis11, #vis12","#vis13","#vis31", 8000)
+    waitForElement("#vis11, #vis12","#vis13","#vis31","#vis32",8000)
         .then(function () {
             console.log("element is loaded.. do stuff");
             visScript();
@@ -56,9 +56,7 @@ function visScript() {
         { id: 5, font: { size: 14 }, level: "2", label: "Boligretten" },
         { id: 6, font: { size: 14 }, level: "2", label: "Kriminalretten" },
     ]);
-    var nodes31 = new vis.DataSet(
-        options =
-        [
+    var nodes31 = new vis.DataSet([
         { id: 1, value: 10, level: "1", label: "Aftaleloven" },
         { id: 2, value: 10, level: "2", label: "Indgåelse af forsikringsaftaler" },
         { id: 3, value: 10, level: "2", label: "Indgåelse af kreditaftaler" },
@@ -67,14 +65,22 @@ function visScript() {
         { id: 6, value: 10, level: "2", label: "Aftaler om køb" },
         { id: 7, value: 10, level: "2", label: "Aftaler om kautionsformer" },
     ]);
+    var nodes32 = new vis.DataSet([
+        {
+            id: 1,
+            value: 10,
+            level: "1",
+            label: "Lovgivende\nmagt\nFolketinget",
+        },
+        { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
+        { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
+    ]);
 
     // create an array with edges
     var edges11 = new vis.DataSet([
         { from: 1, to: 2 },
         { from: 2, to: 3 },
         { from: 3, to: 1 },
-
-
     ]);
     var edges12 = new vis.DataSet([
         { from: 1, to: 2 },
@@ -102,12 +108,18 @@ function visScript() {
         { from: 1, to: 6 },
         { from: 1, to: 7 },
     ]);
+    var edges32 = new vis.DataSet([
+        { from: 1, to: 2 },
+        { from: 2, to: 3 },
+        { from: 3, to: 1 },
+    ]);
 
     // create a network
     var container11 = document.getElementById("vis11");
     var container12 = document.getElementById("vis12");
     var container13 = document.getElementById("vis13");
     var container31 = document.getElementById("vis31");
+    var container32 = document.getElementById("vis32");
 
 
     // provide the data in the vis format
@@ -124,10 +136,12 @@ function visScript() {
         edges: edges13,
     };
     var data31 = {
-
-
         nodes: nodes31,
         edges: edges31,
+    };
+    var data32 = {
+        nodes: nodes32,
+        edges: edges32,
     };
     var options = {
         nodes: {
@@ -309,7 +323,8 @@ function visScript() {
     var vis11 = new vis.Network(container11, data11, options);
     var vis12 = new vis.Network(container12, data12, options);
     var vis13 = new vis.Network(container13, data13, options);
-    var vis31 = new vis.Network(container31, data31, options2);
+    var vis31 = new vis.Network(container31, data31, options);
+    var vis32 = new vis.Network(container32, data32, options);
 
 }
 
