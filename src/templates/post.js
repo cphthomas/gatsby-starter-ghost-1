@@ -268,7 +268,7 @@ const Post = ({ data, location }) => {
                       fisrtTagPlan == constants.PREMIUM_POST) ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2>This post is for paying subscribers only</h2>
+                            <h2 className="whiteClr">This post is for paying subscribers only</h2>
                             <p className="font-18">
                                 Already have an account?{" "}
                                 <a href="/login">Sign in</a>
@@ -282,7 +282,7 @@ const Post = ({ data, location }) => {
                       fisrtTagPlan == constants.PREMIUM_POST) ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2>This post is for paying subscribers only</h2>
+                            <h2 className="whiteClr">This post is for paying subscribers only</h2>
                             <div className="form-group">
                                 <label className="font-size-15">
                                     Choose your subscription
@@ -336,7 +336,7 @@ const Post = ({ data, location }) => {
                   fisrtTagPlan == constants.PREMIUM_POST ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2>This post is for premium subscribers only</h2>
+                            <h2 className="whiteClr">This post is for premium subscribers only</h2>
                             <button
                                 type="submit"
                                 className="btn btn-primary btn-premiume"
@@ -347,9 +347,6 @@ const Post = ({ data, location }) => {
                         </div>
                     </div>
                 ) : (
-                    // <div className="loaderImgDiv">
-                    //     <Image className="loaderImg" src={"/images/loader.gif"} alt="dataLoadImage" />
-                    // </div>
                     <div className="loadwrap">
                         <div>
                             <div className="bounceball"></div>

@@ -215,7 +215,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <div className="col-md-6 col-xs-6">
                                         <li className="nav-item dropdown">
                                             <a
-                                                className="nav-link  dropdown-toggle btn btn-primary"
+                                                className="nav-link chapterBtn dropdown-toggle btn btn-primary"
                                                 href="#"
                                                 role="button"
                                                 data-bs-toggle="dropdown"
@@ -245,7 +245,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <div className="site-nav-right">
                                     {userLoggedIn == "0" ? (
                                         <Link
-                                            className="site-nav-button"
+                                            className="site-nav-button loginBtn"
                                             to="/login"
                                         >
                                             Login
@@ -271,22 +271,22 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                     <div>
                                                         <a
                                                             className="dropdown-item"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModal"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal"
                                                         >
                                                             My Account
                                                         </a>
                                                         <a
                                                             className="dropdown-item"
-                                                            data-toggle="modal"
-                                                            data-target="#confirmCancelModal"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#confirmCancelModal"
                                                         >
                                                             Cancel Subscription
                                                         </a>
                                                         <a
                                                             className="dropdown-item"
-                                                            data-toggle="modal"
-                                                            data-target="#changeCardModal"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#changeCardModal"
                                                         >
                                                             Change Card
                                                         </a>
@@ -336,14 +336,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <button
                                     type="button"
                                     className="close"
-                                    data-dismiss="modal"
+                                    data-bs-dismiss="modal"
                                     aria-label="Close"
                                 >
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <p>
+                                <p className="font14">
                                     Are you sure, do you want to cancel your
                                     subscription?
                                 </p>
@@ -384,7 +384,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <button
                                     type="button"
                                     className="close"
-                                    data-dismiss="modal"
+                                    data-bs-dismiss="modal"
                                     aria-label="Close"
                                 >
                                     <span aria-hidden="true">&times;</span>
@@ -418,7 +418,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <button
                                     type="button"
                                     className="close"
-                                    data-dismiss="modal"
+                                    data-bs-dismiss="modal"
                                     aria-label="Close"
                                 >
                                     <span aria-hidden="true">&times;</span>
@@ -427,7 +427,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <div className="modal-body">
                                 <div className="marginWithBorder">
                                     <p className="detail-head">User Detail:</p>
-                                    <div className="row">
+                                    <div className="row font14">
                                         <div className="col-md-6">
                                             Name: {userName}
                                         </div>
@@ -440,7 +440,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <p className="detail-head">
                                         Subscription Detail:
                                     </p>
-                                    <div className="row">
+                                    <div className="row font14">
                                         <div className="col-md-6">
                                             Current plan: {userPlan}
                                         </div>
@@ -451,7 +451,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 </div>
                                 <div className="marginWithBorder">
                                     <p className="detail-head">Card Detail:</p>
-                                    <div className="row">
+                                    <div className="row font14">
                                         <div className="col-md-4">
                                             Brand: {userCardBrand}
                                         </div>
@@ -467,7 +467,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <p className="detail-head">
                                         Latest Invoice:
                                     </p>
-                                    <div className="row">
+                                    <div className="row font14">
                                         <div className="col-md-12">
                                             <p>
                                                 Click{" "}

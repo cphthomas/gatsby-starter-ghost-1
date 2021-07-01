@@ -34,6 +34,10 @@
 .nav-item a {
     font-size: 12px;
 }
+.chapterBtn {
+    width: 65px;
+    border: none !important;
+}
 .accountLi {
     margin: unset !important;
 }
@@ -184,4 +188,12 @@ a:hover {
 #export-file {
     width: 20%;
     margin-top: 10px;
+}
+
+.font14 {
+    font-size: 14px;
+}
+
+.loginBtn {
+    text-decoration: none;
 }
