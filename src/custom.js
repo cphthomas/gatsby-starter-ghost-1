@@ -48,14 +48,14 @@ function visScript() {
         { id: 7,  font: { size: 12 },level: "4", label: "Retten på\nFærøerne" },
         { id: 8,  font: { size: 12 },level: "1", label: " Procesbevillingsnævnet \n Den særlige klageret \n Dommerudnævnelsesrådet \n Bibeskæftigelsesnævnet" },
     ]);
-    var nodes13 = new vis.DataSet([
-        { id: 1, font: { size: 25 }, level: "1", label: "Byrettens afdelinger" },
-        { id: 2, font: { size: 14 }, level: "2", label: "Civilretten" },
-        { id: 3, font: { size: 14 }, level: "2", label: "Fogedretten" },
-        { id: 4, font: { size: 14 }, level: "2", label: "Skifteretten" },
-        { id: 5, font: { size: 14 }, level: "2", label: "Boligretten" },
-        { id: 6, font: { size: 14 }, level: "2", label: "Kriminalretten" },
-    ]);
+    // var nodes13 = new vis.DataSet([
+    //     { id: 1, font: { size: 25 }, level: "1", label: "Byrettens afdelinger" },
+    //     { id: 2, font: { size: 14 }, level: "2", label: "Civilretten" },
+    //     { id: 3, font: { size: 14 }, level: "2", label: "Fogedretten" },
+    //     { id: 4, font: { size: 14 }, level: "2", label: "Skifteretten" },
+    //     { id: 5, font: { size: 14 }, level: "2", label: "Boligretten" },
+    //     { id: 6, font: { size: 14 }, level: "2", label: "Kriminalretten" },
+    // ]);
     var nodes31 = new vis.DataSet([
         { id: 1, value: 10, level: "1", label: "Aftaleloven" },
         { id: 2, value: 10, level: "2", label: "Indgåelse af forsikringsaftaler" },
@@ -93,13 +93,13 @@ function visScript() {
         { from: 2, to: 6 },
         { from: 3, to: 7 },
     ]);
-    var edges13 = new vis.DataSet([
-        { from: 1, to: 2 },
-        { from: 1, to: 6 },
-        { from: 1, to: 3 },
-        { from: 1, to: 4 },
-        { from: 1, to: 5 },
-    ]);
+    // var edges13 = new vis.DataSet([
+    //     { from: 1, to: 2 },
+    //     { from: 1, to: 6 },
+    //     { from: 1, to: 3 },
+    //     { from: 1, to: 4 },
+    //     { from: 1, to: 5 },
+    // ]);
     var edges31 = new vis.DataSet([
         { from: 1, to: 2 },
         { from: 1, to: 3 },
@@ -117,7 +117,7 @@ function visScript() {
     // create a network
     var container11 = document.getElementById("vis11");
     var container12 = document.getElementById("vis12");
-    var container13 = document.getElementById("vis13");
+    //var container13 = document.getElementById("vis13");
     var container31 = document.getElementById("vis31");
     var container32 = document.getElementById("vis32");
 
@@ -131,10 +131,10 @@ function visScript() {
         nodes: nodes12,
         edges: edges12,
     };
-    var data13 = {
-        nodes: nodes13,
-        edges: edges13,
-    };
+    // var data13 = {
+    //     nodes: nodes13,
+    //     edges: edges13,
+    // };
     var data31 = {
         nodes: nodes31,
         edges: edges31,
@@ -322,7 +322,7 @@ function visScript() {
     // initialize your network!
     var vis11 = new vis.Network(container11, data11, options);
     var vis12 = new vis.Network(container12, data12, options);
-    var vis13 = new vis.Network(container13, data13, options);
+    //var vis13 = new vis.Network(container13, data13, options);
     var vis31 = new vis.Network(container31, data31, options);
     var vis32 = new vis.Network(container32, data32, options);
 
