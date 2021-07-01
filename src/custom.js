@@ -1,14 +1,22 @@
 const customJS = () => {
     $("body").tooltip({ selector: "[data-toggle=tooltip]" });
 
-    waitForElement("#vis11, #vis12","#vis13","#vis31","#vis32",8000)
+    waitForElement("#vis11, #vis12, #vis13", 8000)
         .then(function () {
-            console.log("element is loaded.. do stuff");
+            console.log("#vis11 is loaded.. do stuff");
             visScript1();
+        })
+        .catch(() => {
+            console.log("#vis11 did not load in 8 seconds");
+        });
+
+    waitForElement("#vis31, #vis32", 8000)
+        .then(function () {
+            console.log("#vis31 is loaded.. do stuff");
             visScript3();
         })
         .catch(() => {
-            console.log("element did not load in 8 seconds");
+            console.log("#vis31 did not load in 8 seconds");
         });
 };
 
@@ -205,10 +213,14 @@ var options2 = {
 };
 
 function visScript1() {
-    
     // vis11
     var nodes11 = new vis.DataSet([
-        { id: 1, value: 10, level: "1", label: "Lovgivende\nmagt\nFolketinget" },
+        {
+            id: 1,
+            value: 10,
+            level: "1",
+            label: "Lovgivende\nmagt\nFolketinget",
+        },
         { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
         { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
     ]);
@@ -226,14 +238,30 @@ function visScript1() {
 
     //##################### vis12
     var nodes12 = new vis.DataSet([
-        { id: 1, font: { size: 20 },level: "1", label: "Højesteret" },
-        { id: 2,  font: { size: 18 },level: "2", label: "Vestre\nLandsret" },
-        { id: 3,  font: { size: 18 },level: "2", label: "Østre\nLandsret" },
-        { id: 4,  font: { size: 18 },level: "3", label: "Byretterne" },
-        { id: 5,  font: { size: 12 },level: "4", label: "Sø og\nhandelsretten" },
-        { id: 6,  font: { size: 12 },level: "4", label: "Grønlands-\ndomstolen" },
-        { id: 7,  font: { size: 12 },level: "4", label: "Retten på\nFærøerne" },
-        { id: 8,  font: { size: 12 },level: "1", label: " Procesbevillingsnævnet \n Den særlige klageret \n Dommerudnævnelsesrådet \n Bibeskæftigelsesnævnet" },
+        { id: 1, font: { size: 20 }, level: "1", label: "Højesteret" },
+        { id: 2, font: { size: 18 }, level: "2", label: "Vestre\nLandsret" },
+        { id: 3, font: { size: 18 }, level: "2", label: "Østre\nLandsret" },
+        { id: 4, font: { size: 18 }, level: "3", label: "Byretterne" },
+        {
+            id: 5,
+            font: { size: 12 },
+            level: "4",
+            label: "Sø og\nhandelsretten",
+        },
+        {
+            id: 6,
+            font: { size: 12 },
+            level: "4",
+            label: "Grønlands-\ndomstolen",
+        },
+        { id: 7, font: { size: 12 }, level: "4", label: "Retten på\nFærøerne" },
+        {
+            id: 8,
+            font: { size: 12 },
+            level: "1",
+            label:
+                " Procesbevillingsnævnet \n Den særlige klageret \n Dommerudnævnelsesrådet \n Bibeskæftigelsesnævnet",
+        },
     ]);
     var edges12 = new vis.DataSet([
         { from: 1, to: 2 },
@@ -255,7 +283,12 @@ function visScript1() {
 
     //##################### vis13
     var nodes13 = new vis.DataSet([
-        { id: 1, font: { size: 25 }, level: "1", label: "Byrettens afdelinger" },
+        {
+            id: 1,
+            font: { size: 25 },
+            level: "1",
+            label: "Byrettens afdelinger",
+        },
         { id: 2, font: { size: 14 }, level: "2", label: "Civilretten" },
         { id: 3, font: { size: 14 }, level: "2", label: "Fogedretten" },
         { id: 4, font: { size: 14 }, level: "2", label: "Skifteretten" },
@@ -275,18 +308,18 @@ function visScript1() {
         edges: edges13,
     };
     var vis13 = new vis.Network(container13, data13, options);
-    
-
-
-
-
 }
 
-function visScript3() { 
+function visScript3() {
     //##################### vis31
     var nodes31 = new vis.DataSet([
         { id: 1, value: 10, level: "1", label: "Aftaleloven" },
-        { id: 2, value: 10, level: "2", label: "Indgåelse af forsikringsaftaler" },
+        {
+            id: 2,
+            value: 10,
+            level: "2",
+            label: "Indgåelse af forsikringsaftaler",
+        },
         { id: 3, value: 10, level: "2", label: "Indgåelse af kreditaftaler" },
         { id: 4, value: 10, level: "2", label: "Forbrugeraftaler" },
         { id: 5, value: 10, level: "2", label: "Aftaler om pant" },
@@ -308,10 +341,14 @@ function visScript3() {
     };
     var vis31 = new vis.Network(container31, data31, options);
 
-
     //##################### vis32
     var nodes32 = new vis.DataSet([
-        { id: 1, value: 10, level: "1", label: "Lovgivende\nmagt\nFolketinget" },
+        {
+            id: 1,
+            value: 10,
+            level: "1",
+            label: "Lovgivende\nmagt\nFolketinget",
+        },
         { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
         { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
     ]);
