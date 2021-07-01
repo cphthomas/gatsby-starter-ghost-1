@@ -10,7 +10,7 @@ const customJS = () => {
             console.log("#vis11 did not load in 8 seconds");
         });
 
-    waitForElement("#vis31, #vis32", 8000)
+    waitForElement("#vis31, #vis32, #vis33,#vis34,#vis35", 8000)
         .then(function () {
             console.log("#vis31 is loaded.. do stuff");
             visScript3();
@@ -36,180 +36,141 @@ function waitForElement(querySelector, timeout = 0) {
     });
 }
 
-var options = {
-    nodes: {
-        autoResize: true,
-        height: "100%",
-        width: "100%",
-        shape: "box",
-
-        font: {
-            color: "white",
-            size: 10,
-        },
-        scaling: {
-            label: {
-                min: 8,
-                max: 50,
-            },
-        },
-        borderWidth: 1,
-        shadow: false,
-        margin: {
-            top: 10,
-            left: 10,
-            right: 10,
-            bottom: 10,
-        },
-        color: {
-            border: "black",
-            background: "black",
-            highlight: {
-                fontColor: "black",
-
-                border: "orange",
-                background: "orange",
-            },
-        },
-    },
+var nodes1 = {
     autoResize: true,
-    physics: {
-        hierarchicalRepulsion: {
-            centralGravity: 0.0,
-            springLength: 230,
-            springConstant: 0.18,
-            avoidOverlap: -10,
-            treeSpacing: 100,
-            nodeDistance: 100,
-        },
-        maxVelocity: 146,
-        solver: "hierarchicalRepulsion",
-        timestep: 0.35,
-        stabilization: {
-            enabled: true,
-            iterations: 2000,
+    height: "100%",
+    width: "100%",
+    shape: "box",
+
+    font: {
+        color: "white",
+        size: 10,
+    },
+    scaling: {
+        label: {
+            min: 8,
+            max: 50,
         },
     },
-    layout: {
-        improvedLayout: true,
-        hierarchical: {
-            enabled: true,
-            direction: "UD",
-            levelSeparation: 120,
-            nodeSpacing: 10,
-            treeSpacing: 10,
-            blockShifting: true,
-            sortMethod: "hubsize",
-            parentCentralization: true,
-            blockShifting: true,
-            edgeMinimization: true,
-        },
+    borderWidth: 1,
+    shadow: false,
+    margin: {
+        top: 10,
+        left: 10,
+        right: 10,
+        bottom: 10,
     },
-    edges: {
-        smooth: false,
-        chosen: true,
-        arrows: {
-            to: {
-                enabled: false,
-                type: "arrow",
-            },
-        },
-        color: {
-            color: "black",
-            highlight: "orange",
-            hover: "#848484",
-            inherit: "from",
-            opacity: 1.0,
+    color: {
+        border: "black",
+        background: "black",
+        highlight: {
+            fontColor: "black",
+
+            border: "orange",
+            background: "orange",
         },
     },
 };
+var layout1 = {
+    improvedLayout: true,
+    hierarchical: {
+        enabled: true,
+        direction: "UD",
+        levelSeparation: 120,
+        nodeSpacing: 10,
+        treeSpacing: 10,
+        blockShifting: true,
+        sortMethod: "hubsize",
+        parentCentralization: true,
+        blockShifting: true,
+        edgeMinimization: true,
+    },
+};
 
-var options2 = {
-    nodes: {
-        autoResize: true,
-        height: "100%",
-        width: "100%",
-        shape: "box",
-
-        font: {
-            color: "white",
-            size: 10,
-        },
-        scaling: {
-            label: {
-                min: 8,
-                max: 50,
-            },
-        },
-        borderWidth: 1,
-        shadow: false,
-        margin: {
-            top: 10,
-            left: 10,
-            right: 10,
-            bottom: 10,
-        },
-        color: {
-            border: "black",
-            background: "black",
-            highlight: {
-                fontColor: "black",
-
-                border: "orange",
-                background: "orange",
-            },
+var layout2 = {
+    improvedLayout: true,
+    hierarchical: {
+        enabled: true,
+        direction: "LR",
+        levelSeparation: 420,
+        nodeSpacing: 10,
+        treeSpacing: 10,
+        blockShifting: true,
+        sortMethod: "hubsize",
+        parentCentralization: true,
+        blockShifting: true,
+        edgeMinimization: true,
+    },
+};
+var edges1 = {
+    smooth: false,
+    chosen: true,
+    arrows: {
+        to: {
+            enabled: false,
+            type: "arrow",
         },
     },
+    color: {
+        color: "black",
+        highlight: "orange",
+        hover: "#848484",
+        inherit: "from",
+        opacity: 1.0,
+    },
+};
+
+var edges2 = {
+    length: 40,
+    smooth: false,
+    chosen: true,
+    arrows: {
+        to: {
+            enabled: true,
+            type: "arrow",
+        },
+    },
+    color: {
+        color: "black",
+        highlight: "orange",
+        hover: "#848484",
+        inherit: "from",
+        opacity: 1.0,
+    },
+};
+
+var edges3 = {
+    length: 40,
+    smooth: true,
+    chosen: true,
+    color: {
+        color: "black",
+        highlight: "orange",
+        hover: "#848484",
+        inherit: "from",
+        opacity: 1.0,
+    },
+};
+
+var optionsUD = {
+    nodes: nodes1,
     autoResize: true,
-    physics: {
-        hierarchicalRepulsion: {
-            centralGravity: 0.0,
-            springLength: 230,
-            springConstant: 0.18,
-            avoidOverlap: -10,
-            treeSpacing: 100,
-            nodeDistance: 100,
-        },
-        maxVelocity: 146,
-        solver: "hierarchicalRepulsion",
-        timestep: 0.35,
-        stabilization: {
-            enabled: true,
-            iterations: 2000,
-        },
-    },
-    layout: {
-        improvedLayout: true,
-        hierarchical: {
-            enabled: true,
-            direction: "LR",
-            levelSeparation: 420,
-            nodeSpacing: 10,
-            treeSpacing: 10,
-            blockShifting: true,
-            sortMethod: "hubsize",
-            parentCentralization: true,
-            blockShifting: true,
-            edgeMinimization: true,
-        },
-    },
-    edges: {
-        smooth: false,
-        chosen: true,
-        arrows: {
-            to: {
-                enabled: false,
-                type: "arrow",
-            },
-        },
-        color: {
-            color: "black",
-            highlight: "orange",
-            hover: "#848484",
-            inherit: "from",
-            opacity: 1.0,
-        },
-    },
+    layout: layout1,
+    edges: edges1,
+};
+
+var optionsLRARROW = {
+    nodes: nodes1,
+    autoResize: true,
+    layout: layout2,
+    edges: edges2
+};
+
+var optionsLRARROWCURVE = {
+    nodes: nodes1,
+    autoResize: true,
+    layout: layout2,
+    edges: edges3
 };
 
 function visScript1() {
@@ -234,7 +195,7 @@ function visScript1() {
         nodes: nodes11,
         edges: edges11,
     };
-    var vis11 = new vis.Network(container11, data11, options);
+    var vis11 = new vis.Network(container11, data11, optionsUD);
 
     //##################### vis12
     var nodes12 = new vis.DataSet([
@@ -279,7 +240,7 @@ function visScript1() {
         nodes: nodes12,
         edges: edges12,
     };
-    var vis12 = new vis.Network(container12, data12, options);
+    var vis12 = new vis.Network(container12, data12, optionsUD);
 
     //##################### vis13
     var nodes13 = new vis.DataSet([
@@ -307,7 +268,7 @@ function visScript1() {
         nodes: nodes13,
         edges: edges13,
     };
-    var vis13 = new vis.Network(container13, data13, options);
+    var vis13 = new vis.Network(container13, data13, optionsUD);
 }
 
 function visScript3() {
@@ -334,15 +295,35 @@ function visScript3() {
         { from: 1, to: 6 },
         { from: 1, to: 7 },
     ]);
+    
+  
     var container31 = document.getElementById("vis31");
     var data31 = {
         nodes: nodes31,
         edges: edges31,
     };
-    var vis31 = new vis.Network(container31, data31, options);
+    var vis31 = new vis.Network(container31, data31, optionsLRARROW);
 
     //##################### vis32
     var nodes32 = new vis.DataSet([
+        { id: 1,  value: 10, level: "1", label: "Sælger" },
+        { id: 2, value: 10, level: "2", label: "Køber" },
+    ]);
+
+   
+    var edges32 = new vis.DataSet([
+        { from: 1, to: 2 , label: "Varer/Ydelser",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 1 , label: "Penge/Modydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}}, 
+    ]);
+    var container32 = document.getElementById("vis32");
+    var data32 = {
+        nodes: nodes32,
+        edges: edges32,
+    };
+    var vis32 = new vis.Network(container32, data32, optionsLRARROWCURVE);
+
+    //##################### vis33
+    var nodes33 = new vis.DataSet([
         {
             id: 1,
             value: 10,
@@ -352,17 +333,66 @@ function visScript3() {
         { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
         { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
     ]);
-    var edges32 = new vis.DataSet([
+    var edges33 = new vis.DataSet([
         { from: 1, to: 2 },
         { from: 2, to: 3 },
         { from: 3, to: 1 },
     ]);
-    var container32 = document.getElementById("vis32");
-    var data32 = {
-        nodes: nodes32,
-        edges: edges32,
+    var container33 = document.getElementById("vis33");
+    var data33 = {
+        nodes: nodes33,
+        edges: edges33,
     };
-    var vis32 = new vis.Network(container32, data32, options);
+    var vis33 = new vis.Network(container33, data33, optionsUD);
+
+    //##################### vis34
+    var nodes34 = new vis.DataSet([
+        {
+            id: 1,
+            value: 10,
+            level: "1",
+            label: "Lovgivende\nmagt\nFolketinget",
+        },
+        { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
+        { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
+    ]);
+    var edges34 = new vis.DataSet([
+        { from: 1, to: 2 },
+        { from: 2, to: 3 },
+        { from: 3, to: 1 },
+    ]);
+    var container34 = document.getElementById("vis34");
+    var data34 = {
+        nodes: nodes34,
+        edges: edges34,
+    };
+    var vis34 = new vis.Network(container34, data34, optionsUD);
+
+
+     //##################### vis35
+     var nodes35 = new vis.DataSet([
+        {
+            id: 1,
+            value: 10,
+            level: "1",
+            label: "Lovgivende\nmagt\nFolketinget",
+        },
+        { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
+        { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
+    ]);
+    var edges35 = new vis.DataSet([
+        { from: 1, to: 2 },
+        { from: 2, to: 3 },
+        { from: 3, to: 1 },
+    ]);
+    var container35 = document.getElementById("vis35");
+    var data35 = {
+        nodes: nodes35,
+        edges: edges35,
+    };
+    var vis35 = new vis.Network(container35, data35, optionsUD);
+
+
 }
 
 export default customJS;
