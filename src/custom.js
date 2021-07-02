@@ -421,7 +421,7 @@ function visScript11() {
         { from: 3, to: 1 },
     ]);
     var container111 = document.getElementById("vis111");
-    var data41 = {
+    var data111 = {
         nodes: nodes111,
         edges: edges111,
     };
@@ -497,7 +497,7 @@ function visScript11() {
         nodes: nodes115,
         edges: edges115,
     };
-    var vis115 = new vis.Network(container112, data112, optionsUD);
+    var vis115 = new vis.Network(container115, data115, optionsUD);
 
     // ####################### vis116
     var nodes116 = new vis.DataSet([
