@@ -18,6 +18,14 @@ const customJS = () => {
         .catch(() => {
             console.log("#vis31 did not load in 8 seconds");
         });
+    waitForElement("#vis41", 8000)
+        .then(function () {
+            console.log("#vis41 is loaded.. do stuff");
+            visScript4();
+        })
+        .catch(() => {
+            console.log("#vis41 did not load in 8 seconds");
+        });
 };
 
 function waitForElement(querySelector, timeout = 0) {
@@ -369,8 +377,26 @@ function visScript3() {
         edges: edges35,
     };
     var vis35 = new vis.Network(container35, data35, optionsLRARROWCURVE);
+}
 
-
+function visScript4() {
+    // ####################### vis41
+    var nodes41 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges41 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container41 = document.getElementById("vis41");
+    var data41 = {
+        nodes: nodes41,
+        edges: edges41,
+    };
+    var vis41 = new vis.Network(container41, data41, optionsUD);
 }
 
 export default customJS;
