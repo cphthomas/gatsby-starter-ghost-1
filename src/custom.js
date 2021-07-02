@@ -306,14 +306,12 @@ function visScript3() {
 
     //##################### vis32
     var nodes32 = new vis.DataSet([
-        { id: 1,  value: 10, level: "1", label: "Sælger" },
-        { id: 2, value: 10, level: "2", label: "Køber" },
+        { id: 1,  value: 10, level: "1", label: "Sælger" ,color: {border: "red", background: "red"}},
+        { id: 2, value: 10, level: "2", label: "Køber" ,color: {border: "blue", background: "blue"}},
     ]);
-
-   
     var edges32 = new vis.DataSet([
-        { from: 1, to: 2 , label: "Varer/Ydelser",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2, to: 1 , label: "Penge/Modydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        { from: 1, to: 2 , label: "Varer\nYdelser",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 1 , label: "Penge\nModydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}}, 
     ]);
     var container32 = document.getElementById("vis32");
     var data32 = {
@@ -324,73 +322,53 @@ function visScript3() {
 
     //##################### vis33
     var nodes33 = new vis.DataSet([
-        {
-            id: 1,
-            value: 10,
-            level: "1",
-            label: "Lovgivende\nmagt\nFolketinget",
-        },
-        { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
-        { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
+        { id: 1,  value: 10, level: "1", label: "Testator" ,color: {border: "red", background: "red"}},
+        { id: 2, value: 10, level: "2", label: "Arving" ,color: {border: "blue", background: "blue"}},
     ]);
     var edges33 = new vis.DataSet([
-        { from: 1, to: 2 },
-        { from: 2, to: 3 },
-        { from: 3, to: 1 },
+        { from: 1, to: 2 , label: "ARV"},
+       
     ]);
     var container33 = document.getElementById("vis33");
     var data33 = {
         nodes: nodes33,
         edges: edges33,
     };
-    var vis33 = new vis.Network(container33, data33, optionsUD);
+    var vis33 = new vis.Network(container33, data33, optionsLRARROW);
 
     //##################### vis34
     var nodes34 = new vis.DataSet([
-        {
-            id: 1,
-            value: 10,
-            level: "1",
-            label: "Lovgivende\nmagt\nFolketinget",
-        },
-        { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
-        { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
+        { id: 1,  value: 10, level: "1", label: "Sælger\nTilbudsgiver",color: {border: "red", background: "red"}},
+        { id: 2, value: 10, level: "2", label: "Køber\nTilbudsmodtager",color: {border: "blue", background: "blue"} },
     ]);
     var edges34 = new vis.DataSet([
-        { from: 1, to: 2 },
-        { from: 2, to: 3 },
-        { from: 3, to: 1 },
+        { from: 1, to: 2 , label: "1 Sælger sender\ntilbud til køber",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 1 , label: "2 Køber sender\naccept/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
     ]);
     var container34 = document.getElementById("vis34");
     var data34 = {
         nodes: nodes34,
         edges: edges34,
     };
-    var vis34 = new vis.Network(container34, data34, optionsUD);
+    var vis34 = new vis.Network(container34, data34, optionsLRARROWCURVE);
 
 
      //##################### vis35
      var nodes35 = new vis.DataSet([
-        {
-            id: 1,
-            value: 10,
-            level: "1",
-            label: "Lovgivende\nmagt\nFolketinget",
-        },
-        { id: 2, value: 10, level: "2", label: "Dømmende\nmagt\nDomstolene" },
-        { id: 3, value: 10, level: "2", label: "Udøvende\nmagt\nRegeringen" },
+        { id: 1,  value: 10, level: "2", label: "Sælger\nTilbudsmodtager",color: {border: "red", background: "red"} },
+        { id: 2, value: 10, level: "1", label: "Køber\nTilbudsgiver" ,color: {border: "blue", background: "blue"}},
     ]);
     var edges35 = new vis.DataSet([
-        { from: 1, to: 2 },
-        { from: 2, to: 3 },
-        { from: 3, to: 1 },
+        { from: 2, to: 1 , label: "1 Køber sender\nkøbstilbud/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 1, to: 2 , label: "2 Sælger sender\nAccept/ordrebekræftelse",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        
     ]);
     var container35 = document.getElementById("vis35");
     var data35 = {
         nodes: nodes35,
         edges: edges35,
     };
-    var vis35 = new vis.Network(container35, data35, optionsUD);
+    var vis35 = new vis.Network(container35, data35, optionsLRARROWCURVE);
 
 
 }
