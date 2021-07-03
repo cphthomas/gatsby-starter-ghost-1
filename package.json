@@ -45,6 +45,7 @@
     "@tryghost/helpers-gatsby": "1.0.43",
     "algoliasearch": "^4.9.1",
     "bootstrap": "^5.0.0-beta3",
+    "bootstrap-switch-button-react": "^1.2.0",
     "cheerio": "1.0.0-rc.5",
     "cookie-parser": "^1.4.5",
     "gatsby": "2.32.9",

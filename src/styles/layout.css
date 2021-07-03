@@ -197,3 +197,7 @@ a:hover {
 .loginBtn {
     text-decoration: none;
 }
+
+.site-foot-nav {
+    justify-content: center !important;
+}

@@ -144,3 +144,11 @@ h6::before {
 table {
     font-family: var(--bs-font-sans-serif);
 }
+
+.switchBtn {
+    text-align: center;
+}
+
+.switch.btn {
+    min-width: 9.7rem !important;
+}

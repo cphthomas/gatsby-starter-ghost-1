@@ -20,7 +20,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardSetupForm from "./CardSetupForm";
-import customJS from "../../custom.js";
+import visJS from "../../vis.js";
 import customNewJS from "../../newscript.js";
 import handsonJS from "../../handson.js";
 import amplitudeJS from "../../amplitude.js";
@@ -91,7 +91,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     }
 
     useEffect(async () => {
-        customJS();
+        visJS();
         customNewJS();
         handsonJS();
         amplitudeJS();
@@ -315,6 +315,18 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         {/* All the main content gets inserted here, index.js, post.js */}
                         {children}
                     </main>
+                </div>
+                <div className="viewport-bottom">
+                    <footer className="site-foot">
+                        <div className="site-foot-nav container">
+                            <p>
+                                Kontakt:{" "}
+                                <a href="mailto: support@tepedu.com">
+                                    support@tepedu.com
+                                </a>{" "}
+                            </p>
+                        </div>
+                    </footer>
                 </div>
                 <div
                     className="modal fade"

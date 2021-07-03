@@ -1,4 +1,4 @@
-const customJS = () => {
+const visJS = () => {
     $("body").tooltip({ selector: "[data-toggle=tooltip]" });
 
     waitForElement("#vis11, #vis12, #vis13", 8000)
@@ -319,8 +319,8 @@ function visScript3() {
         { from: 1, to: 6 },
         { from: 1, to: 7 },
     ]);
-    
-  
+
+
     var container31 = document.getElementById("vis31");
     var data31 = {
         nodes: nodes31,
@@ -335,7 +335,7 @@ function visScript3() {
     ]);
     var edges32 = new vis.DataSet([
         { from: 1, to: 2 , label: "Varer\nYdelser",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2, to: 1 , label: "Penge\nModydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        { from: 2, to: 1 , label: "Penge\nModydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
     ]);
     var container32 = document.getElementById("vis32");
     var data32 = {
@@ -351,7 +351,7 @@ function visScript3() {
     ]);
     var edges33 = new vis.DataSet([
         { from: 1, to: 2 , label: "ARV"},
-       
+
     ]);
     var container33 = document.getElementById("vis33");
     var data33 = {
@@ -367,7 +367,7 @@ function visScript3() {
     ]);
     var edges34 = new vis.DataSet([
         { from: 1, to: 2 , label: "1 Sælger sender\ntilbud til køber",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2, to: 1 , label: "2 Køber sender\naccept/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        { from: 2, to: 1 , label: "2 Køber sender\naccept/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
     ]);
     var container34 = document.getElementById("vis34");
     var data34 = {
@@ -384,8 +384,8 @@ function visScript3() {
     ]);
     var edges35 = new vis.DataSet([
         { from: 2, to: 1 , label: "1 Køber sender\nkøbstilbud/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 1, to: 2 , label: "2 Sælger sender\nAccept/ordrebekræftelse",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
-        
+        { from: 1, to: 2 , label: "2 Sælger sender\nAccept/ordrebekræftelse",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+
     ]);
     var container35 = document.getElementById("vis35");
     var data35 = {
@@ -425,7 +425,7 @@ function visScript11() {
     var edges111 = new vis.DataSet([
         { from: 1, to: 2,length: 400, label: "Lån\nKredit",arrows: {to: {enabled: true, type: "arrow"}}},
         { from: 3, to: 1, label: "Kautionsaftale",arrows: {to: {enabled: true, type: "arrow"}}},
-        
+
     ]);
     var container111 = document.getElementById("vis111");
     var data111 = {
@@ -460,7 +460,7 @@ function visScript11() {
         { id: 4, font: { size: 50 }, level: "3", label: "Kautionist 2" ,color: {border: "green", background: "green"}},
         { id: 5, font: { size: 50 }, level: "3", label: "Kautionist 3" ,color: {border: "green", background: "green"}},
         { id: 6, font: { size: 50 }, level: "3", label: "Kautionist 4" ,color: {border: "green", background: "green"}},
-        
+
     ]);
     var edges113 = new vis.DataSet([
         { from: 1,length: 150, to: 2 ,arrows: {from: {enabled: true, type: "arrow"}}},
@@ -468,7 +468,7 @@ function visScript11() {
         { from: 2,length: 130, to: 4, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 5, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 6, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
-        
+
     ]);
     var container113 = document.getElementById("vis113");
     var data113 = {
@@ -484,16 +484,16 @@ function visScript11() {
         { id: 3, font: { size: 30 }, level: "3", label: "Kautionist 1 50%" ,color: {border: "green", background: "green"}},
         { id: 4, font: { size: 30 }, level: "3", label: "Kautionist 2 25%" ,color: {border: "green", background: "green"}},
         { id: 5, font: { size: 30 }, level: "3", label: "Kautionist 3 25%" ,color: {border: "green", background: "green"}},
-        
-        
+
+
     ]);
     var edges114 = new vis.DataSet([
         { from: 1, font: { size: 20 },label: "            Lån 1 mio", to: 2 ,arrows: {from: {enabled: true, type: "arrow"}}},
         { from: 2,length: 100, font: { size: 20 },label: "Hæftelse 500.000", to: 3, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 4, font: { size: 20 },label: "Hæftelse 250.000", arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 5, font: { size: 20 },label: "Hæftelse 250.000", arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
-        
-        
+
+
     ]);
     var container114 = document.getElementById("vis114");
     var data114 = {
@@ -510,7 +510,7 @@ function visScript11() {
         { id: 4, font: { size: 50 }, level: "3", label: "Kautionist 2" ,color: {border: "green", background: "green"}},
         { id: 5, font: { size: 50 }, level: "3", label: "Kautionist 3" ,color: {border: "green", background: "green"}},
         { id: 6, font: { size: 50 }, level: "3", label: "Kautionist 4" ,color: {border: "green", background: "green"}},
-        
+
     ]);
     var edges115 = new vis.DataSet([
         { from: 1,length: 150, to: 2 ,arrows: {from: {enabled: true, type: "arrow"}}},
@@ -518,7 +518,7 @@ function visScript11() {
         { from: 2,length: 130, to: 4, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 5, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 6, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
-        
+
     ]);
     var container115 = document.getElementById("vis115");
     var data115 = {
@@ -528,7 +528,7 @@ function visScript11() {
     var vis115 = new vis.Network(container115, data115, optionsLR);
 
     // ####################### vis116
-  
+
     var nodes116 = new vis.DataSet([
         { id: 1, font: { size: 20 }, level: "1", label: "Efterkautionist\nÆgtefælle",color: {border: "red", background: "red"} },
         { id: 2, font: { size: 20 }, level: "1", label: "Kreditor" ,color: {border: "blue", background: "blue"}},
@@ -610,4 +610,4 @@ function visScript11() {
 
 }
 
-export default customJS;
+export default visJS;

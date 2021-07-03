@@ -10,6 +10,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import * as tocbot from "tocbot";
 import { constants } from "../utils/constants";
 import { Image } from "react-bootstrap";
+import BootstrapSwitchButton from "bootstrap-switch-button-react";
 // import { useSpeechSynthesis } from "react-speech-kit";
 import Speech from "speak-tts";
 /**
@@ -38,9 +39,9 @@ const Post = ({ data, location }) => {
                 },
             })
             .then((data) => {
-                //console.log("Speech is ready", data);
-                //_addVoicesList(data.voices);
-                //_prepareSpeakButton(speech);
+                console.log("Speech is ready", data);
+                _addVoicesList(data.voices);
+                _prepareSpeakButton(speech);
             })
             .catch((e) => {
                 console.error("An error occured while initializing : ", e);
@@ -61,6 +62,7 @@ const Post = ({ data, location }) => {
     const [planType, setPlanType] = useState("");
     const [email, setEmail] = useState("");
     const [customerId, setCustomerId] = useState("");
+    const [speechTextEnable, setSpeechTextEnable] = useState(false);
 
     useEffect(async () => {
         const cookies = new Cookies();
@@ -177,6 +179,15 @@ const Post = ({ data, location }) => {
             });
     }
 
+    function enableDisableSpeech(checked) {
+        setSpeechTextEnable(checked);
+        if (checked) {
+        } else {
+            console.log(checked);
+            speech.cancel();
+        }
+    }
+
     async function selectedText() {
         // window.getSelection().toString()
         //     ? console.log(window.getSelection().toString())
@@ -185,38 +196,40 @@ const Post = ({ data, location }) => {
         if (typeof window !== "undefined") {
             textToSpeech = window.getSelection().toString();
         }
-        console.log(textToSpeech);
+        console.log(speechTextEnable);
         //speak({ text: textToSpeech });
-        speech
-            .speak({
-                text: textToSpeech,
-                queue: false,
-                listeners: {
-                    onstart: () => {
-                        console.log("Start utterance");
+        if (speechTextEnable) {
+            speech
+                .speak({
+                    text: textToSpeech,
+                    queue: false,
+                    listeners: {
+                        onstart: () => {
+                            console.log("Start utterance");
+                        },
+                        onend: () => {
+                            console.log("End utterance");
+                        },
+                        onresume: () => {
+                            console.log("Resume utterance");
+                        },
+                        onboundary: (event) => {
+                            console.log(
+                                event.name +
+                                    " boundary reached after " +
+                                    event.elapsedTime +
+                                    " milliseconds."
+                            );
+                        },
                     },
-                    onend: () => {
-                        console.log("End utterance");
-                    },
-                    onresume: () => {
-                        console.log("Resume utterance");
-                    },
-                    onboundary: (event) => {
-                        console.log(
-                            event.name +
-                                " boundary reached after " +
-                                event.elapsedTime +
-                                " milliseconds."
-                        );
-                    },
-                },
-            })
-            .then((data) => {
-                console.log("Success !", data);
-            })
-            .catch((e) => {
-                console.error("An error occurred :", e);
-            });
+                })
+                .then((data) => {
+                    console.log("Success !", data);
+                })
+                .catch((e) => {
+                    console.error("An error occurred :", e);
+                });
+        }
     }
 
     return (
@@ -248,6 +261,17 @@ const Post = ({ data, location }) => {
                                 />
                             </figure>
                         ) : null}
+                        <div className="switchBtn">
+                            <BootstrapSwitchButton
+                                checked={speechTextEnable}
+                                onstyle="dark"
+                                offstyle="dark"
+                                style="border"
+                                onlabel="Enable Speech"
+                                offlabel="Disable Speech"
+                                onChange={enableDisableSpeech}
+                            />
+                        </div>
                         <aside className="toc-container">
                             <div className="toc"></div>
                         </aside>
@@ -268,7 +292,9 @@ const Post = ({ data, location }) => {
                       fisrtTagPlan == constants.PREMIUM_POST) ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2 className="whiteClr">This post is for paying subscribers only</h2>
+                            <h2 className="whiteClr">
+                                This post is for paying subscribers only
+                            </h2>
                             <p className="font-18">
                                 Already have an account?{" "}
                                 <a href="/login">Sign in</a>
@@ -282,7 +308,9 @@ const Post = ({ data, location }) => {
                       fisrtTagPlan == constants.PREMIUM_POST) ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2 className="whiteClr">This post is for paying subscribers only</h2>
+                            <h2 className="whiteClr">
+                                This post is for paying subscribers only
+                            </h2>
                             <div className="form-group">
                                 <label className="font-size-15">
                                     Choose your subscription
@@ -336,7 +364,9 @@ const Post = ({ data, location }) => {
                   fisrtTagPlan == constants.PREMIUM_POST ? (
                     <div class="card">
                         <div class="card-body">
-                            <h2 className="whiteClr">This post is for premium subscribers only</h2>
+                            <h2 className="whiteClr">
+                                This post is for premium subscribers only
+                            </h2>
                             <button
                                 type="submit"
                                 className="btn btn-primary btn-premiume"
