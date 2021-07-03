@@ -35,6 +35,16 @@ const visJS = () => {
         .catch(() => {
             console.log("#vis111 did not load in 8 seconds");
         });
+
+        waitForElement("#vis121, #vis122, #vis123, #vis124, #vis125, #vis126, #vis127, #vis128, #vis129","#vis1210, #vis1211, #vis1212, #vis1213, #vis1214, #vis1215, #vis1216, #vis1217, #vis1218, #vis1219, #vis1220, #vis1221, #vis1222, #vis1223, #vis1224, #vis1225", 8000)
+        .then(function () {
+            console.log("#vis121 is loaded.. do stuff");
+            visScript12();
+        })
+        .catch(() => {
+            console.log("#vis121 did not load in 8 seconds");
+        });
+    
 };
 
 function waitForElement(querySelector, timeout = 0) {
@@ -319,8 +329,8 @@ function visScript3() {
         { from: 1, to: 6 },
         { from: 1, to: 7 },
     ]);
-
-
+    
+  
     var container31 = document.getElementById("vis31");
     var data31 = {
         nodes: nodes31,
@@ -335,7 +345,7 @@ function visScript3() {
     ]);
     var edges32 = new vis.DataSet([
         { from: 1, to: 2 , label: "Varer\nYdelser",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2, to: 1 , label: "Penge\nModydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 1 , label: "Penge\nModydelse",smooth: {type: 'curvedCW', roundness: 0.2},arrows: {to: {enabled: true, type: "arrow"}}}, 
     ]);
     var container32 = document.getElementById("vis32");
     var data32 = {
@@ -351,7 +361,7 @@ function visScript3() {
     ]);
     var edges33 = new vis.DataSet([
         { from: 1, to: 2 , label: "ARV"},
-
+       
     ]);
     var container33 = document.getElementById("vis33");
     var data33 = {
@@ -367,7 +377,7 @@ function visScript3() {
     ]);
     var edges34 = new vis.DataSet([
         { from: 1, to: 2 , label: "1 Sælger sender\ntilbud til køber",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2, to: 1 , label: "2 Køber sender\naccept/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 1 , label: "2 Køber sender\naccept/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
     ]);
     var container34 = document.getElementById("vis34");
     var data34 = {
@@ -384,8 +394,8 @@ function visScript3() {
     ]);
     var edges35 = new vis.DataSet([
         { from: 2, to: 1 , label: "1 Køber sender\nkøbstilbud/ordre",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 1, to: 2 , label: "2 Sælger sender\nAccept/ordrebekræftelse",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-
+        { from: 1, to: 2 , label: "2 Sælger sender\nAccept/ordrebekræftelse",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        
     ]);
     var container35 = document.getElementById("vis35");
     var data35 = {
@@ -425,7 +435,7 @@ function visScript11() {
     var edges111 = new vis.DataSet([
         { from: 1, to: 2,length: 400, label: "Lån\nKredit",arrows: {to: {enabled: true, type: "arrow"}}},
         { from: 3, to: 1, label: "Kautionsaftale",arrows: {to: {enabled: true, type: "arrow"}}},
-
+        
     ]);
     var container111 = document.getElementById("vis111");
     var data111 = {
@@ -460,7 +470,7 @@ function visScript11() {
         { id: 4, font: { size: 50 }, level: "3", label: "Kautionist 2" ,color: {border: "green", background: "green"}},
         { id: 5, font: { size: 50 }, level: "3", label: "Kautionist 3" ,color: {border: "green", background: "green"}},
         { id: 6, font: { size: 50 }, level: "3", label: "Kautionist 4" ,color: {border: "green", background: "green"}},
-
+        
     ]);
     var edges113 = new vis.DataSet([
         { from: 1,length: 150, to: 2 ,arrows: {from: {enabled: true, type: "arrow"}}},
@@ -468,7 +478,7 @@ function visScript11() {
         { from: 2,length: 130, to: 4, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 5, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 6, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
-
+        
     ]);
     var container113 = document.getElementById("vis113");
     var data113 = {
@@ -484,16 +494,16 @@ function visScript11() {
         { id: 3, font: { size: 30 }, level: "3", label: "Kautionist 1 50%" ,color: {border: "green", background: "green"}},
         { id: 4, font: { size: 30 }, level: "3", label: "Kautionist 2 25%" ,color: {border: "green", background: "green"}},
         { id: 5, font: { size: 30 }, level: "3", label: "Kautionist 3 25%" ,color: {border: "green", background: "green"}},
-
-
+        
+        
     ]);
     var edges114 = new vis.DataSet([
         { from: 1, font: { size: 20 },label: "            Lån 1 mio", to: 2 ,arrows: {from: {enabled: true, type: "arrow"}}},
         { from: 2,length: 100, font: { size: 20 },label: "Hæftelse 500.000", to: 3, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 4, font: { size: 20 },label: "Hæftelse 250.000", arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 5, font: { size: 20 },label: "Hæftelse 250.000", arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
-
-
+        
+        
     ]);
     var container114 = document.getElementById("vis114");
     var data114 = {
@@ -510,7 +520,7 @@ function visScript11() {
         { id: 4, font: { size: 50 }, level: "3", label: "Kautionist 2" ,color: {border: "green", background: "green"}},
         { id: 5, font: { size: 50 }, level: "3", label: "Kautionist 3" ,color: {border: "green", background: "green"}},
         { id: 6, font: { size: 50 }, level: "3", label: "Kautionist 4" ,color: {border: "green", background: "green"}},
-
+        
     ]);
     var edges115 = new vis.DataSet([
         { from: 1,length: 150, to: 2 ,arrows: {from: {enabled: true, type: "arrow"}}},
@@ -518,7 +528,7 @@ function visScript11() {
         { from: 2,length: 130, to: 4, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 5, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
         { from: 2, to: 6, arrows:{from: {enabled: true, type: "arrow"}},smooth: {type: 'curvedCW', roundness: 0}},
-
+        
     ]);
     var container115 = document.getElementById("vis115");
     var data115 = {
@@ -528,7 +538,7 @@ function visScript11() {
     var vis115 = new vis.Network(container115, data115, optionsLR);
 
     // ####################### vis116
-
+  
     var nodes116 = new vis.DataSet([
         { id: 1, font: { size: 20 }, level: "1", label: "Efterkautionist\nÆgtefælle",color: {border: "red", background: "red"} },
         { id: 2, font: { size: 20 }, level: "1", label: "Kreditor" ,color: {border: "blue", background: "blue"}},
@@ -604,10 +614,462 @@ function visScript11() {
         edges: edges119,
     };
     var vis119 = new vis.Network(container119, data119, optionsUD);
+}
+
+function visScript12() {
+    // ####################### vis121
+    var nodes121 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges121 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container121 = document.getElementById("vis121");
+    var data121 = {
+        nodes: nodes121,
+        edges: edges121,
+    };
+    var vis121 = new vis.Network(container121, data121, optionsUD);
 
 
+    // ####################### vis122
+    var nodes122 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges122 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container122 = document.getElementById("vis122");
+    var data122 = {
+        nodes: nodes122,
+        edges: edges122,
+    };
+    var vis122 = new vis.Network(container122, data122, optionsUD);
 
 
+     // ####################### vis123
+     var nodes123 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges123 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container123 = document.getElementById("vis123");
+    var data123 = {
+        nodes: nodes123,
+        edges: edges123,
+    };
+    var vis123 = new vis.Network(container123, data123, optionsUD);
+
+     // ####################### vis124
+     var nodes124 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges124 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container124 = document.getElementById("vis124");
+    var data124 = {
+        nodes: nodes124,
+        edges: edges124,
+    };
+    var vis124 = new vis.Network(container124, data124, optionsUD);
+
+     // ####################### vis125
+     var nodes125 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges125 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container125 = document.getElementById("vis125");
+    var data125 = {
+        nodes: nodes125,
+        edges: edges125,
+    };
+    var vis125 = new vis.Network(container125, data125, optionsUD);
+
+
+     // ####################### vis126
+     var nodes126 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges126 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container126 = document.getElementById("vis126");
+    var data126 = {
+        nodes: nodes126,
+        edges: edges126,
+    };
+    var vis126 = new vis.Network(container126, data126, optionsUD);
+
+     // ####################### vis127
+     var nodes127 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges127 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container127 = document.getElementById("vis127");
+    var data127 = {
+        nodes: nodes127,
+        edges: edges127,
+    };
+    var vis127 = new vis.Network(container127, data127, optionsUD);
+
+     // ####################### vis128
+     var nodes128 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges128 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container128 = document.getElementById("vis128");
+    var data128 = {
+        nodes: nodes128,
+        edges: edges128,
+    };
+    var vis128 = new vis.Network(container128, data128, optionsUD);
+
+     // ####################### vis129
+     var nodes129 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges129 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container129 = document.getElementById("vis129");
+    var data129 = {
+        nodes: nodes129,
+        edges: edges129,
+    };
+    var vis129 = new vis.Network(container129, data129, optionsUD);
+
+     // ####################### vis1210
+     var nodes1210 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1210 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1210 = document.getElementById("vis1210");
+    var data1210 = {
+        nodes: nodes1210,
+        edges: edges1210,
+    };
+    var vis1210 = new vis.Network(container1210, data1210, optionsUD);
+
+     // ####################### vis1211
+     var nodes1211 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1211 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1211 = document.getElementById("vis1211");
+    var data1211 = {
+        nodes: nodes1211,
+        edges: edges1211,
+    };
+    var vis1211 = new vis.Network(container1211, data1211, optionsUD);
+
+     // ####################### vis1212
+     var nodes1212 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1212 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1212 = document.getElementById("vis1212");
+    var data1212 = {
+        nodes: nodes1212,
+        edges: edges1212,
+    };
+    var vis1212 = new vis.Network(container1212, data1212, optionsUD);
+
+     // ####################### vis1213
+     var nodes1213 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1213 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1213 = document.getElementById("vis1213");
+    var data1213 = {
+        nodes: nodes1213,
+        edges: edges1213,
+    };
+    var vis1213 = new vis.Network(container1213, data1213, optionsUD);
+
+     // ####################### vis1214
+     var nodes1214 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1214 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1214 = document.getElementById("vis1214");
+    var data1214 = {
+        nodes: nodes1214,
+        edges: edges1214,
+    };
+    var vis1214 = new vis.Network(container1214, data1214, optionsUD);
+
+     // ####################### vis1215
+     var nodes1215 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1215 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1215 = document.getElementById("vis1215");
+    var data1215 = {
+        nodes: nodes1215,
+        edges: edges1215,
+    };
+    var vis1215 = new vis.Network(container1215, data1215, optionsUD);
+
+     // ####################### vis1216
+     var nodes1216 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1216 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1216 = document.getElementById("vis1216");
+    var data1216 = {
+        nodes: nodes1216,
+        edges: edges1216,
+    };
+    var vis1216 = new vis.Network(container1216, data1216, optionsUD);
+
+     // ####################### vis1217
+     var nodes1217 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1217 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1217 = document.getElementById("vis1217");
+    var data1217 = {
+        nodes: nodes1217,
+        edges: edges1217,
+    };
+    var vis1217 = new vis.Network(container1217, data1217, optionsUD);
+
+     // ####################### vis1218
+     var nodes1218 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1218 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1218 = document.getElementById("vis1218");
+    var data1218 = {
+        nodes: nodes1218,
+        edges: edges1218,
+    };
+    var vis1218 = new vis.Network(container1218, data1218, optionsUD);
+
+     // ####################### vis1219
+     var nodes1219 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1219 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1219 = document.getElementById("vis1219");
+    var data1219 = {
+        nodes: nodes1219,
+        edges: edges1219,
+    };
+    var vis1219 = new vis.Network(container1219, data1219, optionsUD);
+
+     // ####################### vis1220
+     var nodes1220 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1220 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1220 = document.getElementById("vis1220");
+    var data1220 = {
+        nodes: nodes1220,
+        edges: edges1220,
+    };
+    var vis1220 = new vis.Network(container1220, data1220, optionsUD);
+
+     // ####################### vis1221
+     var nodes1221 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1221 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1221 = document.getElementById("vis1221");
+    var data1221 = {
+        nodes: nodes1221,
+        edges: edges1221,
+    };
+    var vis1221 = new vis.Network(container1221, data1221, optionsUD);
+
+     // ####################### vis1222
+     var nodes1222 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1222 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1222 = document.getElementById("vis1222");
+    var data1222 = {
+        nodes: nodes1222,
+        edges: edges1222,
+    };
+    var vis1222 = new vis.Network(container1222, data1222, optionsUD);
+
+     // ####################### vis1223
+     var nodes1223 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1223 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1223 = document.getElementById("vis1223");
+    var data1223 = {
+        nodes: nodes1223,
+        edges: edges1223,
+    };
+    var vis1223 = new vis.Network(container1223, data1223, optionsUD);
+
+     // ####################### vis1224
+     var nodes1224 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1224 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1224 = document.getElementById("vis1224");
+    var data1224 = {
+        nodes: nodes1224,
+        edges: edges1224,
+    };
+    var vis1224 = new vis.Network(container1224, data1224, optionsUD);
+
+     // ####################### vis1225
+     var nodes1225 = new vis.DataSet([
+        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+    ]);
+    var edges1225 = new vis.DataSet([
+        { from: 1, to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2, to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 3, to: 1 },
+    ]);
+    var container1225 = document.getElementById("vis1225");
+    var data1225 = {
+        nodes: nodes1225,
+        edges: edges1225,
+    };
+    var vis1225 = new vis.Network(container1225, data1225, optionsUD);
+    
 }
 
 export default visJS;
