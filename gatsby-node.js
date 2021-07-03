@@ -6,6 +6,20 @@ const { paginate } = require(`gatsby-awesome-pagination`);
  * Here is the place where Gatsby creates the URLs for all the
  * posts, tags, pages and authors that we fetched from the Ghost site.
  */
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+    if (stage === "build-html" || stage === "develop-html") {
+        actions.setWebpackConfig({
+            module: {
+                rules: [
+                    {
+                        test: /bootstrap-switch-button-react/,
+                        use: loaders.null(),
+                    },
+                ],
+            },
+        });
+    }
+};
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
 
