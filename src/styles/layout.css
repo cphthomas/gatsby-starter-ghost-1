@@ -201,3 +201,32 @@ a:hover {
 .site-foot-nav {
     justify-content: center !important;
 }
+
+.site-foot a {
+    display: block;
+    width: 70px;
+    background-color: rgba(000, 000, 000, 1) !important;
+    text-align: center;
+    color: white !important;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+.switch-handle {
+    display: none !important;
+}
+
+.switch {
+    position: fixed !important;
+    bottom: 15px !important;
+    right: 60px !important;
+    z-index: 1;
+    border: unset !important;
+    border-radius: 0px !important;
+}
+
+.switch-on,
+.switch-off {
+    font-size: 13px !important;
+    font-family: sans-serif !important;
+}

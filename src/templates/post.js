@@ -267,9 +267,10 @@ const Post = ({ data, location }) => {
                                 onstyle="dark"
                                 offstyle="dark"
                                 style="border"
-                                onlabel="Enable Speech"
-                                offlabel="Disable Speech"
+                                onlabel="Speech"
+                                offlabel="No Speech"
                                 onChange={enableDisableSpeech}
+                                style={{ border: "none" }}
                             />
                         </div>
                         <aside className="toc-container">

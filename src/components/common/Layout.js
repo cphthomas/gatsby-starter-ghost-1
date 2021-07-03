@@ -320,10 +320,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <p>
-                                Kontakt:{" "}
-                                <a href="mailto: support@tepedu.com">
-                                    support@tepedu.com
-                                </a>{" "}
+                                <a href="mailto: support@tepedu.com">Kontakt</a>{" "}
                             </p>
                         </div>
                     </footer>
