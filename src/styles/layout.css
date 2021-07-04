@@ -229,4 +229,5 @@ a:hover {
 .switch-off {
     font-size: 13px !important;
     font-family: sans-serif !important;
+    background-color: black !important;
 }
