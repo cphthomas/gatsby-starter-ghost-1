@@ -619,7 +619,7 @@ function visScript11() {
 function visScript12() {
     // ####################### vis121
     var nodes121 = new vis.DataSet([
-        { id: 1, font: { size: 20 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
+        { id: 1, font: { size: 20 }, level: "1", label: "12.1 Test",color: {border: "red", background: "red"} },
         { id: 2, font: { size: 20 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
         { id: 3, font: { size: 20 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
     ]);
