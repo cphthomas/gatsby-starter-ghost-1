@@ -72,7 +72,7 @@ const visJS = () => {
             console.log("#vis151 did not load in 8 seconds");
         });
 
-        waitForElement("#timevis91", 8000)
+        waitForElement("#timevis91, #timevis92, #timevis93", 8000)
         .then(function () {
             console.log("#visualization is loaded.. do stuff");
             timevisScript9();
@@ -1474,7 +1474,7 @@ function timevisScript9() {
         { id: 5, content: "Konkursdekret 2021-08-22", start: "2021-08-22" },
     ]);
     var options91 = {};
-    var timeline = new vis.Timeline(container91, items91, options91);
+    var timeline91 = new vis.Timeline(container91, items91, options91);
 
     
 
@@ -1486,7 +1486,7 @@ function timevisScript9() {
         { id: 4, content: "Konkursdekret", start: "2022-02-25" },
     ]);
     var options92 = {};
-    var timeline = new vis.Timeline(container92, items92, options92);
+    var timeline92 = new vis.Timeline(container92, items92, options92);
 
     var container93 = document.getElementById("timevis93");
     var items93 = new vis.DataSet([
@@ -1497,7 +1497,7 @@ function timevisScript9() {
         { id: 5, content: "Fristdag", start: "2022-02-25" },
     ]);
     var options93 = {};
-    var timeline = new vis.Timeline(container93, items93, options93);
+    var timeline93 = new vis.Timeline(container93, items93, options93);
     
 }
 
