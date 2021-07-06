@@ -58,15 +58,6 @@ export default function HTML(props) {
                 <script src="https://code.highcharts.com/modules/exporting.js"></script>
                 <script src="https://code.highcharts.com/modules/export-data.js"></script>
                 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-                <script
-                    type="text/javascript"
-                    src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"
-                ></script>
-                <link
-                    href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css"
-                    rel="stylesheet"
-                    type="text/css"
-                />
                 {props.headComponents}
             </head>
             <body {...props.bodyAttributes}>
