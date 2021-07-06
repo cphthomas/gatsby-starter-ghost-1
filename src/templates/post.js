@@ -13,6 +13,7 @@ import { Image } from "react-bootstrap";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 // import { useSpeechSynthesis } from "react-speech-kit";
 import Speech from "speak-tts";
+import postScript from "../post-script.js";
 /**
  * Single post view (/:slug)
  *
@@ -65,6 +66,8 @@ const Post = ({ data, location }) => {
     const [speechTextEnable, setSpeechTextEnable] = useState(false);
 
     useEffect(async () => {
+        postScript();
+
         const cookies = new Cookies();
         if (cookies.get("loggedInUser")) {
             const userEmail = cookies.get("loggedInUser");
