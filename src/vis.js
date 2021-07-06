@@ -579,16 +579,16 @@ function visScript10() {
     var vis104 = new vis.Network(container104, data104, optionsLR);
     // ####################### vis105
     var nodes105 = new vis.DataSet([
-        { id: 1, font: { size: 30 }, level: "1", label: "Sælger\nKreditformidler",color: {border: "red", background: "red"} },
+        { id: 1, font: { size: 30 }, level: "1", label: "Autoforhandler\nKreditformidler",color: {border: "red", background: "red"} },
         { id: 2, font: { size: 30 }, level: "2", label: "Køber\nLåntager" ,color: {border: "blue", background: "blue"}},
         { id: 3, font: { size: 30 }, level: "3", label: "Finansieringsselskab\nKreditgiver\nTrediemand" ,color: {border: "green", background: "green"}},
     ]);
     var edges105 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "2. Vare",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 1, label: "3. Købesum",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 3, label: "3. Lån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
-        { from: 3,  font: { size: 20 },to: 2, label: "4. Omkostninger",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
-        { from: 1,  font: { size: 20 },to: 3, label: "1. Aftale",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"},from: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 20 },to: 2, label: "Vare",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 20 },to: 1, label: "Låneaftale",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 20 },to: 3, label: "Afdrag\nRenter",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 20 },to: 3, label: "Overdragelse af låneaftale",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 20 },to: 3, label: "Betaling for overdragelse",smooth: {type: 'curvedCW', roundness: .2},arrows: {from: {enabled: true, type: "arrow"}}},
     ]);
     var container105 = document.getElementById("vis105");
     var data105 = {
@@ -598,14 +598,15 @@ function visScript10() {
     var vis105 = new vis.Network(container105, data105, optionsLR);
     // ####################### vis106
     var nodes106 = new vis.DataSet([
-        { id: 1, font: { size: 40 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 40 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
-        { id: 3, font: { size: 40 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+        { id: 1, font: { size: 30 }, level: "1", label: "Sælger",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 30 }, level: "2", label: "Køber\nLåntager" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 30 }, level: "3", label: "Bank" ,color: {border: "green", background: "green"}},
     ]);
     var edges106 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: -0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 3, to: 1 },
+        { from: 1,  font: { size: 20 },to: 2, label: "Vare",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 20 },to: 1, label: "Købesum",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 20 },to: 3, label: "Afdrag\nRenter\nGebyrer",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 3,  font: { size: 20 },to: 2, label: "Banklån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
     ]);
     var container106 = document.getElementById("vis106");
     var data106 = {
@@ -615,14 +616,17 @@ function visScript10() {
     var vis106 = new vis.Network(container106, data106, optionsLR);
     // ####################### vis107
     var nodes107 = new vis.DataSet([
-        { id: 1, font: { size: 40 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 40 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
-        { id: 3, font: { size: 40 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+        { id: 1, font: { size: 30 }, level: "1", label: "Sælger",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 30 }, level: "2", label: "Køber" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 30 }, level: "3", label: "Finansierings-\nselskab" ,color: {border: "green", background: "green"}},
     ]);
     var edges107 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: -0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 3, to: 1 },
+        { from: 1,  font: { size: 20 },to: 2, label: "Kreditkøb",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 20 },to: 1, label: "Købers\nIndsigelser",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 20 },to: 3, label: "Afdrag\nRenter\nGebyrer",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 20 },to: 3, label: "Salg af købekontrakt",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        
+        
     ]);
     var container107 = document.getElementById("vis107");
     var data107 = {
@@ -632,14 +636,14 @@ function visScript10() {
     var vis107 = new vis.Network(container107, data107, optionsLR);
     // ####################### vis108
     var nodes108 = new vis.DataSet([
-        { id: 1, font: { size: 40 }, level: "1", label: "Fuldmagtsgiver\nHovedmand",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 40 }, level: "1", label: "Fuldmægtig\nMellemmand" ,color: {border: "blue", background: "blue"}},
-        { id: 3, font: { size: 40 }, level: "2", label: "Trediemand\nAftalepart" ,color: {border: "green", background: "green"}},
+        { id: 1, font: { size: 30 }, level: "1", label: "A. Amalie",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 30 }, level: "2", label: "B. Bent" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 30 }, level: "3", label: "C. Cecilie" ,color: {border: "green", background: "green"}},
     ]);
     var edges108 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Fuldmagt",smooth: {type: 'curvedCW', roundness: -0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 3, label: "Aftale indgås",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 3, to: 1 },
+        { from: 1,  font: { size: 20 },to: 2, label: "Ejendomsforbehold\ntil sælger",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        { from: 2,  font: { size: 20 },to: 3, label: "",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 3,  font: { size: 20 },to: 1, label: "",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
     ]);
     var container108 = document.getElementById("vis108");
     var data108 = {
