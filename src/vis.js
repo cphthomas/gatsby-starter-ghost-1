@@ -71,6 +71,24 @@ const visJS = () => {
         .catch(() => {
             console.log("#vis151 did not load in 8 seconds");
         });
+
+        waitForElement("#timevis91", 8000)
+        .then(function () {
+            console.log("#visualization is loaded.. do stuff");
+            timevisScript9();
+        })
+        .catch(() => {
+            console.log("#visualization did not load in 8 seconds");
+        });
+
+        waitForElement("#timevis131", 8000)
+        .then(function () {
+            console.log("#visualization is loaded.. do stuff");
+            timevisScript13();
+        })
+        .catch(() => {
+            console.log("#visualization did not load in 8 seconds");
+        });
     
 };
 
@@ -1444,5 +1462,58 @@ function visScript15() {
     };
     var vis153 = new vis.Network(container153, data153, optionsLR);
 }
+
+// ### timevisScript9
+function timevisScript9() {
+    var container = document.getElementById("timevis91");
+    var items = new vis.DataSet([
+        { id: 1, content: "6 måneder fra 2021-02-01 til 2021-08-01", start: "2021-02-01",end:"2021-08-01" },
+        { id: 2, content: "Omstødelsesperiode start 2021-02-01" , start: "2021-02-01"  },
+        { id: 3, content: "Overdragelse af gave 2021-05-01", start: "2021-05-01" },
+        { id: 4, content: "Fristdag 2021-08-01", start: "2021-08-01" },
+        { id: 5, content: "Konkursdekret 2021-08-22", start: "2021-08-22" },
+    ]);
+    var options = {};
+    var timeline = new vis.Timeline(container, items, options);
+
+    
+
+    var container = document.getElementById("timevis92");
+    var items = new vis.DataSet([
+        { id: 1, content: "Fristdag", start: "2021-08-02" },
+        { id: 2, content: "Skyldners (konkursboets hovedkrav på kreditor opstår" , start: "2021-11-01"  },
+        { id: 3, content: "Kreditors modkrav opstår", start: "2022-02-01" },
+        { id: 4, content: "Konkursdekret", start: "2022-02-25" },
+    ]);
+    var options = {};
+    var timeline = new vis.Timeline(container, items, options);
+
+    var container = document.getElementById("timevis93");
+    var items = new vis.DataSet([
+        { id: 1, content: "A får lavet køkken<br>Snedkers krav opstår", start: "2021-08-02" },
+        { id: 2, content: "Trælastens krav<br>på snedker opstår" , start: "2021-11-01"  },
+        { id: 3, content: "A køber fordring", start: "2022-02-01" },
+        { id: 4, content: "3 måneder", start: "2022-02-01", end: "2022-04-01" },
+        { id: 5, content: "Fristdag", start: "2022-02-25" },
+    ]);
+    var options = {};
+    var timeline = new vis.Timeline(container, items, options);
+    
+}
+
+// ### timevisScript13
+function timevisScript13() {
+    var container = document.getElementById("timevis131");
+    
+    var items = new vis.DataSet([
+        { id: 1, content: "Krav blev fremsat", start: "2020-01-01" },
+        { id: 2, content: "Forældelsesperiode på 3 år" , start: "2020-01-01",end:"2023-01-01"  },
+        { id: 3, content: "Krav forældes", start: "2023-01-01" },
+    ]);
+    var options = {};
+    var timeline = new vis.Timeline(container, items, options);
+    
+}
+
 
 export default visJS;
