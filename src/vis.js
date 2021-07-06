@@ -1465,39 +1465,39 @@ function visScript15() {
 
 // ### timevisScript9
 function timevisScript9() {
-    var container = document.getElementById("timevis91");
-    var items = new vis.DataSet([
+    var container91 = document.getElementById("timevis91");
+    var items91 = new vis.DataSet([
         { id: 1, content: "6 måneder fra 2021-02-01 til 2021-08-01", start: "2021-02-01",end:"2021-08-01" },
         { id: 2, content: "Omstødelsesperiode start 2021-02-01" , start: "2021-02-01"  },
         { id: 3, content: "Overdragelse af gave 2021-05-01", start: "2021-05-01" },
         { id: 4, content: "Fristdag 2021-08-01", start: "2021-08-01" },
         { id: 5, content: "Konkursdekret 2021-08-22", start: "2021-08-22" },
     ]);
-    var options = {};
-    var timeline = new vis.Timeline(container, items, options);
+    var options91 = {};
+    var timeline = new vis.Timeline(container91, items91, options91);
 
     
 
-    var container = document.getElementById("timevis92");
-    var items = new vis.DataSet([
+    var container92 = document.getElementById("timevis92");
+    var items92 = new vis.DataSet([
         { id: 1, content: "Fristdag", start: "2021-08-02" },
         { id: 2, content: "Skyldners (konkursboets hovedkrav på kreditor opstår" , start: "2021-11-01"  },
         { id: 3, content: "Kreditors modkrav opstår", start: "2022-02-01" },
         { id: 4, content: "Konkursdekret", start: "2022-02-25" },
     ]);
-    var options = {};
-    var timeline = new vis.Timeline(container, items, options);
+    var options92 = {};
+    var timeline = new vis.Timeline(container92, items92, options92);
 
-    var container = document.getElementById("timevis93");
-    var items = new vis.DataSet([
+    var container93 = document.getElementById("timevis93");
+    var items93 = new vis.DataSet([
         { id: 1, content: "A får lavet køkken<br>Snedkers krav opstår", start: "2021-08-02" },
         { id: 2, content: "Trælastens krav<br>på snedker opstår" , start: "2021-11-01"  },
         { id: 3, content: "A køber fordring", start: "2022-02-01" },
         { id: 4, content: "3 måneder", start: "2022-02-01", end: "2022-04-01" },
         { id: 5, content: "Fristdag", start: "2022-02-25" },
     ]);
-    var options = {};
-    var timeline = new vis.Timeline(container, items, options);
+    var options93 = {};
+    var timeline = new vis.Timeline(container93, items93, options93);
     
 }
 
