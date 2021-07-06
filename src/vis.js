@@ -72,10 +72,28 @@ const visJS = () => {
             console.log("#vis151 did not load in 8 seconds");
         });
 
-        waitForElement("#timevis91, #timevis92, #timevis93", 8000)
+        waitForElement("#timevis91", 8000)
         .then(function () {
             console.log("#visualization is loaded.. do stuff");
-            timevisScript9();
+            timevisScript91();
+        })
+        .catch(() => {
+            console.log("#visualization did not load in 8 seconds");
+        });
+
+        waitForElement("#timevis92", 8000)
+        .then(function () {
+            console.log("#visualization is loaded.. do stuff");
+            timevisScript92();
+        })
+        .catch(() => {
+            console.log("#visualization did not load in 8 seconds");
+        });
+
+        waitForElement("#timevis93", 8000)
+        .then(function () {
+            console.log("#visualization is loaded.. do stuff");
+            timevisScript93();
         })
         .catch(() => {
             console.log("#visualization did not load in 8 seconds");
@@ -1464,7 +1482,7 @@ function visScript15() {
 }
 
 // ### timevisScript9
-function timevisScript9() {
+function timevisScript91() {
     var container91 = document.getElementById("timevis91");
     var items91 = new vis.DataSet([
         { id: 1, content: "6 måneder fra 2021-02-01 til 2021-08-01", start: "2021-02-01",end:"2021-08-01" },
@@ -1475,9 +1493,9 @@ function timevisScript9() {
     ]);
     var options91 = {};
     var timeline91 = new vis.Timeline(container91, items91, options91);
-
+}
     
-
+function timevisScript92() {
     var container92 = document.getElementById("timevis92");
     var items92 = new vis.DataSet([
         { id: 1, content: "Fristdag", start: "2021-08-02" },
@@ -1487,7 +1505,9 @@ function timevisScript9() {
     ]);
     var options92 = {};
     var timeline92 = new vis.Timeline(container92, items92, options92);
+}
 
+function timevisScript93() {
     var container93 = document.getElementById("timevis93");
     var items93 = new vis.DataSet([
         { id: 1, content: "A får lavet køkken<br>Snedkers krav opstår", start: "2021-08-02" },
