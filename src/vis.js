@@ -507,12 +507,12 @@ function visScript4() {
 function visScript10() {
     // ####################### vis101
     var nodes101 = new vis.DataSet([
-        { id: 1, font: { size: 40 }, level: "2", label: "Bank",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 40 }, level: "1", label: "Kunde" ,color: {border: "blue", background: "blue"}},
+        { id: 1, font: { size: 20 }, level: "2", label: "Bank",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "1", label: "Kunde" ,color: {border: "blue", background: "blue"}},
     ]);
     var edges101 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Renter/Gebyrer\n/Afdrag",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 1, label: "Lån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 10 },to: 2, label: "Renter/Gebyrer\n/Afdrag",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 10 },to: 1, label: "Lån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
     ]);
     var container101 = document.getElementById("vis101");
     var data101 = {
@@ -522,13 +522,13 @@ function visScript10() {
     var vis101 = new vis.Network(container101, data101, optionsLR);
     // ####################### vis102
     var nodes102 = new vis.DataSet([
-        { id: 1, font: { size: 40 }, level: "1", label: "Køber",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 40 }, level: "2", label: "Sælger" ,color: {border: "blue", background: "blue"}},
+        { id: 1, font: { size: 20 }, level: "1", label: "Køber",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "2", label: "Sælger" ,color: {border: "blue", background: "blue"}},
         
     ]);
     var edges102 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Vare/Lån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 1, label: "Omkostninger\nAfdrag",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 10 },to: 2, label: "Vare/Lån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 10 },to: 1, label: "Omkostninger\nAfdrag",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {from: {enabled: true, type: "arrow"}}},
         { from: 3, to: 1 },
     ]);
     var container102 = document.getElementById("vis102");
@@ -598,15 +598,15 @@ function visScript10() {
     var vis105 = new vis.Network(container105, data105, optionsLR);
     // ####################### vis106
     var nodes106 = new vis.DataSet([
-        { id: 1, font: { size: 30 }, level: "1", label: "Sælger",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 30 }, level: "2", label: "Køber\nLåntager" ,color: {border: "blue", background: "blue"}},
-        { id: 3, font: { size: 30 }, level: "3", label: "Bank" ,color: {border: "green", background: "green"}},
+        { id: 1, font: { size: 20 }, level: "1", label: "Sælger",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "2", label: "Køber\nLåntager" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "3", label: "Bank" ,color: {border: "green", background: "green"}},
     ]);
     var edges106 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Vare",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 1, label: "Købesum",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 2,  font: { size: 20 },to: 3, label: "Afdrag\nRenter\nGebyrer",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 3,  font: { size: 20 },to: 2, label: "Banklån",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 10 },to: 2, label: "Vare",smooth: {type: 'curvedCW', roundness: 0.3},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 10 },to: 1, label: "Købesum",smooth: {type: 'curvedCW', roundness: 0.3},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 2,  font: { size: 10 },to: 3, label: "Afdrag\nRenter\nGebyrer",smooth: {type: 'curvedCW', roundness: 0.3},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 3,  font: { size: 10 },to: 2, label: "Banklån",smooth: {type: 'curvedCW', roundness: 0.3},arrows: {to: {enabled: true, type: "arrow"}}},
     ]);
     var container106 = document.getElementById("vis106");
     var data106 = {
@@ -636,14 +636,14 @@ function visScript10() {
     var vis107 = new vis.Network(container107, data107, optionsLR);
     // ####################### vis108
     var nodes108 = new vis.DataSet([
-        { id: 1, font: { size: 30 }, level: "1", label: "A. Amalie",color: {border: "red", background: "red"} },
-        { id: 2, font: { size: 30 }, level: "2", label: "B. Bent" ,color: {border: "blue", background: "blue"}},
-        { id: 3, font: { size: 30 }, level: "3", label: "C. Cecilie" ,color: {border: "green", background: "green"}},
+        { id: 1, font: { size: 20 }, level: "1", label: "A. Amalie",color: {border: "red", background: "red"} },
+        { id: 2, font: { size: 20 }, level: "2", label: "B. Bent" ,color: {border: "blue", background: "blue"}},
+        { id: 3, font: { size: 20 }, level: "3", label: "C. Cecilie" ,color: {border: "green", background: "green"}},
     ]);
     var edges108 = new vis.DataSet([
-        { from: 1,  font: { size: 20 },to: 2, label: "Ejendomsforbehold\ntil sælger",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
-        { from: 2,  font: { size: 20 },to: 3, label: "",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
-        { from: 3,  font: { size: 20 },to: 1, label: "",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 1,  font: { size: 10 },to: 2, label: "Ejendomsforbehold\ntil sælger",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}}, 
+        { from: 2,  font: { size: 10 },to: 3, label: "",smooth: {type: 'curvedCW', roundness: 0.4},arrows: {to: {enabled: true, type: "arrow"}}},
+        { from: 3,  font: { size: 10 },to: 1, label: "",smooth: {type: 'curvedCW', roundness: 0.3},arrows: {to: {enabled: true, type: "arrow"}}},
     ]);
     var container108 = document.getElementById("vis108");
     var data108 = {
