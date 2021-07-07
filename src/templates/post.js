@@ -14,6 +14,7 @@ import BootstrapSwitchButton from "bootstrap-switch-button-react";
 // import { useSpeechSynthesis } from "react-speech-kit";
 import Speech from "speak-tts";
 import postScript from "../post-script.js";
+import visJS from "../vis.js";
 /**
  * Single post view (/:slug)
  *
@@ -66,6 +67,7 @@ const Post = ({ data, location }) => {
     const [speechTextEnable, setSpeechTextEnable] = useState(false);
 
     useEffect(async () => {
+        visJS();
         postScript();
 
         const cookies = new Cookies();
