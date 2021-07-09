@@ -30,6 +30,39 @@ function waitForElement(querySelector, timeout = 0) {
 }
 
 function amplitudePlayerScript() {
+    /* one single image for all playlist & change image on play pause*/
+    $(document).on("click", ".amplitude-playing", function () {
+        var playlist = $(this).data("amplitude-playlist");
+        var imgTags = $(".main-album-art");
+        $(imgTags).each(function (index) {
+            var imgTagData = $(this).data("amplitude-playlist");
+            if (imgTagData == playlist) {
+                $(this).attr(
+                    "src",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif"
+                );
+            } else {
+                $(this).attr(
+                    "src",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624048525/podcastgif/spole_aelus7.jpg"
+                );
+            }
+        });
+    });
+    $(document).on("click", ".amplitude-paused", function () {
+        var playlist = $(this).data("amplitude-playlist");
+        var imgTags = $(".main-album-art");
+        $(imgTags).each(function (index) {
+            var imgTagData = $(this).data("amplitude-playlist");
+            if (imgTagData == playlist) {
+                $(this).attr(
+                    "src",
+                    "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624048525/podcastgif/spole_aelus7.jpg"
+                );
+            }
+        });
+    });
+
     document
         .getElementsByClassName("show-playlist")[0]
         .addEventListener("click", function () {
@@ -86,36 +119,36 @@ function amplitudePlayerScript() {
             ).style.display = "none";
         });
 
-        document
+    document
         .getElementById("speedTextPlayer1")
         .addEventListener("click", function () {
-          var currentInnerText = parseFloat(
-            document.getElementById("speedUpText").innerHTML
-          );
-          console.log(currentInnerText);
-          if (currentInnerText == 1) {
-            document.getElementById("speedUpText").innerHTML = "1.5";
-          } else if (currentInnerText == 1.5) {
-            document.getElementById("speedUpText").innerHTML = "2";
-          } else if (currentInnerText == 2) {
-            document.getElementById("speedUpText").innerHTML = "1";
-          }
+            var currentInnerText = parseFloat(
+                document.getElementById("speedUpText").innerHTML
+            );
+            console.log(currentInnerText);
+            if (currentInnerText == 1) {
+                document.getElementById("speedUpText").innerHTML = "1.5";
+            } else if (currentInnerText == 1.5) {
+                document.getElementById("speedUpText").innerHTML = "2";
+            } else if (currentInnerText == 2) {
+                document.getElementById("speedUpText").innerHTML = "1";
+            }
         });
 
-      document
+    document
         .getElementById("speedTextPlayer2")
         .addEventListener("click", function () {
-          var currentInnerText = parseFloat(
-            document.getElementById("speedUpText2").innerHTML
-          );
-          console.log(currentInnerText);
-          if (currentInnerText == 1) {
-            document.getElementById("speedUpText2").innerHTML = "1.5";
-          } else if (currentInnerText == 1.5) {
-            document.getElementById("speedUpText2").innerHTML = "2";
-          } else if (currentInnerText == 2) {
-            document.getElementById("speedUpText2").innerHTML = "1";
-          }
+            var currentInnerText = parseFloat(
+                document.getElementById("speedUpText2").innerHTML
+            );
+            console.log(currentInnerText);
+            if (currentInnerText == 1) {
+                document.getElementById("speedUpText2").innerHTML = "1.5";
+            } else if (currentInnerText == 1.5) {
+                document.getElementById("speedUpText2").innerHTML = "2";
+            } else if (currentInnerText == 2) {
+                document.getElementById("speedUpText2").innerHTML = "1";
+            }
         });
 
     Amplitude.init({
@@ -123,7 +156,7 @@ function amplitudePlayerScript() {
             {
                 name:
                     "DREksamensopgave 9.7. Knudsen Properties v. Dennis Knudsen",
-                    artist: "Sonny Kristoffersen",
+                artist: "Sonny Kristoffersen",
                 album: "Finansjura",
                 url:
                     "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?dl=0",
@@ -140,7 +173,7 @@ function amplitudePlayerScript() {
                         artist: "Sonny Kristoffersen",
                         album: "Finansjura",
                         url:
-                        "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?raw=1",
+                            "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?raw=1",
                         cover_art_url:
                             "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
@@ -149,7 +182,7 @@ function amplitudePlayerScript() {
                         artist: "Sonny Kristoffersen",
                         album: "Finansjura",
                         url:
-                        "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?raw=1",
+                            "https://www.dropbox.com/s/gpq1cdx74t6cphp/Podcast%20eksamensopgave%2011.3.%20Travlhed%20i%20kreditafdelingen.m4a?raw=1",
                         cover_art_url:
                             "https://res.cloudinary.com/hndu2f8jv/image/upload/v1624045659/podcastgif/giphy_1_rrpccq.gif",
                     },
