@@ -223,6 +223,7 @@ a:hover {
     z-index: 1;
     border: unset !important;
     border-radius: 0px !important;
+    z-index: 99999;
 }
 
 .switch-on,
