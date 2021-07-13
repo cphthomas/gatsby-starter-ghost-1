@@ -9,6 +9,7 @@ const postScript = () => {
                 hasInnerContainers: true,
             });
             tocbot.refresh();
+            makeTOCFixed();
         })
         .catch(() => {
             console.log("content-body element did not load in 8 seconds");
@@ -40,6 +41,34 @@ function makeAnchorTargetBlank() {
             $(this).attr("target", "_blank");
         }
     });
+}
+
+function makeTOCFixed() {
+    if (test == 1 && $(".toc").length && $(".post-feature-image").length) {
+        var el = $(".toc");
+        el.css({
+            top: "580px",
+        });
+        var stickyTop = $(".toc").offset().top;
+        var stickyHeight = $(".toc").height();
+
+        $(window).scroll(function () {
+            var windowTop = $(window).scrollTop();
+
+            if (stickyTop < windowTop) {
+                el.css({
+                    position: "fixed",
+                    top: "70px",
+                });
+            } else {
+                el.css({
+                    position: "unset",
+                    float: "right",
+                });
+            }
+        });
+        test++;
+    }
 }
 
 export default postScript;
