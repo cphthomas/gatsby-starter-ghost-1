@@ -44,7 +44,7 @@ function makeAnchorTargetBlank() {
 }
 
 function makeTOCFixed() {
-    if (test == 1 && $(".toc").length && $(".post-feature-image").length) {
+    if ($(".toc").length && $(".post-feature-image").length) {
         var el = $(".toc");
         el.css({
             top: "580px",
@@ -67,7 +67,6 @@ function makeTOCFixed() {
                 });
             }
         });
-        test++;
     }
 }
 
