@@ -133,6 +133,10 @@ video {
 }
 body {
     line-height: 1;
+    font-family: var(--font-sans-serif) !important;
+}
+p {
+    font-family: var(--font-sans-serif) !important;
 }
 ol,
 ul {
@@ -1022,16 +1026,16 @@ h6 {
     border: none;
 }
 
-.page-item a{
+.page-item a {
     font-size: 20px;
     border-radius: 0px;
 }
 
-.page-item .disabled{
+.page-item .disabled {
     background-color: black !important;
 }
 
-.page-item a:hover{
+.page-item a:hover {
     background-color: black;
 }
 
