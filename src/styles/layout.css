@@ -230,6 +230,12 @@ a:hover {
 
 .helpDropdown ul {
     background-color: black;
+    min-width: 15rem !important;
+}
+
+.helpModalBtn {
+    background: black;
+    border-radius: 0px;
 }
 
 .helpDropdown ul li {
