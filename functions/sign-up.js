@@ -31,7 +31,7 @@ exports.handler = async function (event) {
         email: email,
     });
 
-    // subscribe the new customer to the free plan
+    //subscribe the new customer to the free plan
     await stripe.subscriptions.create({
         customer: customer.id,
         items: [{ price: process.env.GATSBY_FREE_PLAN_PRICE }],
