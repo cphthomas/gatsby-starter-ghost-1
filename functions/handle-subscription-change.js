@@ -22,13 +22,13 @@ exports.handler = async function ({ body, headers }, context) {
 
         let plan = "0";
         if (
-            subscription.items.data[0].plan.product == "prod_IyCAbZ8bewfWEx" ||
-            subscription.items.data[0].plan.product == "prod_Jcvaqs2TC7c38L"
+            subscription.items.data[0].plan.product ==
+            process.env.GATSBY_PRO_PLAN_ID
         ) {
             plan = "1";
         } else if (
-            subscription.items.data[0].plan.product == "prod_IyCByWeQ6BNYxM" ||
-            subscription.items.data[0].plan.product == "prod_JcvbMmCSzg7uZF"
+            subscription.items.data[0].plan.product ==
+            process.env.GATSBY_PREMIUM_PLAN_ID
         ) {
             plan = "2";
         }
