@@ -333,9 +333,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             {/* <p>
                                 <a href="mailto: support@tepedu.com">Kontakt</a>{" "}
                             </p> */}
-                            <div class="dropdown helpDropdown">
+                            <div className="dropdown helpDropdown">
                                 <button
-                                    class="btn btn-secondary dropdown-toggle helpBtn"
+                                    className="btn btn-secondary dropdown-toggle helpBtn"
                                     type="button"
                                     id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown"
@@ -344,12 +344,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     Help
                                 </button>
                                 <ul
-                                    class="dropdown-menu"
+                                    className="dropdown-menu"
                                     aria-labelledby="dropdownMenuButton1"
                                 >
                                     <li>
                                         <a
-                                            class="dropdown-item"
+                                            className="dropdown-item"
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal3"
                                             href="#"
@@ -360,7 +360,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </li>
                                     <li>
                                         <a
-                                            class="dropdown-item"
+                                            className="dropdown-item"
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal3"
                                             href="#"
@@ -371,7 +371,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </li>
                                     <li>
                                         <a
-                                            class="dropdown-item"
+                                            className="dropdown-item"
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal3"
                                             href="#"
@@ -382,7 +382,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </li>
                                     <li>
                                         <a
-                                            class="dropdown-item"
+                                            className="dropdown-item"
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal3"
                                             href="#"
@@ -393,7 +393,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </li>
                                     <li>
                                         <a
-                                            class="dropdown-item"
+                                            className="dropdown-item"
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal3"
                                             href="#"
@@ -404,7 +404,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </li>
                                     <li>
                                         <a
-                                            class="dropdown-item"
+                                            className="dropdown-item"
                                             href="mailto: support@tepedu.com"
                                         >
                                             Kontakt
@@ -416,7 +416,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </footer>
                 </div>
                 <div
-                    class="modal fade"
+                    className="modal fade"
                     id="exampleModal3"
                     tabindex="-1"
                     aria-labelledby="exampleModal3Label"
@@ -424,17 +424,17 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     data-bs-backdrop="static"
                     data-bs-keyboard="false"
                 >
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="ratio ratio-16x9">
+                    <div className="modal-dialog modal-lg">
+                        <div className="modal-content">
+                            <div className="ratio ratio-16x9">
                                 <video autoPlay loop src={helpModalImageSrc} />
                                 {/* <img src={helpModalImageSrc} /> */}
                             </div>
 
-                            <div class="text-center py-3">
+                            <div className="text-center py-3">
                                 <button
                                     type="button"
-                                    class="btn btn-secondary helpModalBtn"
+                                    className="btn btn-secondary helpModalBtn"
                                     data-bs-dismiss="modal"
                                     onClick={() => helpModalImage(5)}
                                 >
