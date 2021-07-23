@@ -53,7 +53,12 @@ input {
     }
 }
 
-/* .customFormDiv {
-    padding-left: 30%;
-    padding-right: 30%;
-} */
+.guideBtn {
+    background-color: black;
+    border-radius: 0px;
+    text-decoration: none !important;
+}
+
+.guideBtn:hover {
+    background-color: black !important;
+}
