@@ -251,6 +251,12 @@ const Post = ({ data, location, pageContext }) => {
                 >
                     TRY IT
                 </button> */}
+                <input
+                    type="text"
+                    onKeyUp={(e) => serachInPage(e)}
+                    className="test"
+                    placeholder="Search In Chapter"
+                />
                 {apiResponse &&
                 (fisrtTagPlan == constants.FREE_POST ||
                     userPlanId == constants.USER_PREMIUM_PLAN_ID ||
@@ -424,12 +430,6 @@ const Post = ({ data, location, pageContext }) => {
                         </li>
                     </ul>
                 </nav>
-                <input
-                    type="text"
-                    onKeyUp={(e) => serachInPage(e)}
-                    className="test"
-                    placeholder="Search In Chapter"
-                />
             </Layout>
         </div>
     );
