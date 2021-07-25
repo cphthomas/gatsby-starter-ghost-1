@@ -33,7 +33,7 @@ const Post = ({ data, location, pageContext }) => {
     //let nextPageUrl = pageContext.next ? pageContext.next.slug : "";
     //let prevPageUrl = pageContext.prev ? pageContext.prev.slug : "";
     console.log(pageContext.next?.slug);
-    console.log( pageContext.prev?.slug);
+    console.log(pageContext.prev?.slug);
     let speech;
     if (typeof window !== "undefined") {
         speech = new Speech();
@@ -83,12 +83,6 @@ const Post = ({ data, location, pageContext }) => {
 
         if (typeof window !== "undefined") {
             window.addEventListener("keydown", (e) => {
-                // console.log(e.key);
-                // console.log(
-                //     "------------------" +
-                //         window.location.pathname +
-                //         "------------------"
-                // );
                 const currentUrl =
                     typeof window !== "undefined"
                         ? window.location.pathname
@@ -109,13 +103,6 @@ const Post = ({ data, location, pageContext }) => {
                 }
             });
         }
-
-        // tocbot.init({
-        //     tocSelector: ".toc",
-        //     contentSelector: ".content-body",
-        //     hasInnerContainers: true,
-        // });
-        // tocbot.refresh();
 
         const cookies = new Cookies();
         if (cookies.get("loggedInUser")) {
@@ -140,12 +127,6 @@ const Post = ({ data, location, pageContext }) => {
                         cookies.remove("loggedInUserIpAddress");
                     }
                 });
-            // tocbot.init({
-            //     tocSelector: ".toc",
-            //     contentSelector: ".content-body",
-            //     hasInnerContainers: true,
-            // });
-            // tocbot.refresh();
         } else {
             setApiResponse(true);
         }
@@ -208,15 +189,11 @@ const Post = ({ data, location, pageContext }) => {
     }
 
     async function selectedText() {
-        // window.getSelection().toString()
-        //     ? console.log(window.getSelection().toString())
-        //     : null;
         let textToSpeech = "";
         if (typeof window !== "undefined") {
             textToSpeech = window.getSelection().toString();
         }
         console.log(speechTextEnable);
-        //speak({ text: textToSpeech });
         if (speechTextEnable) {
             speech
                 .speak({
@@ -251,6 +228,15 @@ const Post = ({ data, location, pageContext }) => {
         }
     }
 
+    async function serachInPage(e) {
+        let code = e.keyCode ? e.keyCode : e.which;
+        if (code == 13) {
+            if (!window.find(e.target.value)) {
+                alert("No result!");
+            }
+        }
+    }
+
     return (
         <div>
             <MetaData data={data} location={location} type="article" />
@@ -258,6 +244,13 @@ const Post = ({ data, location, pageContext }) => {
                 <style type="text/css">{`${post?.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
+                {/* <button
+                    id="searchButtonClickText_h"
+                    className="test"
+                    onClick={serachInPage}
+                >
+                    TRY IT
+                </button> */}
                 {apiResponse &&
                 (fisrtTagPlan == constants.FREE_POST ||
                     userPlanId == constants.USER_PREMIUM_PLAN_ID ||
@@ -431,6 +424,12 @@ const Post = ({ data, location, pageContext }) => {
                         </li>
                     </ul>
                 </nav>
+                <input
+                    type="text"
+                    onKeyUp={(e) => serachInPage(e)}
+                    className="test"
+                    placeholder="Search In Chapter"
+                />
             </Layout>
         </div>
     );
