@@ -88,6 +88,7 @@ const Post = ({ data, location, pageContext }) => {
                         ? window.location.pathname
                         : "";
                 let keyPressed = e.key;
+                console.log(keyPressed);
                 if (
                     currentUrl != "/login" &&
                     currentUrl != "/signup" &&
@@ -97,7 +98,7 @@ const Post = ({ data, location, pageContext }) => {
                         navigate("/" + nextPageUrl);
                     } else if (prevPageUrl != "" && keyPressed == "ArrowLeft") {
                         navigate("/" + prevPageUrl);
-                    } else if (keyPressed == "h") {
+                    } else if (keyPressed == "Home") {
                         navigate("/");
                     }
                 }
@@ -230,8 +231,13 @@ const Post = ({ data, location, pageContext }) => {
 
     async function serachInPage(e) {
         let code = e.keyCode ? e.keyCode : e.which;
+        //console.log(code);
         if (code == 13) {
-            if (!window.find(e.target.value)) {
+            if (
+                typeof window !== "undefined" &&
+                !window.find(e.target.value) &&
+                e.target.value != ""
+            ) {
                 alert("No result!");
             }
         }
@@ -244,19 +250,19 @@ const Post = ({ data, location, pageContext }) => {
                 <style type="text/css">{`${post?.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
-                {/* <button
-                    id="searchButtonClickText_h"
-                    className="test"
-                    onClick={serachInPage}
-                >
-                    TRY IT
-                </button> */}
-                <input
-                    type="text"
-                    onKeyUp={(e) => serachInPage(e)}
-                    className="test"
-                    placeholder="Search In Chapter"
-                />
+                <div class="search-container">
+                    <input
+                        class="search"
+                        id="searchleft"
+                        type="search test"
+                        name="q"
+                        onKeyUp={(e) => serachInPage(e)}
+                        placeholder="Search In Chapter"
+                    />
+                    <label class="button searchbutton" for="searchleft">
+                        <span class="mglass">&#9906;</span>
+                    </label>
+                </div>
                 {apiResponse &&
                 (fisrtTagPlan == constants.FREE_POST ||
                     userPlanId == constants.USER_PREMIUM_PLAN_ID ||
