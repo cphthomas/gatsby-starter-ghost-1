@@ -1022,7 +1022,7 @@ h6 {
 .pagination a {
     display: inline-block;
     padding: 0px 10px !important;
-    /* border: var(--color-border) 1px solid; */
+    /* borde: var(--color-border) 1px solid; */
     /* color: var(--color-secondary); */
     text-decoration: none;
     font-size: 12px;
