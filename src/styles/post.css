@@ -46,7 +46,7 @@
 .btn-premiume {
     /* display: initial !important;
     margin-top: 10px;
-    width: 115px */
+    width: 115px; */
     /* padding: 10px; */
     /* width: 30% !important; */
     line-height: 0.428571 !important;
@@ -270,18 +270,7 @@ table {
         width: 82px;
     }
 
-    .search {
+    .search{
         font-size: 10px !important;
-    }
-}
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-    .post-full-content {
-        font-size: 15px;
-        line-height: 20px;
-    }
-    .helpModal {
-        max-width: 100% !important;
     }
 }
