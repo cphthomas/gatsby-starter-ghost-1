@@ -341,7 +341,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    Help
+                                    Hjælp
                                 </button>
                                 <ul
                                     className="dropdown-menu"
@@ -355,7 +355,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             href="#"
                                             onClick={() => helpModalImage(0)}
                                         >
-                                            How to signup?
+                                            Hjælp til adgang?
                                         </a>
                                     </li>
                                     <li>
@@ -366,7 +366,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             href="#"
                                             onClick={() => helpModalImage(1)}
                                         >
-                                            How to login?
+                                            Hjælp til login?
                                         </a>
                                     </li>
                                     <li>
@@ -377,7 +377,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             href="#"
                                             onClick={() => helpModalImage(2)}
                                         >
-                                            How to change password?
+                                            Hjælp til password?
                                         </a>
                                     </li>
                                     <li>
@@ -388,7 +388,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             href="#"
                                             onClick={() => helpModalImage(3)}
                                         >
-                                            How to cancel subscription?
+                                            Hjælp til afmelding?
                                         </a>
                                     </li>
                                     <li>
@@ -399,13 +399,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             href="#"
                                             onClick={() => helpModalImage(4)}
                                         >
-                                            How to change card?
+                                            Hjælp til kort skift?
                                         </a>
                                     </li>
                                     <li>
                                         <a
                                             className="dropdown-item"
-                                            href="mailto: support@tepedu.com"
+                                            href="mailto: jura@tepedu.com"
                                         >
                                             Kontakt
                                         </a>
