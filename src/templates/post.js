@@ -291,8 +291,8 @@ const Post = ({ data, location, pageContext }) => {
                                 onstyle="dark"
                                 offstyle="dark"
                                 style="border"
-                                onlabel="Speech"
-                                offlabel="No Speech"
+                                onlabel="Tale"
+                                offlabel="Ingen tale"
                                 onChange={enableDisableSpeech}
                                 style={{ border: "none" }}
                             />
