@@ -318,11 +318,11 @@ const Post = ({ data, location, pageContext }) => {
                     <div className="card">
                         <div className="card-body">
                             <h2 className="whiteClr">
-                                This post is for paying subscribers only
+                            Dette kapitel er kun for betalende abonnenter
                             </h2>
                             <p className="font-18">
-                                Already have an account?{" "}
-                                <a href="/login">Sign in</a>
+                            Har du allerede abonnement?{" "}
+                                <a href="/login">Login</a>
                             </p>
                         </div>
                     </div>
@@ -334,16 +334,16 @@ const Post = ({ data, location, pageContext }) => {
                     <div className="card">
                         <div className="card-body">
                             <h2 className="whiteClr">
-                                This post is for paying subscribers only
+                            Dette kapitel er kun for betalende abonnenter
                             </h2>
                             <div className="form-group">
                                 <label className="font-size-15">
-                                    Choose your subscription
+                                    Vælg abonnement
                                 </label>
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         <label
-                                            data-tip="Access to pro content with, 49.00kr DKK / Month"
+                                            data-tip="Adgang til Pro indhold, 49.00kr DKK / Pr. måned"
                                             className="margin-right-20"
                                         >
                                             <input
