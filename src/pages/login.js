@@ -32,7 +32,7 @@ export default function Login() {
         setShowMessage(false);
         if (password.length < 6) {
             setMessageColor("red");
-            setMessage("Password length shouldn't be less than six.");
+            setMessage("Password længde skal mindst være seks.");
             setShowMessage(true);
             return;
         }
