@@ -87,6 +87,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     }
 
     function helpModalImage(index) {
+        console.log(index);
         setHelpModalImageSrc(helpImages[index]);
     }
 
@@ -447,7 +448,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <div className="ratio ratio-16x9">
                                 <video
                                     autoPlay
-                                    loop
                                     src={helpModalImageSrc}
                                     id="helpVideo"
                                 />
@@ -495,8 +495,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </div>
                             <div className="modal-body">
                                 <p className="font14">
-                                Er du sikker på du vil afmelde dit abonnement?
-
+                                    Er du sikker på du vil afmelde dit
+                                    abonnement?
                                 </p>
                                 <div className="row">
                                     <div className="col-md-12">
@@ -588,9 +588,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     </div>
                                 </div>
                                 <div className="marginWithBorder">
-                                    <p className="detail-head">
-                                        Abonnement:
-                                    </p>
+                                    <p className="detail-head">Abonnement:</p>
                                     <div className="row font14">
                                         <div className="col-md-6">
                                             Nuværende plan: {userPlan}

@@ -5,6 +5,11 @@ const customNewJS = () => {
         videoSrcElm.src = "";
     });
 
+    $("#helpVideo").on("ended", function () {
+        $("#exampleModal3").modal("toggle");
+        videoSrcElm.src = "";
+    });
+
     var url = window.location.href;
     var loadedHash = url.split("#")[1];
 
