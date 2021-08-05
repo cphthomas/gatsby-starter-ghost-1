@@ -405,7 +405,7 @@ const Post = ({ data, location, pageContext }) => {
                     <div className="loadwrap">
                         <div>
                             <div className="bounceball"></div>
-                            <div className="loadText">NOW LOADING</div>
+                            <div className="loadText">Indlæser</div>
                         </div>
                     </div>
                 )}
