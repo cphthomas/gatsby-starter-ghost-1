@@ -377,7 +377,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             href="#"
                                             onClick={() => helpModalImage(2)}
                                         >
-                                            Hjælp til password?
+                                            Hjælp til passwordskift?
                                         </a>
                                     </li>
                                     <li>

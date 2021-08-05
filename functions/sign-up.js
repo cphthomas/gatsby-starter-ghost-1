@@ -20,7 +20,7 @@ exports.handler = async function (event) {
             statusCode: 200,
             body: JSON.stringify({
                 error: "1",
-                message: "User exist alredy with same email id",
+                message: "Bruger med samme email findes allerede",
             }),
         };
     }
@@ -68,7 +68,7 @@ exports.handler = async function (event) {
             customerId: customer.id,
             userIp: userIp,
             message:
-                "User created successfully redirecting to stripe checkout...",
+                "Bruger er nu oprettet, du sendes til Stripe checkout...",
         }),
     };
 };
