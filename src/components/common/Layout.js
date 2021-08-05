@@ -285,21 +285,21 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#exampleModal"
                                                         >
-                                                            My Account
+                                                            Min konto
                                                         </a>
                                                         <a
                                                             className="dropdown-item"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#confirmCancelModal"
                                                         >
-                                                            Cancel Subscription
+                                                            Afmeld abonnement
                                                         </a>
                                                         <a
                                                             className="dropdown-item"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#changeCardModal"
                                                         >
-                                                            Change Card
+                                                            Skift kreditkort
                                                         </a>
                                                     </div>
                                                 ) : (
@@ -310,7 +310,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                                     className="dropdown-item"
                                                     onClick={userLogout}
                                                 >
-                                                    Logout
+                                                    Log ud
                                                 </a>
                                             </div>
                                         </li>
@@ -482,7 +482,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     className="modal-title"
                                     id="confirmCancelModalLabel"
                                 >
-                                    Cancel Subscription
+                                    Afmeld abonnement
                                 </b>
                                 <button
                                     type="button"
@@ -495,8 +495,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </div>
                             <div className="modal-body">
                                 <p className="font14">
-                                    Are you sure, do you want to cancel your
-                                    subscription?
+                                Er du sikker på du vil afmelde dit abonnement?
+
                                 </p>
                                 <div className="row">
                                     <div className="col-md-12">
@@ -504,7 +504,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             className="btn btn-primary cnfrmBtn"
                                             onClick={cancelSubscription}
                                         >
-                                            Confirm
+                                            Bekræft
                                         </button>
                                     </div>
                                     {/* <div className="col-md-6">
@@ -530,7 +530,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     className="modal-title"
                                     id="changeCardModalLabel"
                                 >
-                                    Add Card
+                                    Skift kreditkort
                                 </b>
                                 <button
                                     type="button"
@@ -564,7 +564,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     className="modal-title"
                                     id="exampleModalLabel"
                                 >
-                                    My Account
+                                    Min konto
                                 </b>
                                 <button
                                     type="button"
@@ -577,10 +577,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </div>
                             <div className="modal-body">
                                 <div className="marginWithBorder">
-                                    <p className="detail-head">User Detail:</p>
+                                    <p className="detail-head">Bruger:</p>
                                     <div className="row font14">
                                         <div className="col-md-6">
-                                            Name: {userName}
+                                            Navn: {userName}
                                         </div>
                                         <div className="col-md-6">
                                             Email: {userEmail}
@@ -589,46 +589,46 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 </div>
                                 <div className="marginWithBorder">
                                     <p className="detail-head">
-                                        Subscription Detail:
+                                        Abonnement:
                                     </p>
                                     <div className="row font14">
                                         <div className="col-md-6">
-                                            Current plan: {userPlan}
+                                            Nuværende plan: {userPlan}
                                         </div>
                                         <div className="col-md-6">
-                                            End date: {userPlanEndDate}
+                                            Udløb: {userPlanEndDate}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="marginWithBorder">
-                                    <p className="detail-head">Card Detail:</p>
+                                    <p className="detail-head">Kreditkort:</p>
                                     <div className="row font14">
                                         <div className="col-md-4">
                                             Brand: {userCardBrand}
                                         </div>
                                         <div className="col-md-4">
-                                            Last 4 digits: {userCardDigit}
+                                            Sidste 4 cifre: {userCardDigit}
                                         </div>
                                         <div className="col-md-4">
-                                            Exp date: {userCardExp}
+                                            Udløb: {userCardExp}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="marginWithBorder">
                                     <p className="detail-head">
-                                        Latest Invoice:
+                                        Sidste faktura:
                                     </p>
                                     <div className="row font14">
                                         <div className="col-md-12">
                                             <p>
-                                                Click{" "}
+                                                Klik{" "}
                                                 <a
                                                     target="_blank"
                                                     href={userInvoiceUrl}
                                                 >
-                                                    here
+                                                    her
                                                 </a>{" "}
-                                                to view latest invoice
+                                                for at se seneste faktura
                                             </p>
                                         </div>
                                     </div>
