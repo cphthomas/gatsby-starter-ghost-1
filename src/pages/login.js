@@ -52,7 +52,7 @@ export default function Login() {
                 } else {
                     planId = responseJson.planId;
                     setMessageColor("green");
-                    setMessage("Logged in successfully");
+                    setMessage("Du er nu logget ind");
                     await cookies.set("loggedInUser", email, {
                         path: "/",
                         maxAge: 31536000,
