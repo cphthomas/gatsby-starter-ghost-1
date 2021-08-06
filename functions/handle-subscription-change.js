@@ -50,6 +50,10 @@ exports.handler = async function ({ body, headers }, context) {
                 statusCode: 400,
                 body: `Webhook Error: ${error.message}`,
             };
+        } finally {
+            if (connection) {
+                await connection.end();
+            }
         }
 
         return {
@@ -61,6 +65,10 @@ exports.handler = async function ({ body, headers }, context) {
             statusCode: 400,
             body: `Webhook Error: ${err.message}`,
         };
+    } finally {
+        if (connection) {
+            await connection.end();
+        }
     }
 };
 
