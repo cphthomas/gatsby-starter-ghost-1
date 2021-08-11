@@ -437,7 +437,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <div
                     className="modal fade"
                     id="exampleModal3"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-labelledby="exampleModal3Label"
                     aria-hidden="true"
                     //data-bs-backdrop="static"
