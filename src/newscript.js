@@ -10,7 +10,7 @@ const customNewJS = () => {
         videoSrcElm.src = "";
     });
 
-    var url = window.location.href;
+    var url = decodeURIComponent(window.location.href);
     var loadedHash = url.split("#")[1];
 
     waitForElement("#" + loadedHash, 8000)
