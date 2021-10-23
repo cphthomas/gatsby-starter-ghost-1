@@ -23,43 +23,13 @@ import { navigate } from "gatsby";
  *
  */
 const Post = ({ data, location, pageContext }) => {
-    //const { speak } = useSpeechSynthesis();
+    let audio;
     const [nextPageUrl, setNextPageURL] = useState(
         pageContext.next ? pageContext.next.slug : ""
     );
     const [prevPageUrl, setPrevPageUrl] = useState(
         pageContext.prev ? pageContext.prev.slug : ""
     );
-    //let nextPageUrl = pageContext.next ? pageContext.next.slug : "";
-    //let prevPageUrl = pageContext.prev ? pageContext.prev.slug : "";
-    console.log(pageContext.next?.slug);
-    console.log(pageContext.prev?.slug);
-    let speech;
-    if (typeof window !== "undefined") {
-        speech = new Speech();
-        speech
-            .init({
-                volume: 0.5,
-                lang: "da-DK",
-                rate: 1,
-                pitch: 1,
-                //'voice':'Google UK English Male',
-                //'splitSentences': false,
-                listeners: {
-                    onvoiceschanged: (voices) => {
-                        //console.log("Voices changed", voices);
-                    },
-                },
-            })
-            .then((data) => {
-                console.log("Speech is ready", data);
-                _addVoicesList(data.voices);
-                _prepareSpeakButton(speech);
-            })
-            .catch((e) => {
-                console.error("An error occured while initializing : ", e);
-            });
-    }
 
     const post = data.ghostPost;
 
@@ -68,7 +38,6 @@ const Post = ({ data, location, pageContext }) => {
         isBrowser() && window.location.replace(process.env.GATSBY_SITE_URL);
     }
     const fisrtTagPlan = post?.tags[0] ? post.tags[0].name : "";
-    //const secondTagBookAccess = post.tags[1] ? post.tags[1].name : "";
     const [userLoggedIn, setUserLoggedIn] = useState(false);
     const [apiResponse, setApiResponse] = useState(false);
     const [userPlanId, setUserPlanId] = useState("");
@@ -192,64 +161,53 @@ const Post = ({ data, location, pageContext }) => {
         setSpeechTextEnable(checked);
         if (checked) {
         } else {
-            console.log(checked);
-            speech.cancel();
+            audio.pause();
         }
     }
 
     async function selectedText() {
-        let textToSpeech = "";
-        if (typeof window !== "undefined") {
+        if (speechTextEnable && typeof window !== "undefined") {
+            let textToSpeech = "";
+            //if (typeof window !== "undefined") {
             textToSpeech = window.getSelection().toString();
-        }
-        console.log(speechTextEnable);
-        if (speechTextEnable) {
-            speech
-                .speak({
+            //}
+            const url =
+                "https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=AIzaSyBpsYZKqwyVctQKamQf4StfhvSWSSz-2lE";
+            const data = {
+                input: {
                     text: textToSpeech,
-                    queue: false,
-                    listeners: {
-                        onstart: () => {
-                            console.log("Start utterance");
-                        },
-                        onend: () => {
-                            console.log("End utterance");
-                        },
-                        onresume: () => {
-                            console.log("Resume utterance");
-                        },
-                        onboundary: (event) => {
-                            console.log(
-                                event.name +
-                                    " boundary reached after " +
-                                    event.elapsedTime +
-                                    " milliseconds."
-                            );
-                        },
-                    },
-                })
+                },
+                voice: {
+                    languageCode: "da-dk",
+                    name: "da-DK-Wavenet-A",
+                    ssmlGender: "FEMALE",
+                },
+                audioConfig: {
+                    audioEncoding: "MP3",
+                },
+            };
+            const otherparam = {
+                headers: {
+                    "content-type": "application/json; charset=UTF-8",
+                },
+                body: JSON.stringify(data),
+                method: "POST",
+            };
+            fetch(url, otherparam)
                 .then((data) => {
-                    console.log("Success !", data);
+                    return data.json();
                 })
-                .catch((e) => {
-                    console.error("An error occurred :", e);
+                .then((res) => {
+                    audio = new Audio(
+                        "data:audio/wav;base64," + res.audioContent
+                    );
+                    audio.play();
+                })
+                .catch((error) => {
+                    console.state.onError(error);
                 });
         }
     }
-
-    // async function serachInPage(e) {
-    //     let code = e.keyCode ? e.keyCode : e.which;
-    //     //console.log(code);
-    //     if (code == 13) {
-    //         if (
-    //             typeof window !== "undefined" &&
-    //             !window.find(e.target.value) &&
-    //             e.target.value != ""
-    //         ) {
-    //             alert("No result!");
-    //         }
-    //     }
-    // }
 
     return (
         <div>
@@ -258,19 +216,6 @@ const Post = ({ data, location, pageContext }) => {
                 <style type="text/css">{`${post?.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
-                {/* <div class="search-container">
-                    <input
-                        class="search"
-                        id="searchleft"
-                        type="search test"
-                        name="q"
-                        onKeyUp={(e) => serachInPage(e)}
-                        placeholder="Søg i kapitlet"
-                    />
-                    <label class="button searchbutton" for="searchleft">
-                        <span class="mglass">&#9906;</span>
-                    </label>
-                </div> */}
                 {apiResponse &&
                 (fisrtTagPlan == constants.FREE_POST ||
                     userPlanId == constants.USER_PREMIUM_PLAN_ID ||
@@ -326,10 +271,10 @@ const Post = ({ data, location, pageContext }) => {
                     <div className="card">
                         <div className="card-body">
                             <h2 className="whiteClr">
-                            Dette kapitel er kun for betalende abonnenter
+                                Dette kapitel er kun for betalende abonnenter
                             </h2>
                             <p className="font-18">
-                            Har du allerede abonnement?{" "}
+                                Har du allerede abonnement?{" "}
                                 <a href="/login">Login</a>
                             </p>
                         </div>
