@@ -125,13 +125,14 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     } else {
                         setUserLoggedIn("1");
                         setUserName(responseJson.user[0].user_name);
+                        setUserEmail(responseJson.user[0].user_email);
                         if (
                             responseJson.user[0].stripe_id &&
                             responseJson.user[0].plan_id !== "0"
                         ) {
                             setIsSubscribed(true);
                             setUserStripeId(responseJson.user[0].stripe_id);
-                            setUserEmail(responseJson.user[0].user_email);
+                            // setUserEmail(responseJson.user[0].user_email);
                             customerStripeId = await responseJson.user[0]
                                 .stripe_id;
                             if (responseJson.user[0].plan_id == 1) {
