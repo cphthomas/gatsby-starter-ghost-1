@@ -44,6 +44,26 @@ exports.handler = async function ({ body, headers }, context) {
                         element.plan.id == process.env.GATSBY_PREMIUM_PLAN_PRICE
                     ) {
                         newPlan = 2;
+                    } else if (
+                        element.plan.id ==
+                        process.env.GATSBY_MONTHLY_SIXTY_PLAN_PRICE
+                    ) {
+                        newPlan = 3;
+                    } else if (
+                        element.plan.id ==
+                        process.env.GATSBY_ONE_TIME_FIRST_PLAN_PRICE
+                    ) {
+                        newPlan = 4;
+                    } else if (
+                        element.plan.id ==
+                        process.env.GATSBY_ONE_TIME_SECOND_PLAN_PRICE
+                    ) {
+                        newPlan = 5;
+                    } else if (
+                        element.plan.id ==
+                        process.env.GATSBY_ONE_TIME_THIRD_PLAN_PRICE
+                    ) {
+                        newPlan = 6;
                     }
                 } else {
                     newPlan = 0;
@@ -80,8 +100,7 @@ async function updateUser(connection, stripeId, plan) {
     return new Promise((resolve, reject) => {
         connection.query(
             {
-                sql:
-                    "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
+                sql: "UPDATE external_users SET plan_id = ? WHERE stripe_id = ?",
                 timeout: 10000,
                 values: [plan, stripeId],
             },

@@ -20,6 +20,7 @@ import { navigate } from "gatsby";
  * This file renders a single post and loads all the content.
  *
  */
+const NOW_TIME = Date.now();
 const Post = ({ data, location, pageContext }) => {
     // let audio;
     // if (typeof window !== "undefined") {
@@ -49,6 +50,7 @@ const Post = ({ data, location, pageContext }) => {
     const [selectedTextYCoor, setSelectedTextYCoor] = useState(0);
     const [enableTextToPlayPopup, setEnableTextToPlayPopup] = useState("none");
     const [userSelectedText, setUserSelectedText] = useState("");
+    const [userSubscriptionEndTime, setUserSubscriptionEndTime] = useState("");
     //const [audio, setAudio] = useState(new Audio(""));
 
     const [audioStatus, changeAudioStatus] = useState(false);
@@ -100,6 +102,9 @@ const Post = ({ data, location, pageContext }) => {
                         setEmail(responseJson.user[0].user_email);
                         setCustomerId(responseJson.user[0].stripe_id);
                         setUserPlanId(responseJson.user[0].plan_id);
+                        setUserSubscriptionEndTime(
+                            responseJson.user[0].user_subscription_end
+                        );
                         setUserLoggedIn(true);
                     } else {
                         cookies.remove("loggedInUser");
@@ -140,43 +145,6 @@ const Post = ({ data, location, pageContext }) => {
             .catch((error) => {
                 console.error(error);
             });
-    }
-
-    async function premiumCheckout(e) {
-        e.preventDefault();
-        const planType = "premium";
-        if (
-            !confirm(
-                "Du har nu et Pro abonnement, hvis du skifter til premium abonnement, annulleres dit pro abonnement. Fremadrettet betaler du kun betaler for et premium abonnement. Er du sikker?"
-            )
-        ) {
-            return;
-        }
-        await fetch("/.netlify/functions/create-stripe-checkout", {
-            method: "POST",
-            body: JSON.stringify({ customerId, email, planType }),
-        })
-            .then(async (response) => response.json())
-            .then(async (responseJson) => {
-                const stripePromise = await loadStripe(
-                    process.env.GATSBY_STRIPE_PK_KEY
-                );
-                const stripe = await stripePromise;
-                await stripe.redirectToCheckout({
-                    sessionId: responseJson.id,
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
-
-    function enableDisableSpeech(checked) {
-        setSpeechTextEnable(checked);
-        if (checked) {
-        } else {
-            audio.pause();
-        }
     }
 
     async function selectedText(event) {
@@ -251,10 +219,10 @@ const Post = ({ data, location, pageContext }) => {
             </Helmet>
             <Layout>
                 {apiResponse &&
-                (fisrtTagPlan == constants.FREE_POST ||
-                    userPlanId == constants.USER_PREMIUM_PLAN_ID ||
-                    (userPlanId == constants.USER_PRO_PLAN_ID &&
-                        fisrtTagPlan == constants.PRO_POST)) ? (
+                (userPlanId == constants.USER_PREMIUM_PLAN_ID ||
+                    userPlanId == constants.USER_PRO_PLAN_ID ||
+                    userPlanId == constants.USER_MONTHLY_SIXTY_PLAN_ID ||
+                    userSubscriptionEndTime >= NOW_TIME) ? (
                     <article className="content">
                         <Helmet>
                             <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -286,10 +254,7 @@ const Post = ({ data, location, pageContext }) => {
                             />
                         </section>
                     </article>
-                ) : apiResponse &&
-                  !userLoggedIn &&
-                  (fisrtTagPlan == constants.PRO_POST ||
-                      fisrtTagPlan == constants.PREMIUM_POST) ? (
+                ) : apiResponse && !userLoggedIn ? (
                     <div className="card">
                         <div className="card-body">
                             <h2 className="whiteClr">
@@ -303,9 +268,10 @@ const Post = ({ data, location, pageContext }) => {
                     </div>
                 ) : apiResponse &&
                   userLoggedIn &&
-                  userPlanId == constants.USER_NO_PLAN_ID &&
-                  (fisrtTagPlan == constants.PRO_POST ||
-                      fisrtTagPlan == constants.PREMIUM_POST) ? (
+                  userPlanId != constants.USER_PREMIUM_PLAN_ID &&
+                  userPlanId != constants.USER_PRO_PLAN_ID &&
+                  userPlanId != constants.USER_MONTHLY_SIXTY_PLAN_ID &&
+                  userSubscriptionEndTime < NOW_TIME ? (
                     <div className="card">
                         <div className="card-body">
                             <h2 className="whiteClr accessMsg">
@@ -318,33 +284,65 @@ const Post = ({ data, location, pageContext }) => {
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         <label
-                                            data-tip="Adgang til Pro indhold, 49.00kr DKK / Pr. måned"
+                                            data-tip="Monthly 59 DKK"
                                             className="margin-right-20"
                                         >
                                             <input
                                                 type="radio"
                                                 name="size"
-                                                id="pro"
-                                                value="pro"
+                                                id="monthly_sixty"
+                                                value="monthly_sixty"
                                                 onChange={(e) =>
                                                     setPlanType(e.target.value)
                                                 }
                                                 required
                                             />{" "}
-                                            Pro
+                                            Monthly 59 DKK
                                         </label>
-                                        <label data-tip="Full Access with, 69.00kr DKK / Month">
+                                        <label
+                                            data-tip="6 months 290 - DKK one time price"
+                                            className="margin-right-20"
+                                        >
                                             <input
                                                 type="radio"
                                                 name="size"
-                                                id="premium"
-                                                value="premium"
+                                                id="six_months_one_time"
+                                                value="six_months_one_time"
                                                 required
                                                 onChange={(e) =>
                                                     setPlanType(e.target.value)
                                                 }
                                             />{" "}
-                                            Premium
+                                            6 months 290 - DKK
+                                        </label>
+                                        <label
+                                            data-tip="12 months 390 - DKK one time price"
+                                            className="margin-right-20"
+                                        >
+                                            <input
+                                                type="radio"
+                                                name="size"
+                                                id="twelve_months_one_time"
+                                                value="twelve_months_one_time"
+                                                required
+                                                onChange={(e) =>
+                                                    setPlanType(e.target.value)
+                                                }
+                                            />{" "}
+                                            12 months 390 - DKK
+                                        </label>
+                                        <label data-tip="24 months 540 - DKK one time price">
+                                            <input
+                                                type="radio"
+                                                name="size"
+                                                id="twenty_four_months_one_time"
+                                                value="twenty_four_months_one_time"
+                                                required
+                                                onChange={(e) =>
+                                                    setPlanType(e.target.value)
+                                                }
+                                            />{" "}
+                                            24 months 540 - DKK
                                         </label>
                                     </div>
                                     <button
@@ -356,24 +354,6 @@ const Post = ({ data, location, pageContext }) => {
                                     </button>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                ) : apiResponse &&
-                  userLoggedIn &&
-                  userPlanId == constants.USER_PRO_PLAN_ID &&
-                  fisrtTagPlan == constants.PREMIUM_POST ? (
-                    <div className="card">
-                        <div className="card-body">
-                            <h2 className="whiteClr accessMsg">
-                                This post is for premium subscribers only
-                            </h2>
-                            <button
-                                type="submit"
-                                className="btn btn-primary btn-premiume"
-                                onClick={premiumCheckout}
-                            >
-                                Opgrader til premium
-                            </button>
                         </div>
                     </div>
                 ) : (
