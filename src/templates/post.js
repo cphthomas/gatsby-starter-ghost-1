@@ -284,7 +284,7 @@ const Post = ({ data, location, pageContext }) => {
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         <label
-                                            data-tip="Monthly 59 DKK"
+                                            data-tip="Månedsabonnement 59,- DKK"
                                             className="margin-right-20"
                                         >
                                             <input
@@ -297,10 +297,10 @@ const Post = ({ data, location, pageContext }) => {
                                                 }
                                                 required
                                             />{" "}
-                                            Monthly 59 DKK
+                                            Månedsabonnement 59,- DKK
                                         </label>
                                         <label
-                                            data-tip="6 months 290 - DKK one time price"
+                                            data-tip="6 måneder 290,- DKK engangsbeløb"
                                             className="margin-right-20"
                                         >
                                             <input
@@ -313,10 +313,10 @@ const Post = ({ data, location, pageContext }) => {
                                                     setPlanType(e.target.value)
                                                 }
                                             />{" "}
-                                            6 months 290 - DKK
+                                            6 måneder 290 - DKK engangsbeløb
                                         </label>
                                         <label
-                                            data-tip="12 months 390 - DKK one time price"
+                                            data-tip="1 år 390,- DKK engangsbeløb"
                                             className="margin-right-20"
                                         >
                                             <input
@@ -329,9 +329,9 @@ const Post = ({ data, location, pageContext }) => {
                                                     setPlanType(e.target.value)
                                                 }
                                             />{" "}
-                                            12 months 390 - DKK
+                                            1 år 390,- DKK engangsbeløb
                                         </label>
-                                        <label data-tip="24 months 540 - DKK one time price">
+                                        <label data-tip="2 år 540,- DKK engangsbeløb">
                                             <input
                                                 type="radio"
                                                 name="size"
@@ -342,7 +342,7 @@ const Post = ({ data, location, pageContext }) => {
                                                     setPlanType(e.target.value)
                                                 }
                                             />{" "}
-                                            24 months 540 - DKK
+                                            2 år 540,- DKK engangsbeløb
                                         </label>
                                     </div>
                                     <button
