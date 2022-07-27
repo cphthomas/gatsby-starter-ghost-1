@@ -259,11 +259,11 @@ export default function SignUp() {
                     <p className="tnc">
                         Ved tilmeldingen bekræfter du at have læst{" "}
                         <a href="/term-service" target="_blank">
-                            abonnementsbetingelser
+                            Salgsbetingelser
                         </a>{" "}
                         &{" "}
                         <a href="/privacy-policy" target="_blank">
-                            privatlivspolitik
+                            Privatlivspolitik
                         </a>
                         .
                     </p>
